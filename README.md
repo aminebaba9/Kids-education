@@ -14,7 +14,7 @@ Toàn bộ website nằm trong **một file `index.html`** — không cần cài
 |---|---|
 | Ngôn ngữ | **Tiếng Việt mặc định + tiếng Anh** (`VI` / `EN`), nhớ lựa chọn của khách, có link `?lang=en` |
 | Thị trường | **Chỉ Việt Nam**: giờ GMT+7, Zalo, VNĐ, 34 tỉnh/thành, hotline Việt Nam |
-| Nội dung | Dải cam kết, **lộ trình Cambridge (Starters – Movers – Flyers)**, khối "Bố mẹ không biết tiếng Anh vẫn theo dõi được con", đội ngũ giáo viên, bảng học phí, 3 đánh giá phụ huynh, **8 câu hỏi thường gặp** |
+| Nội dung | Dải cam kết, **lộ trình Cambridge (Starters – Movers – Flyers)**, khối "Bố mẹ không biết tiếng Anh vẫn theo dõi được con", **hồ sơ 4 giáo viên nước ngoài** (ảnh, bằng cấp, chứng chỉ, thành tích), bảng học phí, 3 đánh giá phụ huynh, **8 câu hỏi thường gặp** |
 | Chuyển đổi | Nút **Zalo** nổi, thanh gọi/Zalo dính đáy trên điện thoại, form đăng ký (tên, SĐT/Zalo, tuổi, tỉnh/thành, khung giờ) |
 | SEO | `lang="vi"`, `hreflang` vi/en, mô tả, Open Graph cho Zalo/Facebook, dữ liệu có cấu trúc FAQ + EducationalOrganization |
 | Trải nghiệm | Nút bỏ qua tới nội dung, `aria-*` đầy đủ, khoá tiêu điểm trong hộp thoại, tôn trọng `prefers-reduced-motion` |
@@ -47,8 +47,15 @@ Mở `index.html` và tìm các vị trí sau (dùng `Ctrl/Cmd + F`):
      ```
 3. **Học phí** — sửa trong khối `"vi"` / `"en"` của `window.I18N`: `price.p2.unit`, `price.p2.save`, `price.p3.*`. (Hiện là giá tham khảo: 1.190.000₫ lớp nhóm, 2.990.000₫ lớp 1-1.)
 4. **Zalo OA** (khuyến nghị): tạo Zalo Official Account, sau đó dán đoạn script widget của Zalo ngay trước `</body>` — đã có ghi chú trong file.
-5. **Số liệu xã hội** trong phần thống kê (`10+`, `2.500+`, `25+`, `4.9/5`) — thay bằng số thật để tránh quảng cáo sai sự thật.
-6. **Tên miền** trong thẻ `canonical` / `hreflang` / `og:image` (đầu file) — đổi thành tên miền thật.
+5. **Hồ sơ giáo viên LÀ MẪU — phải thay bằng người thật.** Phần "Đội ngũ giáo viên" hiện có 4 hồ sơ mẫu (Thầy James Whitfield, Cô Sarah Bennett, Thầy Daniel O'Connor, Cô Chloe Anderson) với **ảnh chân dung lấy từ Unsplash** (người thật nhưng không liên quan đến bạn) cùng bằng cấp, chứng chỉ, thành tích tự đặt. Hãy thay bằng ảnh và thông tin thật của giáo viên trong đội ngũ:
+   * Ảnh: đổi `src` của `<img class="teacher-photo">` sang ảnh thật (nên dùng ảnh vuông, tối thiểu 400×400px), và giữ ảnh gốc trong thư mục `images/`.
+   * Chữ: sửa các khoá `teach.t1*` … `teach.t4*` trong `window.I18N` (cả `vi` và `en`): tên, quốc tịch, số năm kinh nghiệm, bằng cấp, chứng chỉ, thành tích, thẻ chuyên môn.
+   * Cần thêm/bớt giáo viên? Sao chép cả một `<article class="teacher-card">` rồi thêm khoá `teach.t5*` tương ứng — nhớ thêm vào **cả hai** khối ngôn ngữ.
+   * Chỉ ghi bằng cấp/chứng chỉ/thành tích **có thật và có bằng chứng** (bằng đại học, chứng chỉ TEFL/CELTA, số năm kinh nghiệm). Ghi sai sẽ ảnh hưởng uy tín và có thể vi phạm quy định quảng cáo.
+   * Nếu chưa có giáo viên nước ngoài nào: **tạm ẩn cả phần này** bằng cách đổi `id="teachers"` thành `id="teachers" style="display:none"` (và bỏ liên kết "Đội ngũ giáo viên" ở footer), sau đó bật lại khi đã có hồ sơ thật.
+6. **Đánh giá của phụ huynh cũng là mẫu** — hiện dùng avatar chữ cái (MT, NA, TH). Thay bằng đánh giá thật (xin phép phụ huynh bằng văn bản); có thể dán ảnh thật bằng cách thay `<span class="quote-initials">` bằng `<img src="…">` như cũ.
+7. **Số liệu xã hội** trong phần thống kê (`10+`, `2.500+`, `25+`, `4.9/5`) — thay bằng số thật để tránh quảng cáo sai sự thật.
+8. **Tên miền** trong thẻ `canonical` / `hreflang` / `og:image` (đầu file) — đổi thành tên miền thật.
 
 > ⚠️ Lưu ý pháp lý: website thu thập số điện thoại của phụ huynh. Nên có **trang chính sách bảo mật** và **sự đồng ý của phụ huynh** (Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân). Nếu dùng hình ảnh/giọng nói của trẻ (video buổi học), cần sự đồng ý bằng văn bản của phụ huynh.
 
@@ -102,4 +109,4 @@ Checklist:
 
 ## English summary
 
-A single-file bilingual (Vietnamese-first + English) landing page for Little Lingua — online English classes for kids aged 4–12, built **exclusively for the Vietnamese market**. Vietnamese is the default language; the `VI`/`EN` toggle swaps every string on the page (including form options, meta title/description and image `alt` text) and remembers the choice via `localStorage`, with `?lang=vi|en` deep links. Sections: trust strip, Cambridge roadmap (Starters → Movers → Flyers), a "you don't need English to follow their progress" panel for parents, teacher profiles, transparent pricing in VND, three parent testimonials and eight FAQs written for Vietnamese families. Vietnam-specific touches: Zalo links and floating button, a sticky mobile "Call/Zalo + Free trial" bar, VN time slots and a province/city picker covering Vietnam's current **34 provinces and cities** (post-July-2025 merger). SEO includes `hreflang`, Open Graph and FAQ/Organization structured data. To go live: fill in `window.CONTACT`, set `SUBMIT_ENDPOINT` (Google Apps Script, Formspree or your API), update the real prices and the domain in `<head>`. Everything else is plain HTML/CSS/JS — no build step, no dependencies.
+A single-file bilingual (Vietnamese-first + English) landing page for Little Lingua — online English classes for kids aged 4–12, built **exclusively for the Vietnamese market**. Vietnamese is the default language; the `VI`/`EN` toggle swaps every string on the page (including form options, meta title/description and image `alt` text) and remembers the choice via `localStorage`, with `?lang=vi|en` deep links. Sections: trust strip, Cambridge roadmap (Starters → Movers → Flyers), a "you don't need English to follow their progress" panel for parents, four native-teacher profiles (photo, degree, certificates, achievements) plus an all-teachers-are-foreign-graduates guarantee strip, transparent pricing in VND, three parent testimonials and eight FAQs written for Vietnamese families. Vietnam-specific touches: Zalo links and floating button, a sticky mobile "Call/Zalo + Free trial" bar, VN time slots and a province/city picker covering Vietnam's current **34 provinces and cities** (post-July-2025 merger). SEO includes `hreflang`, Open Graph and FAQ/Organization structured data. To go live: fill in `window.CONTACT`, set `SUBMIT_ENDPOINT` (Google Apps Script, Formspree or your API), update the real prices and the domain in `<head>`. Everything else is plain HTML/CSS/JS — no build step, no dependencies.

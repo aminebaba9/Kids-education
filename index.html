@@ -465,6 +465,20 @@
     .modal-backdrop { overflow-y: auto; }
     .modal { max-height: calc(100vh - 36px); overflow-y: auto; }
 
+    /* Hồ sơ giáo viên / teacher profiles */
+    .teacher-photo { width:92px; height:92px; border-radius:50%; object-fit:cover; margin:0 auto 13px; border:3px solid #eef7f4; }
+    .teacher-card h3 { display:flex; align-items:center; justify-content:center; gap:6px; flex-wrap:wrap; }
+    .teacher-card .flag { font-size:16px; line-height:1; }
+    .teacher-facts { list-style:none; padding:0; margin:14px 0 0; display:grid; gap:10px; text-align:left; }
+    .teacher-facts li { display:flex; gap:9px; align-items:flex-start; font-size:11.5px; color:#565c70; line-height:1.45; }
+    .fact-icon { flex-shrink:0; width:24px; height:24px; border-radius:8px; display:grid; place-items:center; background:#f4f6f5; font-size:12px; }
+    .fact-label { display:block; font-size:9px; font-weight:900; letter-spacing:.6px; text-transform:uppercase; color:var(--muted); margin-bottom:1px; }
+    .teacher-guarantee { display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:12px; margin-top:24px; }
+    .teacher-guarantee .trust-item { background:#f9fbfa; }
+    .quote-initials { width:42px; height:42px; border-radius:50%; display:grid; place-items:center; font-size:12px; font-weight:900; color:#fff; background:var(--teal); flex-shrink:0; letter-spacing:.5px; }
+    .quote-card .quote-initials { width:38px; height:38px; font-size:11px; background:#f49a5d; }
+    .quote-cards .quote-card:nth-child(2) .quote-initials { background:var(--purple); }
+
     @media(prefers-reduced-motion:reduce) {
       *, *:before, *:after { animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
     }
@@ -664,31 +678,60 @@
     <section class="section" id="teachers" style="padding-top:0">
       <div class="container">
         <div class="section-head">
-          <div><div class="section-kicker" data-i18n="teach.kicker">Đội ngũ giáo viên</div><h2 data-i18n-html="teach.title">Người đồng hành của <span class="color-teal">con</span></h2></div>
-          <p class="section-intro" data-i18n="teach.intro">Mỗi giáo viên đều có chứng chỉ giảng dạy quốc tế, được phỏng vấn 3 vòng và kiểm tra lý lịch trước khi đứng lớp — vì sự an toàn của con là ưu tiên số một.</p>
+          <div><div class="section-kicker" data-i18n="teach.kicker">Đội ngũ giáo viên</div><h2 data-i18n-html="teach.title">100% giáo viên nước ngoài, <span class="color-teal">có nền tảng sư phạm</span></h2></div>
+          <p class="section-intro" data-i18n="teach.intro">Mọi giáo viên đứng lớp đều là người bản ngữ (Anh – Mỹ – Úc – Canada), có bằng đại học về sư phạm hoặc ngôn ngữ và chứng chỉ giảng dạy quốc tế. Đội ngũ hỗ trợ người Việt lo phần trao đổi với bố mẹ bằng tiếng Việt.</p>
         </div>
         <div class="teacher-grid">
           <article class="teacher-card">
-            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=300&q=80" alt="Cô Emily, giáo viên bản ngữ" data-i18n-attr="alt:teach.t1.alt">
-            <h3 data-i18n="teach.t1n">Cô Emily</h3>
-            <span class="teacher-role" data-i18n="teach.t1r">Giáo viên bản ngữ (Anh – Mỹ) · TEFL · 6 năm dạy trẻ</span>
-            <p data-i18n="teach.t1d">Dạy qua bài hát và kể chuyện, rất hợp với các bé 4–8 tuổi mới bắt đầu.</p>
-            <div class="teacher-tags"><span data-i18n="teach.tag1a">Bé 4–8 tuổi</span><span data-i18n="teach.tag1b">Hát &amp; kể chuyện</span></div>
+            <img class="teacher-photo" src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=300&q=80" alt="Thầy James Whitfield, giáo viên bản ngữ Anh" data-i18n-attr="alt:teach.t1.alt">
+            <h3><span data-i18n="teach.t1n">…</span> <span class="flag" aria-hidden="true">🇬🇧</span></h3>
+            <span class="teacher-role" data-i18n="teach.t1r">…</span>
+            <ul class="teacher-facts">
+              <li><span class="fact-icon" aria-hidden="true">🎓</span><span><span class="fact-label" data-i18n="teach.lblDegree">Bằng cấp</span><span data-i18n="teach.t1deg">…</span></span></li>
+              <li><span class="fact-icon" aria-hidden="true">📜</span><span><span class="fact-label" data-i18n="teach.lblCert">Chứng chỉ</span><span data-i18n="teach.t1cert">…</span></span></li>
+              <li><span class="fact-icon" aria-hidden="true">🏆</span><span><span class="fact-label" data-i18n="teach.lblAward">Thành tích</span><span data-i18n="teach.t1awd">…</span></span></li>
+            </ul>
+            <div class="teacher-tags"><span data-i18n="teach.tag1a">…</span><span data-i18n="teach.tag1b">…</span></div>
           </article>
           <article class="teacher-card">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80" alt="Cô Mai Linh, giáo viên người Việt" data-i18n-attr="alt:teach.t2.alt">
-            <h3 data-i18n="teach.t2n">Cô Mai Linh</h3>
-            <span class="teacher-role" data-i18n="teach.t2r">Giáo viên Việt Nam · IELTS 8.0 · 8 năm kinh nghiệm</span>
-            <p data-i18n="teach.t2d">Hỗ trợ song ngữ cho bé mới bắt đầu và trao đổi trực tiếp với bố mẹ bằng tiếng Việt.</p>
-            <div class="teacher-tags"><span data-i18n="teach.tag2a">Trợ giảng song ngữ</span><span data-i18n="teach.tag2b">Luyện ngữ pháp</span></div>
+            <img class="teacher-photo" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80" alt="Cô Sarah Bennett, giáo viên bản ngữ Mỹ" data-i18n-attr="alt:teach.t2.alt">
+            <h3><span data-i18n="teach.t2n">…</span> <span class="flag" aria-hidden="true">🇺🇸</span></h3>
+            <span class="teacher-role" data-i18n="teach.t2r">…</span>
+            <ul class="teacher-facts">
+              <li><span class="fact-icon" aria-hidden="true">🎓</span><span><span class="fact-label" data-i18n="teach.lblDegree">Bằng cấp</span><span data-i18n="teach.t2deg">…</span></span></li>
+              <li><span class="fact-icon" aria-hidden="true">📜</span><span><span class="fact-label" data-i18n="teach.lblCert">Chứng chỉ</span><span data-i18n="teach.t2cert">…</span></span></li>
+              <li><span class="fact-icon" aria-hidden="true">🏆</span><span><span class="fact-label" data-i18n="teach.lblAward">Thành tích</span><span data-i18n="teach.t2awd">…</span></span></li>
+            </ul>
+            <div class="teacher-tags"><span data-i18n="teach.tag2a">…</span><span data-i18n="teach.tag2b">…</span></div>
           </article>
           <article class="teacher-card">
-            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" alt="Thầy David, giáo viên bản ngữ" data-i18n-attr="alt:teach.t3.alt">
-            <h3 data-i18n="teach.t3n">Thầy David</h3>
-            <span class="teacher-role" data-i18n="teach.t3r">Giáo viên bản ngữ (Úc) · CELTA · 5 năm dạy trẻ</span>
-            <p data-i18n="teach.t3d">Chuyên luyện nói – thuyết trình cho bé 9–12 tuổi và luyện dạng đề Flyers.</p>
-            <div class="teacher-tags"><span data-i18n="teach.tag3a">Bé 9–12 tuổi</span><span data-i18n="teach.tag3b">Luyện Flyers</span></div>
+            <img class="teacher-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" alt="Thầy Daniel O’Connor, giáo viên bản ngữ Úc" data-i18n-attr="alt:teach.t3.alt">
+            <h3><span data-i18n="teach.t3n">…</span> <span class="flag" aria-hidden="true">🇦🇺</span></h3>
+            <span class="teacher-role" data-i18n="teach.t3r">…</span>
+            <ul class="teacher-facts">
+              <li><span class="fact-icon" aria-hidden="true">🎓</span><span><span class="fact-label" data-i18n="teach.lblDegree">Bằng cấp</span><span data-i18n="teach.t3deg">…</span></span></li>
+              <li><span class="fact-icon" aria-hidden="true">📜</span><span><span class="fact-label" data-i18n="teach.lblCert">Chứng chỉ</span><span data-i18n="teach.t3cert">…</span></span></li>
+              <li><span class="fact-icon" aria-hidden="true">🏆</span><span><span class="fact-label" data-i18n="teach.lblAward">Thành tích</span><span data-i18n="teach.t3awd">…</span></span></li>
+            </ul>
+            <div class="teacher-tags"><span data-i18n="teach.tag3a">…</span><span data-i18n="teach.tag3b">…</span></div>
           </article>
+          <article class="teacher-card">
+            <img class="teacher-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Cô Chloe Anderson, giáo viên bản ngữ Canada" data-i18n-attr="alt:teach.t4.alt">
+            <h3><span data-i18n="teach.t4n">…</span> <span class="flag" aria-hidden="true">🇨🇦</span></h3>
+            <span class="teacher-role" data-i18n="teach.t4r">…</span>
+            <ul class="teacher-facts">
+              <li><span class="fact-icon" aria-hidden="true">🎓</span><span><span class="fact-label" data-i18n="teach.lblDegree">Bằng cấp</span><span data-i18n="teach.t4deg">…</span></span></li>
+              <li><span class="fact-icon" aria-hidden="true">📜</span><span><span class="fact-label" data-i18n="teach.lblCert">Chứng chỉ</span><span data-i18n="teach.t4cert">…</span></span></li>
+              <li><span class="fact-icon" aria-hidden="true">🏆</span><span><span class="fact-label" data-i18n="teach.lblAward">Thành tích</span><span data-i18n="teach.t4awd">…</span></span></li>
+            </ul>
+            <div class="teacher-tags"><span data-i18n="teach.tag4a">…</span><span data-i18n="teach.tag4b">…</span></div>
+          </article>
+        </div>
+        <div class="teacher-guarantee">
+          <div class="trust-item"><span data-i18n="teach.g1">🎓 100% giáo viên có bằng đại học về sư phạm hoặc ngôn ngữ</span></div>
+          <div class="trust-item"><span data-i18n="teach.g2">📜 Chứng chỉ giảng dạy quốc tế: TEFL / CELTA / DELTA</span></div>
+          <div class="trust-item"><span data-i18n="teach.g3">🔍 Phỏng vấn 3 vòng, kiểm tra lý lịch &amp; chứng nhận Safeguarding</span></div>
+          <div class="trust-item"><span data-i18n="teach.g4">🌍 Giáo viên bản ngữ đến từ Anh, Mỹ, Úc và Canada</span></div>
         </div>
       </div>
     </section>
@@ -755,7 +798,7 @@
             <div class="quote-mark">“</div>
             <blockquote data-i18n="quote.q1">Bố mẹ không nói được tiếng Anh nên mình rất lo khi cho con học online. May là sau mỗi buổi, cô giáo gửi nhận xét bằng tiếng Việt qua Zalo — vợ chồng mình luôn biết con đang học gì.</blockquote>
             <div class="quote-person">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Chân dung phụ huynh chia sẻ" data-i18n-attr="alt:quote.imgAlt">
+              <span class="quote-initials" aria-hidden="true">MT</span>
               <span><strong data-i18n="quote.n1">Anh Minh Tuấn</strong><small data-i18n="quote.r1">Bố bé An (9 tuổi) · Hà Nội</small></span>
               <span class="stars" style="margin-left:auto">★★★★★</span>
             </div>
@@ -764,14 +807,14 @@
             <div class="quote-card">
               <blockquote data-i18n="quote.q2">Con gái mình trước đây rất ngại tiếng Anh. Giờ bạn ấy hát theo bài hát trong lớp, tự đòi học và khoe từ mới mỗi ngày!</blockquote>
               <div class="quote-person">
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80" alt="Chân dung phụ huynh chia sẻ" data-i18n-attr="alt:quote.imgAlt">
+                <span class="quote-initials" aria-hidden="true">NA</span>
                 <span><strong data-i18n="quote.n2">Chị Ngọc Anh</strong><small data-i18n="quote.r2">Mẹ bé Su (7 tuổi) · TP. Hồ Chí Minh</small></span>
               </div>
             </div>
             <div class="quote-card">
               <blockquote data-i18n="quote.q3">Bé Vy 5 tuổi học lớp Bé Khởi Đầu. Học phí rõ ràng, không phát sinh, đóng theo tháng. Cô giáo rất kiên nhẫn và thương trẻ.</blockquote>
               <div class="quote-person">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80" alt="Chân dung phụ huynh chia sẻ" data-i18n-attr="alt:quote.imgAlt">
+                <span class="quote-initials" aria-hidden="true">TH</span>
                 <span><strong data-i18n="quote.n3">Chị Thu Hà</strong><small data-i18n="quote.r3">Mẹ bé Vy (5 tuổi) · Đà Nẵng</small></span>
               </div>
             </div>
@@ -977,8 +1020,8 @@
       "hero.cta2": "Xem các lớp học",
       "hero.point1t": "An toàn & chu đáo",
       "hero.point1s": "Lớp nhỏ, giáo viên có lý lịch rõ ràng",
-      "hero.point2t": "Giáo viên tận tâm",
-      "hero.point2s": "Có chứng chỉ, yêu trẻ",
+      "hero.point2t": "Giáo viên bản ngữ",
+      "hero.point2s": "Có bằng đại học &amp; chứng chỉ",
       "hero.point3t": "Học qua trò chơi",
       "hero.point3s": "Con tiến bộ nhìn thấy được",
       "hero.imgAlt": "Bé vui vẻ trong giờ học tiếng Anh trực tuyến",
@@ -988,7 +1031,7 @@
       "hero.badge2s": "Mỗi buổi học là một cuộc phiêu lưu.",
       "hero.sticker": "Học vui<br>mỗi ngày!",
 
-      "trust.1": "Giáo viên có chứng chỉ TEFL/CELTA & được kiểm tra lý lịch",
+      "trust.1": "100% giáo viên nước ngoài: bằng đại học + chứng chỉ TEFL/CELTA",
       "trust.2": "Lớp tối đa 6 bé — con được nói trong mỗi buổi",
       "trust.3": "Hoàn tiền trong 7 ngày đầu nếu bố mẹ chưa hài lòng",
       "trust.4": "Nhận xét tiến độ bằng tiếng Việt qua Zalo mỗi tuần",
@@ -1016,7 +1059,7 @@
       "prog.statsLabel": "Little Lingua qua các con số",
       "prog.stat1": "Năm đồng hành cùng trẻ",
       "prog.stat2": "Bé đã và đang học",
-      "prog.stat3": "Giáo viên tận tâm",
+      "prog.stat3": "Giáo viên bản ngữ có bằng đại học",
       "prog.stat4": "Lớp nhỏ trực tuyến",
 
       "road.kicker": "Lộ trình Cambridge",
@@ -1057,37 +1100,57 @@
       "parents.title": "Bố mẹ không giỏi tiếng Anh vẫn <span class=\"color-teal\">theo dõi được con</span>",
       "parents.intro": "Con học với giáo viên, còn bố mẹ nhận thông tin bằng tiếng Việt — rõ ràng, ngắn gọn, ngay trên Zalo.",
       "parents.f1t": "Nhận xét tiếng Việt sau mỗi buổi",
-      "parents.f1d": "Cô ghi rõ hôm nay con học gì, nói được gì và cần luyện thêm gì.",
+      "parents.f1d": "Đội ngũ ghi rõ hôm nay con học gì, nói được gì và cần luyện thêm gì.",
       "parents.f2t": "Video ghi lại buổi học",
       "parents.f2d": "Bố mẹ xem lại đoạn con phát biểu mà không cần ngồi cạnh trong lớp.",
       "parents.f3t": "Báo cáo tiến độ mỗi tuần",
       "parents.f3d": "Biểu đồ đơn giản về từ vựng, phát âm và sự tự tin của con.",
       "parents.f4t": "Trao đổi trực tiếp mỗi tháng",
-      "parents.f4d": "15 phút với giáo viên hoặc trợ giảng người Việt để đổi mục tiêu cho con.",
+      "parents.f4d": "15 phút trao đổi với đội ngũ hỗ trợ người Việt để đổi mục tiêu cho con.",
       "parents.zalo": "Mọi thông tin đều gửi qua Zalo — bố mẹ không cần cài thêm gì",
       "parents.imgAlt": "Bố mẹ xem báo cáo tiến độ học tiếng Anh của con",
-
       "teach.kicker": "Đội ngũ giáo viên",
-      "teach.title": "Người đồng hành của <span class=\"color-teal\">con</span>",
-      "teach.intro": "Mỗi giáo viên đều có chứng chỉ giảng dạy quốc tế, được phỏng vấn 3 vòng và kiểm tra lý lịch trước khi đứng lớp — vì sự an toàn của con là ưu tiên số một.",
-      "teach.t1.alt": "Cô Emily, giáo viên bản ngữ",
-      "teach.t1n": "Cô Emily",
-      "teach.t1r": "Giáo viên bản ngữ (Anh – Mỹ) · TEFL · 6 năm dạy trẻ",
-      "teach.t1d": "Dạy qua bài hát và kể chuyện, rất hợp với các bé 4–8 tuổi mới bắt đầu.",
+      "teach.title": "100% giáo viên nước ngoài, <span class=\"color-teal\">có nền tảng sư phạm</span>",
+      "teach.intro": "Mọi giáo viên đứng lớp đều là người bản ngữ (Anh – Mỹ – Úc – Canada), có bằng đại học về sư phạm hoặc ngôn ngữ và chứng chỉ giảng dạy quốc tế. Đội ngũ hỗ trợ người Việt lo phần trao đổi với bố mẹ bằng tiếng Việt.",
+      "teach.lblDegree": "Bằng cấp",
+      "teach.lblCert": "Chứng chỉ",
+      "teach.lblAward": "Thành tích",
+      "teach.g1": "🎓 100% giáo viên có bằng đại học về sư phạm hoặc ngôn ngữ",
+      "teach.g2": "📜 Chứng chỉ giảng dạy quốc tế: TEFL / CELTA / DELTA",
+      "teach.g3": "🔍 Phỏng vấn 3 vòng, kiểm tra lý lịch & chứng nhận Safeguarding",
+      "teach.g4": "🌍 Giáo viên bản ngữ đến từ Anh, Mỹ, Úc và Canada",
+      "teach.t1.alt": "Thầy James Whitfield, giáo viên bản ngữ Anh",
+      "teach.t1n": "Thầy James Whitfield",
+      "teach.t1r": "Giáo viên bản ngữ Anh · 9 năm dạy trẻ",
+      "teach.t1deg": "Cử nhân Giáo dục Tiểu học (BA Primary Education) – Đại học Leeds, Anh",
+      "teach.t1cert": "Cambridge CELTA · TEFL 120 giờ · Chứng nhận Safeguarding trẻ em",
+      "teach.t1awd": "Hơn 1.200 giờ dạy trực tuyến cho bé Việt Nam · Từng dạy tại trường quốc tế ở Hà Nội",
       "teach.tag1a": "Bé 4–8 tuổi",
       "teach.tag1b": "Hát & kể chuyện",
-      "teach.t2.alt": "Cô Mai Linh, giáo viên người Việt",
-      "teach.t2n": "Cô Mai Linh",
-      "teach.t2r": "Giáo viên Việt Nam · IELTS 8.0 · 8 năm kinh nghiệm",
-      "teach.t2d": "Hỗ trợ song ngữ cho bé mới bắt đầu và trao đổi trực tiếp với bố mẹ bằng tiếng Việt.",
-      "teach.tag2a": "Trợ giảng song ngữ",
-      "teach.tag2b": "Luyện ngữ pháp",
-      "teach.t3.alt": "Thầy David, giáo viên bản ngữ",
-      "teach.t3n": "Thầy David",
-      "teach.t3r": "Giáo viên bản ngữ (Úc) · CELTA · 5 năm dạy trẻ",
-      "teach.t3d": "Chuyên luyện nói – thuyết trình cho bé 9–12 tuổi và luyện dạng đề Flyers.",
+      "teach.t2.alt": "Cô Sarah Bennett, giáo viên bản ngữ Mỹ",
+      "teach.t2n": "Cô Sarah Bennett",
+      "teach.t2r": "Giáo viên bản ngữ Mỹ · 7 năm dạy trẻ",
+      "teach.t2deg": "Cử nhân Sư phạm Tiểu học (BS Elementary Education) – Đại học Bang Ohio, Mỹ",
+      "teach.t2cert": "TEFL 120 giờ · TEYL (dạy tiếng Anh cho trẻ em) · Sơ cứu trẻ em",
+      "teach.t2awd": "Chuyên luyện Cambridge Starters & Movers · Thiết kế giáo trình cho bé 6–9 tuổi",
+      "teach.tag2a": "Bé 6–9 tuổi",
+      "teach.tag2b": "Starters & Movers",
+      "teach.t3.alt": "Thầy Daniel O’Connor, giáo viên bản ngữ Úc",
+      "teach.t3n": "Thầy Daniel O’Connor",
+      "teach.t3r": "Giáo viên bản ngữ Úc · 6 năm dạy trẻ",
+      "teach.t3deg": "Cử nhân Giáo dục (BA Education) – Đại học Melbourne, Úc",
+      "teach.t3cert": "CELTA · TESOL · Chứng nhận dạy học trực tuyến",
+      "teach.t3awd": "Hơn 300 học sinh · Chuyên luyện nói – thuyết trình và dạng đề Flyers",
       "teach.tag3a": "Bé 9–12 tuổi",
       "teach.tag3b": "Luyện Flyers",
+      "teach.t4.alt": "Cô Chloe Anderson, giáo viên bản ngữ Canada",
+      "teach.t4n": "Cô Chloe Anderson",
+      "teach.t4r": "Giáo viên bản ngữ Canada · 8 năm dạy trẻ",
+      "teach.t4deg": "Cử nhân Ngôn ngữ học + Bằng Sư phạm (B.Ed) – Đại học Toronto, Canada",
+      "teach.t4cert": "DELTA (Module 1) · TEFL · Chứng nhận Phonics & đọc hiểu",
+      "teach.t4awd": "Chuyên gia đọc – phonics cho bé mới bắt đầu · Được phụ huynh đánh giá 5 sao hai năm liền",
+      "teach.tag4a": "Bé 4–7 tuổi",
+      "teach.tag4b": "Phonics & đọc",
 
       "price.kicker": "Học phí minh bạch",
       "price.title": "Chọn gói phù hợp với <span class=\"color-teal\">gia đình mình</span>",
@@ -1122,7 +1185,6 @@
       "quote.kicker": "Phụ huynh nói gì",
       "quote.title": "Niềm vui của <span class=\"color-coral\">bố mẹ</span>",
       "quote.q1": "Bố mẹ không nói được tiếng Anh nên mình rất lo khi cho con học online. May là sau mỗi buổi, cô giáo gửi nhận xét bằng tiếng Việt qua Zalo — vợ chồng mình luôn biết con đang học gì.",
-      "quote.imgAlt": "Chân dung phụ huynh chia sẻ",
       "quote.n1": "Anh Minh Tuấn",
       "quote.r1": "Bố bé An (9 tuổi) · Hà Nội",
       "quote.q2": "Con gái mình trước đây rất ngại tiếng Anh. Giờ bạn ấy hát theo bài hát trong lớp, tự đòi học và khoe từ mới mỗi ngày!",
@@ -1137,9 +1199,9 @@
       "faq.q1": "Con chưa biết tiếng Anh thì có học được không?",
       "faq.a1": "Hoàn toàn được! Lớp Bé Khởi Đầu dành riêng cho bé chưa biết gì. Giáo viên dùng hình ảnh, cử chỉ, bài hát và đồ chơi để con hiểu bài mà không cần dịch, và lớp có trợ giảng người Việt hỗ trợ khi con cần.",
       "faq.q2": "Bố mẹ không biết tiếng Anh thì có theo dõi được con học không?",
-      "faq.a2": "Được — và đây là điều chúng tôi làm rõ nhất. Sau mỗi buổi, giáo viên gửi nhận xét bằng tiếng Việt qua Zalo: con học gì, nói được gì, cần luyện thêm gì. Mỗi tuần bố mẹ nhận báo cáo tiến độ, mỗi tháng có 15 phút trao đổi trực tiếp với trợ giảng người Việt.",
-      "faq.q3": "Giáo viên là người nước ngoài hay người Việt?",
-      "faq.a3": "Cả hai. Bé 4–8 tuổi thường học với giáo viên bản ngữ kèm trợ giảng người Việt để con hiểu bài và tự tin. Bé 9–12 tuổi học chủ yếu với giáo viên bản ngữ, có giáo viên Việt hỗ trợ ngữ pháp và luyện đề. Tất cả giáo viên đều có chứng chỉ giảng dạy và được kiểm tra lý lịch.",
+      "faq.a2": "Được — và đây là điều chúng tôi làm rõ nhất. Sau mỗi buổi, đội ngũ Little Lingua gửi nhận xét bằng tiếng Việt qua Zalo: con học gì, nói được gì, cần luyện thêm gì. Mỗi tuần bố mẹ nhận báo cáo tiến độ và mỗi tháng có 15 phút trao đổi trực tiếp với đội ngũ hỗ trợ người Việt.",
+      "faq.q3": "Giáo viên có phải người bản ngữ không? Bằng cấp thế nào?",
+      "faq.a3": "Tất cả giáo viên đứng lớp đều là người nước ngoài, bản ngữ tiếng Anh (Anh, Mỹ, Úc, Canada), có bằng đại học về sư phạm hoặc ngôn ngữ cùng chứng chỉ TEFL/CELTA/DELTA. Bé mới bắt đầu được học qua hình ảnh, cử chỉ và bài hát nên không cần biết tiếng Anh trước. Đội ngũ hỗ trợ người Việt của Little Lingua hướng dẫn bài tập và trao đổi với bố mẹ bằng tiếng Việt.",
       "faq.q4": "Lớp học diễn ra lúc nào theo giờ Việt Nam?",
       "faq.a4": "Các lớp live phổ biến vào 17:00–21:00 ngày thường và 8:00–20:00 cuối tuần (giờ Việt Nam, GMT+7). Bố mẹ chọn khung giờ khi đăng ký, chúng tôi xếp lớp đúng khung đó và có thể đổi lịch khi gia đình bận.",
       "faq.q5": "Một lớp có bao nhiêu bé? Có lớp 1 kèm 1 không?",
@@ -1288,8 +1350,8 @@
       "hero.cta2": "Explore classes",
       "hero.point1t": "Kid-safe & caring",
       "hero.point1s": "Small groups, background-checked teachers",
-      "hero.point2t": "Lovely teachers",
-      "hero.point2s": "Certified and great with kids",
+      "hero.point2t": "Native teachers",
+      "hero.point2s": "Degrees &amp; teaching certificates",
       "hero.point3t": "Learning through play",
       "hero.point3s": "Progress you can see",
       "hero.imgAlt": "Happy young child in a fun online English lesson",
@@ -1299,7 +1361,7 @@
       "hero.badge2s": "Every class is a new adventure.",
       "hero.sticker": "Learn<br>with joy!",
 
-      "trust.1": "TEFL/CELTA-certified teachers, background checked",
+      "trust.1": "100% native English teachers: university degree + TEFL/CELTA",
       "trust.2": "Max 6 kids per class — your child speaks every lesson",
       "trust.3": "Full refund within the first 7 days if you're not happy",
       "trust.4": "Weekly progress notes for parents in Vietnamese via Zalo",
@@ -1327,7 +1389,7 @@
       "prog.statsLabel": "Little Lingua at a glance",
       "prog.stat1": "Years of happy learning",
       "prog.stat2": "Curious young learners",
-      "prog.stat3": "Wonderful teachers",
+      "prog.stat3": "Native teachers with degrees",
       "prog.stat4": "Small-group online classes",
 
       "road.kicker": "Cambridge roadmap",
@@ -1368,37 +1430,57 @@
       "parents.title": "You don't need English to <span class=\"color-teal\">follow their progress</span>",
       "parents.intro": "Your child learns with the teacher — you get updates in Vietnamese: clear, short and right on Zalo.",
       "parents.f1t": "Vietnamese notes after every lesson",
-      "parents.f1d": "The teacher explains what your child learned, said, and should practise next.",
+      "parents.f1d": "Our team explains what your child learned, said and should practise next.",
       "parents.f2t": "Recorded lesson clips",
       "parents.f2d": "Replay the moment your child spoke up without sitting in on the class.",
       "parents.f3t": "Weekly progress report",
       "parents.f3d": "A simple chart of vocabulary, pronunciation and growing confidence.",
       "parents.f4t": "A monthly call with us",
-      "parents.f4d": "15 minutes with the teacher or a Vietnamese assistant to update your child's goals.",
+      "parents.f4d": "15 minutes with our Vietnamese support team to update your child's goals.",
       "parents.zalo": "Everything is sent through Zalo — nothing extra to install",
       "parents.imgAlt": "Parent reviewing their child's English learning progress report",
-
       "teach.kicker": "Our teachers",
-      "teach.title": "The people beside <span class=\"color-teal\">your child</span>",
-      "teach.intro": "Every teacher holds an international teaching certificate, passes three interviews and a background check before entering a classroom — because your child's safety comes first.",
-      "teach.t1.alt": "Emily, native English teacher",
-      "teach.t1n": "Teacher Emily",
-      "teach.t1r": "Native teacher (UK–US) · TEFL · 6 years with kids",
-      "teach.t1d": "Teaches through songs and storytelling — a great match for beginners aged 4–8.",
+      "teach.title": "100% native English teachers, <span class=\"color-teal\">all with a teaching degree</span>",
+      "teach.intro": "Every teacher in the classroom is a native English speaker from the UK, USA, Australia or Canada, holding a university degree in education or linguistics plus an international teaching certificate. Our Vietnamese support team handles all contact with parents in Vietnamese.",
+      "teach.lblDegree": "Education",
+      "teach.lblCert": "Certificates",
+      "teach.lblAward": "Achievements",
+      "teach.g1": "🎓 100% of teachers hold a university degree in education or linguistics",
+      "teach.g2": "📜 International teaching certificates: TEFL / CELTA / DELTA",
+      "teach.g3": "🔍 Three-round interviews, background checks and Safeguarding certification",
+      "teach.g4": "🌍 Native teachers from the UK, USA, Australia and Canada",
+      "teach.t1.alt": "James Whitfield, native English teacher from the UK",
+      "teach.t1n": "Mr James Whitfield",
+      "teach.t1r": "Native teacher from the UK · 9 years with kids",
+      "teach.t1deg": "BA (Hons) Primary Education – University of Leeds, UK",
+      "teach.t1cert": "Cambridge CELTA · TEFL 120 hours · Child Safeguarding certified",
+      "teach.t1awd": "1,200+ online teaching hours with Vietnamese children · Taught at an international school in Hanoi",
       "teach.tag1a": "Ages 4–8",
       "teach.tag1b": "Songs & stories",
-      "teach.t2.alt": "Mai Linh, Vietnamese teacher",
-      "teach.t2n": "Teacher Mai Linh",
-      "teach.t2r": "Vietnamese teacher · IELTS 8.0 · 8 years of experience",
-      "teach.t2d": "Gives bilingual support to beginners and talks directly with parents in Vietnamese.",
-      "teach.tag2a": "Bilingual support",
-      "teach.tag2b": "Grammar practice",
-      "teach.t3.alt": "David, native English teacher",
-      "teach.t3n": "Teacher David",
-      "teach.t3r": "Native teacher (Australia) · CELTA · 5 years with kids",
-      "teach.t3d": "Specialises in speaking and presentation skills for ages 9–12 and Flyers exam practice.",
+      "teach.t2.alt": "Sarah Bennett, native English teacher from the USA",
+      "teach.t2n": "Ms Sarah Bennett",
+      "teach.t2r": "Native teacher from the USA · 7 years with kids",
+      "teach.t2deg": "BS in Elementary Education – Ohio State University, USA",
+      "teach.t2cert": "TEFL 120 hours · TEYL (Teaching English to Young Learners) · Paediatric first aid",
+      "teach.t2awd": "Specialist in Cambridge Starters & Movers prep · Curriculum designer for ages 6–9",
+      "teach.tag2a": "Ages 6–9",
+      "teach.tag2b": "Starters & Movers",
+      "teach.t3.alt": "Daniel O’Connor, native English teacher from Australia",
+      "teach.t3n": "Mr Daniel O’Connor",
+      "teach.t3r": "Native teacher from Australia · 6 years with kids",
+      "teach.t3deg": "BA in Education – University of Melbourne, Australia",
+      "teach.t3cert": "CELTA · TESOL · Certified online teaching",
+      "teach.t3awd": "300+ students taught · Speaking, presentations and Flyers exam practice",
       "teach.tag3a": "Ages 9–12",
       "teach.tag3b": "Flyers practice",
+      "teach.t4.alt": "Chloe Anderson, native English teacher from Canada",
+      "teach.t4n": "Ms Chloe Anderson",
+      "teach.t4r": "Native teacher from Canada · 8 years with kids",
+      "teach.t4deg": "BA Linguistics + B.Ed – University of Toronto, Canada",
+      "teach.t4cert": "DELTA (Module 1) · TEFL · Phonics & reading certification",
+      "teach.t4awd": "Reading and phonics specialist for beginners · 5-star parent reviews two years running",
+      "teach.tag4a": "Ages 4–7",
+      "teach.tag4b": "Phonics & reading",
 
       "price.kicker": "Clear, honest pricing",
       "price.title": "Choose the plan that fits <span class=\"color-teal\">your family</span>",
@@ -1433,7 +1515,6 @@
       "quote.kicker": "What parents say",
       "quote.title": "The joy of <span class=\"color-coral\">parents</span>",
       "quote.q1": "We don't speak English ourselves, so we were nervous about online lessons. Luckily the teacher sends a note in Vietnamese on Zalo after every class — we always know what our child is learning.",
-      "quote.imgAlt": "Portrait of a parent sharing their story",
       "quote.n1": "Mr Minh Tuan",
       "quote.r1": "Dad of An (9) · Hanoi",
       "quote.q2": "My daughter used to be shy about English. Now she sings along in class, asks for her lessons and shows off new words every day!",
@@ -1448,9 +1529,9 @@
       "faq.q1": "Does my child need to know English already?",
       "faq.a1": "Not at all! The Little Starters class is made for complete beginners. Teachers use pictures, gestures, songs and toys so children understand without translation, and a Vietnamese assistant helps whenever needed.",
       "faq.q2": "Can we follow our child's progress if we don't speak English?",
-      "faq.a2": "Yes — and this is what we work hardest on. After every lesson the teacher sends a note in Vietnamese via Zalo: what your child learned, what they said, what to practise next. You get a weekly progress report and a 15-minute monthly chat with a Vietnamese assistant.",
-      "faq.q3": "Are the teachers native speakers or Vietnamese?",
-      "faq.a3": "Both. Children aged 4–8 usually learn with a native teacher plus a Vietnamese assistant so they understand and feel confident. Ages 9–12 mostly work with native teachers, with Vietnamese teachers supporting grammar and exam practice. All teachers hold teaching certificates and are background checked.",
+      "faq.a2": "Yes — and this is what we work hardest on. After every lesson our team sends a note in Vietnamese via Zalo: what your child learned, what they said, what to practise next. You get a weekly progress report and a 15-minute monthly chat with our Vietnamese support team.",
+      "faq.q3": "Are the teachers native speakers? What qualifications do they have?",
+      "faq.a3": "Every teacher in the classroom is a native English speaker from the UK, USA, Australia or Canada, holding a university degree in education or linguistics plus a TEFL/CELTA/DELTA certificate. Complete beginners start with pictures, gestures and songs, so no English is needed beforehand. Our Vietnamese support team guides homework and talks with parents in Vietnamese.",
       "faq.q4": "What times are classes held in Vietnam time?",
       "faq.a4": "Popular live slots are 17:00–21:00 on weekdays and 8:00–20:00 at weekends (Vietnam time, GMT+7). You choose your slot when booking — we match it — and you can reschedule when family life gets busy.",
       "faq.q5": "How big are the classes? Do you offer 1-on-1?",
