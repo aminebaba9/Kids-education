@@ -65,6 +65,21 @@
       },
       {
         "@type": "Question",
+        "name": "Chương trình học có phải chuẩn Cambridge không?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Đúng. Little Lingua dạy theo chương trình Anh Quốc (British curriculum) đúng chuẩn Cambridge: giáo trình Cambridge University Press, lộ trình theo khung CEFR (Pre-A1 đến A2) và luyện theo bộ đề Cambridge English Qualifications. Con có thể dự kỳ thi Pre-A1 Starters, A1 Movers, A2 Flyers." }
+      },
+      {
+        "@type": "Question",
+        "name": "Con học bằng sách gì?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Giáo trình chính hãng Cambridge University Press: Kid's Box (chính khóa), Fun for Starters/Movers/Flyers và Storyfun (luyện thi, đọc hiểu), Super Minds, Prepare cho bé 11-12 tuổi. Thi thử dùng bộ đề Official Practice Tests của Cambridge English." }
+      },
+      {
+        "@type": "Question",
+        "name": "Xếp lớp theo CEFR như thế nào?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Con làm bài kiểm tra miễn phí 25 phút: Nghe và Đọc & Viết 20 phút online tại nhà, Nói 5 phút với giáo viên bản ngữ. Sau đó bố mẹ nhận cấp độ CEFR và lớp phù hợp trong 24 giờ qua Zalo." }
+      },
+      {
+        "@type": "Question",
         "name": "Học phí bao nhiêu và có phát sinh không?",
         "acceptedAnswer": { "@type": "Answer", "text": "Lớp nhóm nhỏ từ 1.190.000đ/tháng (8 buổi), lớp 1 kèm 1 từ 2.990.000đ/tháng. Học phí đã gồm học liệu và báo cáo tiến độ, không phí ẩn." }
       },
@@ -82,6 +97,40 @@
   }
   </script>
 
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Cambridge Pre-A1 Starters — tiếng Anh cho bé 4–7 tuổi",
+      "description": "Lớp tiếng Anh trực tuyến theo chương trình Anh Quốc (Cambridge) cho bé 4–7 tuổi, chuẩn bị kỳ thi Pre-A1 Starters theo khung CEFR. Lớp nhóm tối đa 6 bé, giáo viên bản ngữ.",
+      "inLanguage": "vi",
+      "educationalLevel": "Pre-A1 (CEFR)",
+      "provider": { "@type": "EducationalOrganization", "name": "Little Lingua", "url": "https://littlelingua.vn/" },
+      "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT45M" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Cambridge A1 Movers — tiếng Anh cho bé 8–10 tuổi",
+      "description": "Lớp tiếng Anh trực tuyến theo chương trình Cambridge cho bé 8–10 tuổi, luyện đúng định dạng kỳ thi A1 Movers và khung CEFR. Lớp nhóm tối đa 6 bé.",
+      "inLanguage": "vi",
+      "educationalLevel": "A1 (CEFR)",
+      "provider": { "@type": "EducationalOrganization", "name": "Little Lingua", "url": "https://littlelingua.vn/" },
+      "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT45M" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Cambridge A2 Flyers — tiếng Anh cho bé 11–12 tuổi",
+      "description": "Lớp tiếng Anh trực tuyến theo chương trình Cambridge cho bé 11–12 tuổi, luyện đề A2 Flyers, thuyết trình và chuẩn bị lên THCS.",
+      "inLanguage": "vi",
+      "educationalLevel": "A2 (CEFR)",
+      "provider": { "@type": "EducationalOrganization", "name": "Little Lingua", "url": "https://littlelingua.vn/" },
+      "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT45M" }
+    }
+  ]
+  </script>
   <style>
 
     :root {
@@ -479,6 +528,69 @@
     .quote-card .quote-initials { width:38px; height:38px; font-size:11px; background:#f49a5d; }
     .quote-cards .quote-card:nth-child(2) .quote-initials { background:var(--purple); }
 
+    /* Khung CEFR / CEFR scale */
+    .cefr-scale { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin:26px 0 4px; }
+    .cefr-node { text-align:center; padding:13px 8px 11px; border-radius:16px; background:#fff; border:1px solid var(--line); }
+    .cefr-node strong { display:block; font-family:"Baloo 2"; font-size:17px; line-height:1.1; }
+    .cefr-node small { display:block; font-size:10.5px; color:var(--muted); font-weight:800; margin-top:3px; }
+    .cefr-node.active { border-color:var(--teal); background:#f2fbf9; box-shadow:0 8px 20px rgba(23,157,155,.10); }
+    .cefr-node.next { background:#fbfbfc; opacity:.92; }
+    .cefr-node .node-tag { display:inline-block; font-size:9px; font-weight:900; letter-spacing:.4px; text-transform:uppercase; color:var(--teal-dark); background:#e8f7f3; border-radius:20px; padding:3px 8px; margin-bottom:6px; }
+    .cefr-node.next .node-tag { color:#7b8298; background:#f1f2f5; }
+
+    /* Chi tiết cấp độ / level meta */
+    .exam-line, .book-line { display:flex; gap:9px; align-items:flex-start; font-size:11.5px; line-height:1.5; margin-top:11px; }
+    .exam-line { background:#f8faf9; border:1px solid var(--line); border-radius:12px; padding:9px 11px; font-weight:800; color:#3f465c; }
+    .book-line { color:var(--muted); }
+    .exam-line span:first-child, .book-line span:first-child { flex-shrink:0; }
+
+    /* Giáo trình / books */
+    .book-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(235px,1fr)); gap:14px; margin-top:26px; }
+    .book-card { background:#fff; border:1px solid var(--line); border-radius:18px; padding:18px; transition:transform .25s, box-shadow .25s; }
+    .book-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); }
+    .book-card h3 { font-family:"Baloo 2"; font-size:17px; margin:7px 0 5px; line-height:1.2; }
+    .book-card p { font-size:11.5px; color:var(--muted); margin:0; line-height:1.5; }
+    .book-pub { display:block; font-size:9.5px; font-weight:900; letter-spacing:.5px; text-transform:uppercase; color:#8b8f9e; margin-top:9px; }
+    .badge-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
+    .badge-row span { font-size:10.5px; font-weight:900; background:#fff; border:1px solid var(--line); color:#4c5367; border-radius:20px; padding:7px 12px; }
+    .badge-row span.cam { background:#eef7f4; border-color:#d5ebe5; color:var(--teal-dark); }
+
+    /* Đào tạo giáo viên / teacher training */
+    .training-panel { display:grid; grid-template-columns:1.06fr .94fr; gap:26px; align-items:start; background:#fff; border:1px solid var(--line); border-radius:24px; padding:28px; margin-top:26px; }
+    .training-panel h3 { font-family:"Baloo 2"; font-size:24px; margin:6px 0 8px; line-height:1.15; }
+    .training-list { list-style:none; padding:0; margin:14px 0 0; display:grid; gap:12px; }
+    .training-list li { display:flex; gap:11px; font-size:12.5px; color:#4c5367; line-height:1.5; }
+    .training-list li:before { content:"✓"; color:var(--teal); font-weight:900; flex-shrink:0; }
+    .training-side { background:#f9fbfa; border:1px solid var(--line); border-radius:18px; padding:20px; }
+    .feature-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:14px; margin-top:26px; }
+    .feature-item { display:flex; gap:11px; background:#fff; border:1px solid var(--line); border-radius:16px; padding:15px; }
+    .feature-item strong { display:block; font-size:12.5px; }
+    .feature-item small { display:block; color:var(--muted); font-size:11px; line-height:1.45; margin-top:2px; }
+
+    /* Test xếp lớp CEFR / placement */
+    .placement-panel { display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:start; }
+    .placement-steps { list-style:none; padding:0; margin:18px 0 0; display:grid; gap:12px; }
+    .placement-steps li { display:flex; gap:11px; align-items:flex-start; font-size:12.5px; color:#4c5367; line-height:1.5; }
+    .step-pill { width:26px; height:26px; border-radius:9px; background:#e8f7f3; color:var(--teal-dark); display:grid; place-items:center; font-weight:900; font-size:11px; flex-shrink:0; }
+    .placement-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+    .quiz-card { background:#fff; border:1px solid var(--line); border-radius:22px; padding:24px; box-shadow:0 12px 30px rgba(44,59,91,.06); }
+    .quiz-progress { height:7px; background:#f1f3f5; border-radius:20px; overflow:hidden; margin:0 0 16px; }
+    .quiz-progress i { display:block; height:100%; width:0; background:linear-gradient(90deg,var(--teal),#4cc0b6); border-radius:20px; transition:width .3s; }
+    .quiz-step { font-size:10px; font-weight:900; letter-spacing:.7px; text-transform:uppercase; color:var(--muted); }
+    .quiz-question { font-family:"Baloo 2"; font-size:19px; line-height:1.25; margin:6px 0 14px; }
+    .quiz-options { display:grid; gap:9px; }
+    .quiz-option { display:flex; gap:10px; align-items:center; border:1.5px solid var(--line); border-radius:13px; padding:11px 13px; font-size:12.5px; font-weight:700; cursor:pointer; transition:border-color .2s, background .2s; }
+    .quiz-option:hover { border-color:#bfe3dd; background:#f7fcfb; }
+    .quiz-option input { accent-color:var(--teal); width:17px; height:17px; flex-shrink:0; }
+    .quiz-option.selected { border-color:var(--teal); background:#f2fbf9; }
+    .quiz-nav { display:flex; gap:10px; align-items:center; margin-top:16px; flex-wrap:wrap; }
+    .quiz-hint { font-size:10.5px; color:var(--muted); line-height:1.5; }
+    .quiz-result { display:none; }
+    .quiz-result.show { display:block; }
+    .quiz-level { font-family:"Baloo 2"; font-size:30px; line-height:1.05; margin:6px 0 8px; }
+    .quiz-score { font-size:11.5px; color:var(--muted); font-weight:800; }
+    .quiz-result p { font-size:12.5px; color:#4c5367; line-height:1.55; }
+
     @media(prefers-reduced-motion:reduce) {
       *, *:before, *:after { animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
     }
@@ -506,9 +618,10 @@
       <nav class="nav-links" id="navLinks" aria-label="Điều hướng chính" data-i18n-attr="aria-label:ui.navLabel">
         <a class="active" href="#home" data-i18n="nav.home">Trang chủ</a>
         <a href="#programs" data-i18n="nav.programs">Lớp học</a>
-        <a href="#roadmap" data-i18n="nav.roadmap">Lộ trình</a>
+        <a href="#roadmap" data-i18n="nav.roadmap">Lộ trình CEFR</a>
+        <a href="#curriculum" data-i18n="nav.curriculum">Giáo trình</a>
         <a href="#pricing" data-i18n="nav.pricing">Học phí</a>
-        <a href="#faq" data-i18n="nav.faq">Câu hỏi</a>
+        <a href="#faq" data-i18n="nav.faq">Hỏi đáp</a>
       </nav>
       <div class="nav-actions">
         <div class="lang-switch" role="group" aria-label="Chọn ngôn ngữ" data-i18n-attr="aria-label:ui.langLabel">
@@ -527,7 +640,7 @@
     <section class="hero" id="home">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow"><span class="dot"></span> <span data-i18n="hero.eyebrow">Lớp tiếng Anh trực tuyến cho bé 4–12 tuổi</span></span>
+          <span class="eyebrow"><span class="dot"></span> <span data-i18n="hero.eyebrow">Chương trình Anh Quốc (Cambridge) cho bé 4–12 tuổi</span></span>
           <h1 data-i18n-html="hero.title">Tiếng Anh thật vui cho những <span class="color-teal">em nhỏ</span> <span class="color-coral">tỏa sáng</span>!</h1>
           <p class="hero-copy" data-i18n="hero.copy">Con chơi, con hát, con nói tiếng Anh mỗi buổi học. Lớp live có giáo viên kèm ít trò, thiết kế riêng cho bé 4–12 tuổi, đi từ con số 0 đến tự tin giao tiếp.</p>
           <div class="hero-buttons">
@@ -555,7 +668,8 @@
       </div>
       <div class="container">
         <div class="trust-strip">
-          <div class="trust-item"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m12 3 9 4v5c0 5-3.8 8-9 10-5.2-2-9-5-9-10V7z"/><path d="m8 12 3 3 5-6"/></svg><span data-i18n="trust.1">Giáo viên có chứng chỉ TEFL/CELTA &amp; được kiểm tra lý lịch</span></div>
+          <div class="trust-item"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m12 3 9 4v5c0 5-3.8 8-9 10-5.2-2-9-5-9-10V7z"/><path d="m8 12 3 3 5-6"/></svg><span data-i18n="trust.1">100% giáo viên nước ngoài: bằng đại học + chứng chỉ TEFL/CELTA</span>
+          <div class="trust-item"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span data-i18n="trust.5">Chương trình Anh Quốc (British curriculum) đúng chuẩn Cambridge + khung CEFR</span></div></div>
           <div class="trust-item"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.9"/></svg><span data-i18n="trust.2">Lớp tối đa 6 bé — con được nói trong mỗi buổi</span></div>
           <div class="trust-item"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 8v5l3 2"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="trust.3">Hoàn tiền trong 7 ngày đầu nếu bố mẹ chưa hài lòng</span></div>
           <div class="trust-item"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span data-i18n="trust.4">Nhận xét tiến độ bằng tiếng Việt qua Zalo mỗi tuần</span></div>
@@ -599,48 +713,142 @@
     <section class="section roadmap" id="roadmap">
       <div class="container">
         <div class="section-head">
-          <div><div class="section-kicker" data-i18n="road.kicker">Lộ trình Cambridge</div><h2 data-i18n-html="road.title">Từ những từ đầu tiên đến <span class="color-coral">chứng chỉ quốc tế</span></h2></div>
-          <p class="section-intro" data-i18n="road.intro">Con học theo khung Cambridge Pre-A1 → A2, đồng thời bám sát chương trình tiếng Anh phổ thông của Bộ GD&amp;ĐT. Sau mỗi 8 buổi, bố mẹ nhận đánh giá và gợi ý cấp độ tiếp theo.</p>
+          <div><div class="section-kicker" data-i18n="road.kicker">Khung CEFR &amp; kỳ thi Cambridge</div><h2 data-i18n-html="road.title">Học đúng <span class="color-teal">chuẩn Cambridge (Anh Quốc)</span>, tiến bộ theo từng cấp độ CEFR</h2></div>
+          <p class="section-intro" data-i18n="road.intro">Chương trình Anh Quốc (British curriculum) đúng chuẩn Cambridge: con học theo khung tham chiếu châu Âu (CEFR), luyện theo bộ đề Cambridge English và có thể dự kỳ thi quốc tế Pre-A1 Starters → A1 Movers → A2 Flyers để nhận chứng chỉ do Cambridge cấp.</p>
+        </div>
+        <div class="cefr-scale" role="list" aria-label="Khung CEFR" data-i18n-attr="aria-label:road.scaleLabel">
+          <div role="listitem" class="cefr-node active"><span class="node-tag" data-i18n="road.nc1">Pre-A1</span><strong data-i18n="road.nt1">Starters</strong><small data-i18n="road.ns1">4–7 tuổi</small></div>
+          <div role="listitem" class="cefr-node active"><span class="node-tag" data-i18n="road.nc2">A1</span><strong data-i18n="road.nt2">Movers</strong><small data-i18n="road.ns2">8–10 tuổi</small></div>
+          <div role="listitem" class="cefr-node active"><span class="node-tag" data-i18n="road.nc3">A2</span><strong data-i18n="road.nt3">Flyers</strong><small data-i18n="road.ns3">11–12 tuổi</small></div>
+          <div role="listitem" class="cefr-node next"><span class="node-tag" data-i18n="road.nc4">A2</span><strong data-i18n="road.nt4">Key (KET)</strong><small data-i18n="road.ns4">Bước tiếp theo</small></div>
+          <div role="listitem" class="cefr-node next"><span class="node-tag" data-i18n="road.nc5">B1</span><strong data-i18n="road.nt5">Preliminary (PET)</strong><small data-i18n="road.ns5">Bước tiếp theo</small></div>
         </div>
         <div class="roadmap-grid">
           <article class="roadmap-card">
             <span class="level-badge" data-i18n="road.l1.badge">Pre-A1 · Starters</span>
-            <span class="roadmap-age" data-i18n="road.l1.age">4–7 tuổi · Làm quen</span>
-            <h3 data-i18n="road.l1.title">Nghe – nói những câu đầu tiên</h3>
+            <span class="roadmap-age" data-i18n="road.l1.age">…</span>
+            <h3 data-i18n="road.l1.title">…</h3>
             <ul>
-              <li data-i18n="road.l1.p1">Nghe và nhận biết 300+ từ quen thuộc</li>
-              <li data-i18n="road.l1.p2">Chào hỏi, giới thiệu tên, tuổi và sở thích</li>
-              <li data-i18n="road.l1.p3">Hát theo bài hát, trả lời câu hỏi đơn giản</li>
+              <li data-i18n="road.l1.p1">…</li>
+              <li data-i18n="road.l1.p2">…</li>
+              <li data-i18n="road.l1.p3">…</li>
+              <li data-i18n="road.l1.p4">…</li>
             </ul>
+            <div class="exam-line"><span>📝</span><span data-i18n="road.l1.exam">…</span></div>
+            <div class="book-line"><span>📚</span><span data-i18n="road.l1.books">…</span></div>
           </article>
           <article class="roadmap-card">
             <span class="level-badge" data-i18n="road.l2.badge">A1 · Movers</span>
-            <span class="roadmap-age" data-i18n="road.l2.age">8–10 tuổi · Xây nền</span>
-            <h3 data-i18n="road.l2.title">Nói thành câu, đọc hiểu đoạn ngắn</h3>
+            <span class="roadmap-age" data-i18n="road.l2.age">…</span>
+            <h3 data-i18n="road.l2.title">…</h3>
             <ul>
-              <li data-i18n="road.l2.p1">Vốn từ 700+ theo chủ đề trường học, gia đình, sở thích</li>
-              <li data-i18n="road.l2.p2">Đặt câu hỏi – trả lời theo cặp với bạn cùng lớp</li>
-              <li data-i18n="road.l2.p3">Viết tin nhắn, email ngắn đơn giản</li>
+              <li data-i18n="road.l2.p1">…</li>
+              <li data-i18n="road.l2.p2">…</li>
+              <li data-i18n="road.l2.p3">…</li>
+              <li data-i18n="road.l2.p4">…</li>
             </ul>
+            <div class="exam-line"><span>📝</span><span data-i18n="road.l2.exam">…</span></div>
+            <div class="book-line"><span>📚</span><span data-i18n="road.l2.books">…</span></div>
           </article>
           <article class="roadmap-card">
             <span class="level-badge" data-i18n="road.l3.badge">A2 · Flyers</span>
-            <span class="roadmap-age" data-i18n="road.l3.age">11–12 tuổi · Vươn xa</span>
-            <h3 data-i18n="road.l3.title">Tự tin thuyết trình và viết đoạn văn</h3>
+            <span class="roadmap-age" data-i18n="road.l3.age">…</span>
+            <h3 data-i18n="road.l3.title">…</h3>
             <ul>
-              <li data-i18n="road.l3.p1">Thuyết trình 2–3 phút trước lớp</li>
-              <li data-i18n="road.l3.p2">Đọc hiểu truyện ngắn, viết đoạn 80–100 từ</li>
-              <li data-i18n="road.l3.p3">Làm quen dạng đề Flyers, sẵn sàng lên THCS</li>
+              <li data-i18n="road.l3.p1">…</li>
+              <li data-i18n="road.l3.p2">…</li>
+              <li data-i18n="road.l3.p3">…</li>
+              <li data-i18n="road.l3.p4">…</li>
             </ul>
+            <div class="exam-line"><span>📝</span><span data-i18n="road.l3.exam">…</span></div>
+            <div class="book-line"><span>📚</span><span data-i18n="road.l3.books">…</span></div>
           </article>
         </div>
         <div class="roadmap-foot">
-          <p data-i18n-html="road.note">Bố mẹ chưa biết con đang ở cấp độ nào? <strong>Bài test đầu vào 15 phút — miễn phí, làm online tại nhà.</strong></p>
-          <button class="btn btn-primary open-booking" type="button"><span data-i18n="road.cta">Đặt lịch test miễn phí</span> <span aria-hidden="true">→</span></button>
+          <p data-i18n-html="road.note">Sau Flyers, con có thể tiếp tục lên <strong>A2 Key (KET)</strong> và <strong>B1 Preliminary (PET)</strong> — chúng tôi tư vấn lộ trình dài hạn cho từng bé.</p>
+          <a class="btn btn-primary" href="#placement"><span data-i18n="road.cta">Kiểm tra xếp lớp CEFR miễn phí</span> <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
 
+    <section class="section" id="curriculum" style="background:#fffdf9">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="section-kicker" data-i18n="cur.kicker">Giáo trình chính hãng Cambridge</div><h2 data-i18n-html="cur.title">Chương trình Anh Quốc — <span class="color-coral">giáo trình Cambridge gốc</span></h2></div>
+          <p class="section-intro" data-i18n="cur.intro">Little Lingua dạy theo chương trình Anh Quốc (British curriculum) đúng chuẩn Cambridge: giáo trình của Cambridge University Press, lộ trình theo khung CEFR và luyện theo bộ đề Cambridge English Qualifications. Con học đúng những gì Cambridge dùng để đánh giá — không học tràn lan.</p>
+        </div>
+        <div class="badge-row">
+          <span class="cam" data-i18n="cur.badge1">🇬🇧 British curriculum</span>
+          <span class="cam" data-i18n="cur.badge2">📘 Cambridge University Press</span>
+          <span class="cam" data-i18n="cur.badge3">🎓 Cambridge English Qualifications</span>
+          <span class="cam" data-i18n="cur.badge4">📐 Khung CEFR (Pre-A1 → A2)</span>
+        </div>
+        <div class="book-grid">
+          <article class="book-card">
+            <span class="level-badge" data-i18n="cur.b1.badge">Chương trình chính khóa</span>
+            <h3>Kid's Box (Starter, 1–6)</h3>
+            <p data-i18n="cur.b1.d">Giáo trình chính khóa 7 cấp độ: bài hát, truyện tranh, trò chơi và hoạt động tương tác cho bé 4–12 tuổi.</p>
+            <span class="book-pub">Cambridge University Press</span>
+          </article>
+          <article class="book-card">
+            <span class="level-badge" data-i18n="cur.b2.badge">Luyện thi chính thức</span>
+            <h3>Fun for Starters / Movers / Flyers</h3>
+            <p data-i18n="cur.b2.d">Bám sát định dạng đề thi thật của Cambridge, luyện đủ 3 kỹ năng Nghe – Đọc &amp; Viết – Nói theo từng cấp độ.</p>
+            <span class="book-pub">Cambridge University Press</span>
+          </article>
+          <article class="book-card">
+            <span class="level-badge" data-i18n="cur.b3.badge">Đọc &amp; kể chuyện</span>
+            <h3>Storyfun for Starters / Movers / Flyers</h3>
+            <p data-i18n="cur.b3.d">Truyện ngắn kèm bài tập đọc hiểu, giúp con yêu đọc và quen dần với chủ đề trong đề thi.</p>
+            <span class="book-pub">Cambridge University Press</span>
+          </article>
+          <article class="book-card">
+            <span class="level-badge" data-i18n="cur.b4.badge">Phát triển tư duy</span>
+            <h3>Super Minds (1–6)</h3>
+            <p data-i18n="cur.b4.d">Phát triển từ vựng, tư duy phản biện và kỹ năng nói qua các dự án nhỏ theo nhóm.</p>
+            <span class="book-pub">Cambridge University Press</span>
+          </article>
+          <article class="book-card">
+            <span class="level-badge" data-i18n="cur.b5.badge">Chặng tiếp theo</span>
+            <h3>Prepare (Level 1–3)</h3>
+            <p data-i18n="cur.b5.d">Dành cho bé 11–12 tuổi chuẩn bị lên A2 Key và làm quen môi trường học tập THCS.</p>
+            <span class="book-pub">Cambridge University Press</span>
+          </article>
+          <article class="book-card">
+            <span class="level-badge" data-i18n="cur.b6.badge">Đề luyện chính hãng</span>
+            <h3>Official Practice Tests</h3>
+            <p data-i18n="cur.b6.d">Bộ đề luyện thi chính chủ Cambridge, dùng cho các buổi thi thử định kỳ tại Little Lingua.</p>
+            <span class="book-pub">Cambridge English</span>
+          </article>
+        </div>
+
+        <div class="training-panel">
+          <div>
+            <div class="section-kicker" data-i18n="train.kicker">Đào tạo giáo viên</div>
+            <h3 data-i18n="train.title">Giáo viên được đào tạo dạy trẻ &amp; luyện thi Cambridge</h3>
+            <p class="section-intro" style="max-width:none;margin-top:8px" data-i18n="train.intro">Không chỉ là người bản ngữ: mỗi giáo viên đều được đào tạo bài bản về tâm lý trẻ, phương pháp dạy trẻ và định dạng các kỳ thi Cambridge trước khi đứng lớp.</p>
+            <ul class="training-list">
+              <li data-i18n="train.i1">TKT: Young Learners (Cambridge) — chứng chỉ dạy tiếng Anh cho trẻ em</li>
+              <li data-i18n="train.i2">CELTA / Delta (Cambridge) kèm chuyên đề Teaching Young Learners</li>
+              <li data-i18n="train.i3">Khóa đào tạo nội bộ 40 giờ về phương pháp dạy trẻ theo chuẩn Cambridge</li>
+              <li data-i18n="train.i4">Đào tạo đúng định dạng đề thi Starters – Movers – Flyers và cách chấm bài thi nói</li>
+              <li data-i18n="train.i5">Đánh giá năng lực giáo viên theo khung CEFR mỗi năm</li>
+              <li data-i18n="train.i6">Dự giờ, nhận xét và kèm cặp định kỳ mỗi học kỳ</li>
+            </ul>
+          </div>
+          <div class="training-side">
+            <div class="feature-grid" style="margin-top:0;grid-template-columns:1fr">
+          <div class="feature-item"><span class="fact-icon" aria-hidden="true">📝</span><span><strong data-i18n="feat.f1t">Thi thử Cambridge định kỳ</strong><small data-i18n="feat.f1d">Mỗi học kỳ có buổi thi thử đúng định dạng đề thi thật, chấm điểm và nhận xét chi tiết.</small></span></div>
+          <div class="feature-item"><span class="fact-icon" aria-hidden="true">🎫</span><span><strong data-i18n="feat.f2t">Hỗ trợ đăng ký thi chính thức</strong><small data-i18n="feat.f2d">Chúng tôi hướng dẫn và đăng ký cho con dự kỳ thi Cambridge Starters / Movers / Flyers.</small></span></div>
+          <div class="feature-item"><span class="fact-icon" aria-hidden="true">📊</span><span><strong data-i18n="feat.f3t">Báo cáo tiến độ theo CEFR</strong><small data-i18n="feat.f3d">Mỗi 8 buổi, bố mẹ nhận đánh giá "con làm được gì" theo từng mô tả năng lực của khung CEFR.</small></span></div>
+          <div class="feature-item"><span class="fact-icon" aria-hidden="true">🏅</span><span><strong data-i18n="feat.f4t">Chứng nhận hoàn thành cấp độ</strong><small data-i18n="feat.f4d">Kết thúc mỗi cấp độ, con nhận chứng nhận của Little Lingua kèm hồ sơ học tập (portfolio).</small></span></div>
+          <div class="feature-item"><span class="fact-icon" aria-hidden="true">✏️</span><span><strong data-i18n="feat.f5t">Bài tập trên giáo trình Cambridge</strong><small data-i18n="feat.f5d">Bài tập về nhà lấy từ chính giáo trình Cambridge, có hướng dẫn tiếng Việt cho bố mẹ.</small></span></div>
+          <div class="feature-item"><span class="fact-icon" aria-hidden="true">👨‍👩‍👧</span><span><strong data-i18n="feat.f6t">Workshop cho phụ huynh</strong><small data-i18n="feat.f6d">Buổi chia sẻ tiếng Việt: cách đồng hành cùng con khi bố mẹ không biết tiếng Anh.</small></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="section steps-section" id="how">
       <div class="container">
         <div class="section-head">
@@ -655,6 +863,50 @@
       </div>
     </section>
 
+    <section class="section" id="placement" style="background:#f7faf7">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="section-kicker" data-i18n="place.kicker">Xếp lớp theo khung CEFR</div><h2 data-i18n-html="place.title">Con đang ở cấp độ nào? <span class="color-teal">Test xếp lớp miễn phí</span></h2></div>
+          <p class="section-intro" data-i18n="place.intro">Trước khi vào lớp, con được kiểm tra theo đúng khung CEFR để học đúng trình độ — không học quá dễ (chán) hay quá khó (mất tự tin).</p>
+        </div>
+        <div class="placement-panel">
+          <div>
+            <ul class="placement-steps">
+              <li><span class="step-pill">1</span><span data-i18n="place.s1">Nghe + Đọc &amp; Viết (20 phút, làm online tại nhà, có hình ảnh minh họa cho bé nhỏ).</span></li>
+              <li><span class="step-pill">2</span><span data-i18n="place.s2">Nói 5 phút với giáo viên bản ngữ qua video — cô trò chuyện nhẹ nhàng để đo khả năng phản xạ.</span></li>
+              <li><span class="step-pill">3</span><span data-i18n="place.s3">Nhận kết quả trong 24 giờ qua Zalo: cấp độ CEFR (Pre-A1 / A1 / A2), lớp phù hợp và lộ trình học cho con.</span></li>
+            </ul>
+            <div class="placement-actions">
+              <button class="btn btn-primary open-booking" type="button"><span data-i18n="place.cta">Đặt lịch test &amp; học thử miễn phí</span> <span aria-hidden="true">→</span></button>
+            </div>
+            <p class="quiz-hint" style="margin-top:12px" data-i18n="place.note">Miễn phí hoàn toàn, không cần thanh toán trước. Con chỉ cần máy tính/máy tính bảng và tai nghe.</p>
+          </div>
+          <div class="quiz-card" id="quizCard">
+            <div class="quiz-progress"><i id="quizBar"></i></div>
+            <div id="quizBody">
+              <span class="quiz-step" id="quizStep"></span>
+              <h3 class="quiz-question" id="quizQuestion"></h3>
+              <div class="quiz-options" id="quizOptions"></div>
+              <div class="quiz-nav">
+                <button class="btn btn-primary" type="button" id="quizNext">…</button>
+                <button class="btn btn-outline" type="button" id="quizBack">…</button>
+              </div>
+              <p class="quiz-hint" style="margin-top:12px" data-i18n="quiz.hint">Bố mẹ cùng con chọn đáp án đúng nhất. Kết quả chỉ là ước lượng nhanh — bài test đầy đủ do giáo viên thực hiện sẽ chính xác hơn.</p>
+            </div>
+            <div class="quiz-result" id="quizResult">
+              <span class="quiz-step" data-i18n="quiz.resultTitle">Kết quả ước lượng</span>
+              <div class="quiz-level" id="quizLevel"></div>
+              <span class="quiz-score" id="quizScore"></span>
+              <p id="quizLevelDesc" style="margin-top:10px"></p>
+              <div class="quiz-nav">
+                <button class="btn btn-primary open-booking" type="button" id="quizBook"></button>
+                <button class="btn btn-outline" type="button" id="quizRetake"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="section" id="parents" style="padding-top:0">
       <div class="container">
         <div class="parents-panel">
@@ -837,6 +1089,11 @@
           <div class="faq-item"><button class="faq-question" aria-expanded="false"><span data-i18n="faq.q6">Học online có hiệu quả không? Con cần chuẩn bị gì?</span><span>+</span></button><div class="faq-answer" data-i18n="faq.a6">Buổi học live 45 phút với tương tác liên tục nên con tập trung hơn hẳn khi xem video. Con chỉ cần máy tính, máy tính bảng hoặc điện thoại, tai nghe và mạng ổn định, ngồi ở nơi yên tĩnh. Trong buổi học thử, bố mẹ ngồi cạnh con thoải mái.</div></div>
           <div class="faq-item"><button class="faq-question" aria-expanded="false"><span data-i18n="faq.q7">Học phí có phát sinh thêm gì không?</span><span>+</span></button><div class="faq-answer" data-i18n="faq.a7">Không. Học phí đã bao gồm học liệu, báo cáo tiến độ và video buổi học. Bố mẹ đóng theo tháng hoặc theo khoá 3 tháng (giảm 10%), không có phí ghi danh hay phí tài liệu.</div></div>
           <div class="faq-item"><button class="faq-question" aria-expanded="false"><span data-i18n="faq.q8">Thanh toán và hoàn tiền thế nào?</span><span>+</span></button><div class="faq-answer" data-i18n="faq.a8">Bố mẹ thanh toán bằng chuyển khoản ngân hàng, Momo hoặc ZaloPay và có xác nhận qua Zalo/email. Nếu sau 2 buổi học đầu tiên trong 7 ngày bố mẹ chưa hài lòng, chúng tôi hoàn lại 100% học phí còn lại của tháng đầu.</div></div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false"><span data-i18n="faq.q9">Chương trình học có phải chuẩn Cambridge không?</span><span>+</span></button><div class="faq-answer" data-i18n="faq.a9">Đúng. Little Lingua dạy theo chương trình Anh Quốc (British curriculum) đúng chuẩn Cambridge: giáo trình của Cambridge University Press, lộ trình theo khung CEFR (Pre-A1 → A2) và luyện theo bộ đề Cambridge English Qualifications. Con có thể dự kỳ thi quốc tế Pre-A1 Starters, A1 Movers, A2 Flyers để nhận chứng chỉ do Cambridge cấp.</div></div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false"><span data-i18n="faq.q10">Con học bằng sách gì?</span><span>+</span></button><div class="faq-answer" data-i18n="faq.a10">Bộ giáo trình chính hãng của Cambridge University Press: Kid's Box (chính khóa), Fun for Starters/Movers/Flyers và Storyfun (luyện thi, đọc hiểu), Super Minds (phát triển tư duy) và Prepare cho bé 11–12 tuổi. Các buổi thi thử dùng bộ đề Official Practice Tests của Cambridge English. Bố mẹ không cần mua sách — chúng tôi gửi file học liệu và hướng dẫn tiếng Việt.</div></div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false"><span data-i18n="faq.q11">Xếp lớp theo CEFR như thế nào?</span><span>+</span></button><div class="faq-answer" data-i18n="faq.a11">Con làm bài kiểm tra miễn phí 25 phút: Nghe + Đọc &amp; Viết (20 phút, làm online tại nhà) và Nói 5 phút với giáo viên bản ngữ. Sau đó bố mẹ nhận kết quả cấp độ CEFR và lớp phù hợp trong 24 giờ qua Zalo. Cứ mỗi 8 buổi, chúng tôi đánh giá lại để điều chỉnh lộ trình.</div></div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false"><span data-i18n="faq.q12">Giáo viên được đào tạo thế nào để dạy trẻ và luyện thi Cambridge?</span><span>+</span></button><div class="faq-answer" data-i18n="faq.a12">Giáo viên đều là người bản ngữ có bằng đại học, được đào tạo bài bản về dạy trẻ: chứng chỉ TKT: Young Learners của Cambridge, CELTA/Delta kèm chuyên đề Teaching Young Learners, khóa đào tạo nội bộ 40 giờ về phương pháp dạy trẻ, đào tạo đúng định dạng đề thi Starters – Movers – Flyers và cách chấm bài thi nói. Mỗi học kỳ đều có dự giờ và kèm cặp.</div></div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false"><span data-i18n="faq.q13">Con có được thi chứng chỉ Cambridge chính thức không?</span><span>+</span></button><div class="faq-answer" data-i18n="faq.a13">Có. Trước khi thi chính thức, con được luyện qua các buổi thi thử đúng định dạng đề thật và được chấm theo tiêu chí của Cambridge. Little Lingua hướng dẫn và hỗ trợ đăng ký cho con dự kỳ thi Pre-A1 Starters, A1 Movers hoặc A2 Flyers tại trung tâm khảo thí được Cambridge uỷ quyền.</div></div>
         </div>
       </div>
     </section>
@@ -855,8 +1112,8 @@
           <p data-i18n="foot.desc">Giúp các bạn nhỏ Việt Nam và trên toàn thế giới tìm thấy tiếng nói tự tin của mình bằng tiếng Anh.</p>
           <div class="socials"><a href="#" data-contact="facebook" aria-label="Facebook">f</a><a href="#" data-contact="tiktok" aria-label="TikTok">♪</a><a href="#" data-contact="youtube" aria-label="YouTube">▶</a></div>
         </div>
-        <div><h4 data-i18n="foot.h1">Khám phá</h4><a href="#programs" data-i18n="foot.l1">Các lớp học</a><a href="#roadmap" data-i18n="foot.l2">Lộ trình Cambridge</a><a href="#pricing" data-i18n="foot.l3">Học phí</a><a href="#faq" data-i18n="foot.l4">Câu hỏi thường gặp</a></div>
-        <div><h4 data-i18n="foot.h2">Dành cho gia đình</h4><a href="#start" data-i18n="foot.l5">Học thử miễn phí</a><a href="#teachers" data-i18n="foot.l6">Đội ngũ giáo viên</a><a href="#parents" data-i18n="foot.l7">Báo cáo tiến độ</a><a href="#faq" data-i18n="foot.l8">Chính sách hoàn tiền</a></div>
+        <div><h4 data-i18n="foot.h1">Khám phá</h4><a href="#programs" data-i18n="foot.l1">Các lớp học</a><a href="#roadmap" data-i18n="foot.l2">Lộ trình CEFR &amp; kỳ thi Cambridge</a><a href="#curriculum" data-i18n="foot.l3">Giáo trình Cambridge</a><a href="#pricing" data-i18n="foot.l4">Học phí</a></div>
+        <div><h4 data-i18n="foot.h2">Dành cho gia đình</h4><a href="#placement" data-i18n="foot.l5">Test xếp lớp CEFR miễn phí</a><a href="#teachers" data-i18n="foot.l6">Đội ngũ giáo viên</a><a href="#parents" data-i18n="foot.l7">Báo cáo tiến độ</a><a href="#faq" data-i18n="foot.l8">Câu hỏi thường gặp</a></div>
         <div>
           <h4 data-i18n="foot.h3">Liên hệ</h4>
           <a href="#" data-contact="zalo"><span data-i18n="foot.zalo">Zalo</span>: <span data-contact-text="zalo">0900 000 000</span></a>
@@ -1008,14 +1265,10 @@
 
       "nav.home": "Trang chủ",
       "nav.programs": "Lớp học",
-      "nav.roadmap": "Lộ trình",
       "nav.pricing": "Học phí",
-      "nav.faq": "Câu hỏi",
       "nav.cta": "Học thử miễn phí",
 
-      "hero.eyebrow": "Lớp tiếng Anh trực tuyến cho bé 4–12 tuổi",
       "hero.title": "Tiếng Anh thật vui cho những <span class=\"color-teal\">em nhỏ</span> <span class=\"color-coral\">tỏa sáng</span>!",
-      "hero.copy": "Con chơi, con hát, con nói tiếng Anh mỗi buổi học. Lớp live có giáo viên kèm ít trò, thiết kế riêng cho bé 4–12 tuổi, đi từ con số 0 đến tự tin giao tiếp.",
       "hero.cta1": "Đăng ký học thử miễn phí",
       "hero.cta2": "Xem các lớp học",
       "hero.point1t": "An toàn & chu đáo",
@@ -1041,19 +1294,19 @@
       "prog.intro": "Đúng trình độ mới tạo nên khác biệt. Mỗi lớp live đều được thiết kế theo độ tuổi, sự tự tin và sở thích của con.",
       "prog.c1.age": "4–5 TUỔI",
       "prog.c1.title": "Bé Khởi Đầu",
-      "prog.c1.desc": "Những từ đầu tiên, bài hát, truyện kể và âm thanh vui nhộn cho bé mới làm quen tiếng Anh.",
+      "prog.c1.desc": "Pre-A1 Starters: những từ đầu tiên, bài hát và truyện kể cùng giáo viên bản ngữ (Kid's Box Starter &amp; Fun for Starters).",
       "prog.c1.alt": "Bé khám phá hoạt động học tập đầy màu sắc",
       "prog.c2.age": "6–8 TUỔI",
       "prog.c2.title": "Bé Khám Phá",
-      "prog.c2.desc": "Xây vốn từ và bắt đầu nói thành câu qua trò chơi, dự án nhỏ và bạn bè cùng lớp.",
+      "prog.c2.desc": "A1 Movers: xây vốn từ và nói thành câu qua trò chơi, dự án nhỏ (Kid's Box 3 &amp; Fun for Movers).",
       "prog.c2.alt": "Bé học và khám phá trong không gian sáng sủa",
       "prog.c3.age": "9–10 TUỔI",
       "prog.c3.title": "Bé Tự Tin",
-      "prog.c3.desc": "Luyện nói, đọc và ngữ pháp tự nhiên, bám sát sách giáo khoa lớp 4–5 của Bộ GD&ĐT.",
+      "prog.c3.desc": "A1–A2: luyện nói, đọc và ngữ pháp bám sát sách giáo khoa lớp 4–5 và bộ đề Movers.",
       "prog.c3.alt": "Các bé cùng tham gia hoạt động trong lớp",
       "prog.c4.age": "11–12 TUỔI",
       "prog.c4.title": "Chinh Phục Flyers",
-      "prog.c4.desc": "Hoàn thiện nói – viết, luyện dạng đề Cambridge Flyers và sẵn sàng cho cấp THCS.",
+      "prog.c4.desc": "A2 Flyers: hoàn thiện nói – viết, luyện đề Flyers và sẵn sàng lên THCS (Prepare 3).",
       "prog.c4.alt": "Học sinh hào hứng trong hoạt động học nhóm",
       "prog.link": "Chọn lớp cho con",
       "prog.statsLabel": "Little Lingua qua các con số",
@@ -1061,30 +1314,6 @@
       "prog.stat2": "Bé đã và đang học",
       "prog.stat3": "Giáo viên bản ngữ có bằng đại học",
       "prog.stat4": "Lớp nhỏ trực tuyến",
-
-      "road.kicker": "Lộ trình Cambridge",
-      "road.title": "Từ những từ đầu tiên đến <span class=\"color-coral\">chứng chỉ quốc tế</span>",
-      "road.intro": "Con học theo khung Cambridge Pre-A1 → A2, đồng thời bám sát chương trình tiếng Anh phổ thông của Bộ GD&ĐT. Sau mỗi 8 buổi, bố mẹ nhận đánh giá và gợi ý cấp độ tiếp theo.",
-      "road.l1.badge": "Pre-A1 · Starters",
-      "road.l1.age": "4–7 tuổi · Làm quen",
-      "road.l1.title": "Nghe – nói những câu đầu tiên",
-      "road.l1.p1": "Nghe và nhận biết 300+ từ quen thuộc",
-      "road.l1.p2": "Chào hỏi, giới thiệu tên, tuổi và sở thích",
-      "road.l1.p3": "Hát theo bài hát, trả lời câu hỏi đơn giản",
-      "road.l2.badge": "A1 · Movers",
-      "road.l2.age": "8–10 tuổi · Xây nền",
-      "road.l2.title": "Nói thành câu, đọc hiểu đoạn ngắn",
-      "road.l2.p1": "Vốn từ 700+ theo chủ đề trường học, gia đình, sở thích",
-      "road.l2.p2": "Đặt câu hỏi – trả lời theo cặp với bạn cùng lớp",
-      "road.l2.p3": "Viết tin nhắn, email ngắn đơn giản",
-      "road.l3.badge": "A2 · Flyers",
-      "road.l3.age": "11–12 tuổi · Vươn xa",
-      "road.l3.title": "Tự tin thuyết trình và viết đoạn văn",
-      "road.l3.p1": "Thuyết trình 2–3 phút trước lớp",
-      "road.l3.p2": "Đọc hiểu truyện ngắn, viết đoạn 80–100 từ",
-      "road.l3.p3": "Làm quen dạng đề Flyers, sẵn sàng lên THCS",
-      "road.note": "Bố mẹ chưa biết con đang ở cấp độ nào? <strong>Bài test đầu vào 15 phút — miễn phí, làm online tại nhà.</strong>",
-      "road.cta": "Đặt lịch test miễn phí",
 
       "how.kicker": "Chỉ 3 bước đơn giản",
       "how.title": "Học tiếng Anh là một <span class=\"color-coral\">cuộc phiêu lưu vui vẻ</span>",
@@ -1152,6 +1381,146 @@
       "teach.tag4a": "Bé 4–7 tuổi",
       "teach.tag4b": "Phonics & đọc",
 
+      "trust.5": "Chương trình Anh Quốc (British curriculum) đúng chuẩn Cambridge + khung CEFR",
+      "nav.roadmap": "Lộ trình CEFR",
+      "nav.curriculum": "Giáo trình",
+      "nav.faq": "Hỏi đáp",
+      "hero.eyebrow": "Chương trình Anh Quốc (Cambridge) cho bé 4–12 tuổi",
+      "hero.copy": "Con chơi, con hát, con nói tiếng Anh mỗi buổi học. Lớp live chuẩn Cambridge (Anh Quốc), xếp lớp theo khung CEFR, giáo viên bản ngữ có bằng đại học — dành cho bé 4–12 tuổi.",
+      "road.kicker": "Khung CEFR & kỳ thi Cambridge",
+      "road.title": "Học đúng <span class=\"color-teal\">chuẩn Cambridge (Anh Quốc)</span>, tiến bộ theo từng cấp độ CEFR",
+      "road.intro": "Chương trình Anh Quốc (British curriculum) đúng chuẩn Cambridge: con học theo khung tham chiếu châu Âu (CEFR), luyện theo bộ đề Cambridge English và có thể dự kỳ thi quốc tế Pre-A1 Starters → A1 Movers → A2 Flyers để nhận chứng chỉ do Cambridge cấp.",
+      "road.scaleLabel": "Khung tham chiếu trình độ CEFR",
+      "road.nc1": "Pre-A1", "road.nt1": "Starters", "road.ns1": "4–7 tuổi",
+      "road.nc2": "A1", "road.nt2": "Movers", "road.ns2": "8–10 tuổi",
+      "road.nc3": "A2", "road.nt3": "Flyers", "road.ns3": "11–12 tuổi",
+      "road.nc4": "A2", "road.nt4": "Key (KET)", "road.ns4": "Bước tiếp theo",
+      "road.nc5": "B1", "road.nt5": "Preliminary (PET)", "road.ns5": "Bước tiếp theo",
+      "road.l1.badge": "Pre-A1 · Starters",
+      "road.l1.age": "4–7 tuổi · Làm quen",
+      "road.l1.title": "Nghe – nói những câu đầu tiên",
+      "road.l1.p1": "Nghe và nhận biết 300+ từ quen thuộc",
+      "road.l1.p2": "Chào hỏi, giới thiệu tên, tuổi và sở thích",
+      "road.l1.p3": "Hát theo bài hát, trả lời câu hỏi đơn giản",
+      "road.l1.p4": "Làm quen định dạng bài thi Starters ngay từ những buổi đầu",
+      "road.l1.exam": "Kỳ thi Cambridge Pre-A1 Starters (Nghe – Đọc & Viết – Nói)",
+      "road.l1.books": "Kid's Box Starter & 1 · Fun for Starters · Storyfun for Starters",
+      "road.l2.badge": "A1 · Movers",
+      "road.l2.age": "8–10 tuổi · Xây nền",
+      "road.l2.title": "Nói thành câu, đọc hiểu đoạn ngắn",
+      "road.l2.p1": "Vốn từ 700+ theo chủ đề trường học, gia đình, sở thích",
+      "road.l2.p2": "Đặt câu hỏi – trả lời theo cặp với bạn cùng lớp",
+      "road.l2.p3": "Viết tin nhắn, email ngắn đơn giản",
+      "road.l2.p4": "Luyện đúng dạng đề Movers: Nghe – Đọc & Viết – Nói",
+      "road.l2.exam": "Kỳ thi Cambridge A1 Movers (Nghe – Đọc & Viết – Nói)",
+      "road.l2.books": "Kid's Box 3 · Super Minds 3 · Fun for Movers · Storyfun for Movers",
+      "road.l3.badge": "A2 · Flyers",
+      "road.l3.age": "11–12 tuổi · Vươn xa",
+      "road.l3.title": "Tự tin thuyết trình và viết đoạn văn",
+      "road.l3.p1": "Thuyết trình 2–3 phút trước lớp",
+      "road.l3.p2": "Đọc hiểu truyện ngắn, viết đoạn 80–100 từ",
+      "road.l3.p3": "Nắm chắc ngữ pháp A2 và kỹ năng làm bài thi",
+      "road.l3.p4": "Thi thử Flyers đúng định dạng và sẵn sàng lên THCS",
+      "road.l3.exam": "Kỳ thi Cambridge A2 Flyers (Nghe – Đọc & Viết – Nói)",
+      "road.l3.books": "Kid's Box 5 · Prepare 3 · Fun for Flyers · Storyfun for Flyers",
+      "road.note": "Sau Flyers, con có thể tiếp tục lên <strong>A2 Key (KET)</strong> và <strong>B1 Preliminary (PET)</strong> — chúng tôi tư vấn lộ trình dài hạn cho từng bé.",
+      "road.cta": "Kiểm tra xếp lớp CEFR miễn phí",
+      "cur.kicker": "Giáo trình chính hãng Cambridge",
+      "cur.title": "Chương trình Anh Quốc — <span class=\"color-coral\">giáo trình Cambridge gốc</span>",
+      "cur.intro": "Little Lingua dạy theo chương trình Anh Quốc (British curriculum) đúng chuẩn Cambridge: giáo trình của Cambridge University Press, lộ trình theo khung CEFR và luyện theo bộ đề Cambridge English Qualifications. Con học đúng những gì Cambridge dùng để đánh giá — không học tràn lan.",
+      "cur.badge1": "🇬🇧 British curriculum",
+      "cur.badge2": "📘 Cambridge University Press",
+      "cur.badge3": "🎓 Cambridge English Qualifications",
+      "cur.badge4": "📐 Khung CEFR (Pre-A1 → A2)",
+      "cur.b1.badge": "Chương trình chính khóa",
+      "cur.b1.d": "Giáo trình chính khóa 7 cấp độ: bài hát, truyện tranh, trò chơi và hoạt động tương tác cho bé 4–12 tuổi.",
+      "cur.b2.badge": "Luyện thi chính thức",
+      "cur.b2.d": "Bám sát định dạng đề thi thật của Cambridge, luyện đủ 3 kỹ năng Nghe – Đọc & Viết – Nói theo từng cấp độ.",
+      "cur.b3.badge": "Đọc & kể chuyện",
+      "cur.b3.d": "Truyện ngắn kèm bài tập đọc hiểu, giúp con yêu đọc và quen dần với chủ đề trong đề thi.",
+      "cur.b4.badge": "Phát triển tư duy",
+      "cur.b4.d": "Phát triển từ vựng, tư duy phản biện và kỹ năng nói qua các dự án nhỏ theo nhóm.",
+      "cur.b5.badge": "Chặng tiếp theo",
+      "cur.b5.d": "Dành cho bé 11–12 tuổi chuẩn bị lên A2 Key và làm quen môi trường học tập THCS.",
+      "cur.b6.badge": "Đề luyện chính hãng",
+      "cur.b6.d": "Bộ đề luyện thi chính chủ Cambridge, dùng cho các buổi thi thử định kỳ tại Little Lingua.",
+      "train.kicker": "Đào tạo giáo viên",
+      "train.title": "Giáo viên được đào tạo dạy trẻ & luyện thi Cambridge",
+      "train.intro": "Không chỉ là người bản ngữ: mỗi giáo viên đều được đào tạo bài bản về tâm lý trẻ, phương pháp dạy trẻ và định dạng các kỳ thi Cambridge trước khi đứng lớp.",
+      "train.i1": "TKT: Young Learners (Cambridge) — chứng chỉ dạy tiếng Anh cho trẻ em",
+      "train.i2": "CELTA / Delta (Cambridge) kèm chuyên đề Teaching Young Learners",
+      "train.i3": "Khóa đào tạo nội bộ 40 giờ về phương pháp dạy trẻ theo chuẩn Cambridge",
+      "train.i4": "Đào tạo đúng định dạng đề thi Starters – Movers – Flyers và cách chấm bài thi nói",
+      "train.i5": "Đánh giá năng lực giáo viên theo khung CEFR mỗi năm",
+      "train.i6": "Dự giờ, nhận xét và kèm cặp định kỳ mỗi học kỳ",
+      "feat.f1t": "Thi thử Cambridge định kỳ",
+      "feat.f1d": "Mỗi học kỳ có buổi thi thử đúng định dạng đề thật, chấm điểm và nhận xét chi tiết.",
+      "feat.f2t": "Hỗ trợ đăng ký thi chính thức",
+      "feat.f2d": "Chúng tôi hướng dẫn và đăng ký cho con dự kỳ thi Cambridge Starters / Movers / Flyers.",
+      "feat.f3t": "Báo cáo tiến độ theo CEFR",
+      "feat.f3d": "Mỗi 8 buổi, bố mẹ nhận đánh giá \"con làm được gì\" theo mô tả năng lực của khung CEFR.",
+      "feat.f4t": "Chứng nhận hoàn thành cấp độ",
+      "feat.f4d": "Kết thúc mỗi cấp độ, con nhận chứng nhận của Little Lingua kèm hồ sơ học tập.",
+      "feat.f5t": "Bài tập trên giáo trình Cambridge",
+      "feat.f5d": "Bài tập về nhà lấy từ chính giáo trình Cambridge, có hướng dẫn tiếng Việt cho bố mẹ.",
+      "feat.f6t": "Workshop cho phụ huynh",
+      "feat.f6d": "Buổi chia sẻ tiếng Việt: cách đồng hành cùng con khi bố mẹ không biết tiếng Anh.",
+      "place.kicker": "Xếp lớp theo khung CEFR",
+      "place.title": "Con đang ở cấp độ nào? <span class=\"color-teal\">Test xếp lớp miễn phí</span>",
+      "place.intro": "Trước khi vào lớp, con được kiểm tra theo đúng khung CEFR để học đúng trình độ — không học quá dễ (dễ chán) hay quá khó (mất tự tin).",
+      "place.s1": "Nghe + Đọc & Viết (20 phút, làm online tại nhà, có hình ảnh minh họa cho bé nhỏ).",
+      "place.s2": "Nói 5 phút với giáo viên bản ngữ qua video — cô trò chuyện nhẹ nhàng để đo khả năng phản xạ.",
+      "place.s3": "Nhận kết quả trong 24 giờ qua Zalo: cấp độ CEFR (Pre-A1 / A1 / A2), lớp phù hợp và lộ trình học cho con.",
+      "place.cta": "Đặt lịch test & học thử miễn phí",
+      "place.note": "Miễn phí hoàn toàn, không cần thanh toán trước. Con chỉ cần máy tính/máy tính bảng và tai nghe.",
+      "quiz.title": "Test nhanh 8 câu (2 phút)",
+      "quiz.hint": "Bố mẹ cùng con chọn đáp án đúng nhất. Kết quả chỉ là ước lượng nhanh — bài test đầy đủ do giáo viên thực hiện sẽ chính xác hơn.",
+      "quiz.step": "Câu",
+      "quiz.next": "Tiếp theo",
+      "quiz.back": "Quay lại",
+      "quiz.resultTitle": "Kết quả ước lượng",
+      "quiz.scoreLabel": "Điểm của con:",
+      "quiz.rLow": "Pre-A1 · Starters",
+      "quiz.rLowD": "Con đang ở giai đoạn làm quen. Lớp phù hợp: Bé Khởi Đầu (Starters) — bắt đầu từ bài hát, tranh ảnh và những câu nói đầu tiên cùng giáo viên bản ngữ.",
+      "quiz.rMid": "A1 · Movers",
+      "quiz.rMidD": "Con đã có nền tảng tốt. Lớp phù hợp: Bé Khám Phá hoặc Bé Tự Tin (Movers) — mở rộng vốn từ, nói thành câu và làm quen dạng đề Movers.",
+      "quiz.rHigh": "A2 · Flyers",
+      "quiz.rHighD": "Con đã khá vững. Lớp phù hợp: Chinh Phục Flyers (A2) — luyện đề Flyers, thuyết trình và chuẩn bị lên THCS.",
+      "quiz.book": "Đặt lịch test đầy đủ",
+      "quiz.retake": "Làm lại",
+      "quiz.notePrefix": "Con đã làm test nhanh trên web — kết quả ước lượng: ",
+      "quiz.q1": "Chỉ vào con mèo và hỏi: “What’s this?” — con của bố mẹ:",
+      "quiz.q1a": "Chưa trả lời được hoặc trả lời bằng tiếng Việt",
+      "quiz.q1b": "Nói được “cat” hoặc “a cat”",
+      "quiz.q1c": "Nói được cả câu “It’s a cat”",
+      "quiz.q2": "Đếm từ 1 đến 10 bằng tiếng Anh:",
+      "quiz.q2a": "Chưa đếm được",
+      "quiz.q2b": "Đếm được nhưng còn ngập ngừng",
+      "quiz.q2c": "Đếm nhanh và đúng",
+      "quiz.q3": "Nghe câu “Stand up, please!” con sẽ:",
+      "quiz.q3a": "Chưa hiểu",
+      "quiz.q3b": "Hiểu khi có cử chỉ kèm theo",
+      "quiz.q3c": "Hiểu ngay và làm theo",
+      "quiz.q4": "Giới thiệu bản thân: “My name is…”, “I am … years old”:",
+      "quiz.q4a": "Chưa nói được",
+      "quiz.q4b": "Nói được một trong hai câu",
+      "quiz.q4c": "Nói được cả hai câu rõ ràng",
+      "quiz.q5": "Màu sắc và số đếm — hỏi “What colour is this?”:",
+      "quiz.q5a": "Chưa biết màu",
+      "quiz.q5b": "Biết 3–5 màu",
+      "quiz.q5c": "Biết hầu hết màu và trả lời thành câu",
+      "quiz.q6": "Đọc một từ ngắn như “cat”, “dog”, “big”:",
+      "quiz.q6a": "Chưa biết chữ cái",
+      "quiz.q6b": "Nhận biết được vài chữ cái",
+      "quiz.q6c": "Đọc trơn được từ ngắn",
+      "quiz.q7": "Nghe đoạn hội thoại ngắn 3–4 câu rồi trả lời câu hỏi:",
+      "quiz.q7a": "Chưa nghe được",
+      "quiz.q7b": "Nghe được các từ quen thuộc",
+      "quiz.q7c": "Hiểu ý chính và trả lời được",
+      "quiz.q8": "Viết một câu đơn giản như “I like dogs.”:",
+      "quiz.q8a": "Chưa viết được",
+      "quiz.q8b": "Chép lại được",
+      "quiz.q8c": "Tự viết được câu đơn giản",
       "price.kicker": "Học phí minh bạch",
       "price.title": "Chọn gói phù hợp với <span class=\"color-teal\">gia đình mình</span>",
       "price.p1.badge": "Miễn phí 100%",
@@ -1213,6 +1582,16 @@
       "faq.q8": "Thanh toán và hoàn tiền thế nào?",
       "faq.a8": "Bố mẹ thanh toán bằng chuyển khoản ngân hàng, Momo hoặc ZaloPay và có xác nhận qua Zalo/email. Nếu sau 2 buổi học đầu tiên trong 7 ngày bố mẹ chưa hài lòng, chúng tôi hoàn lại 100% học phí còn lại của tháng đầu.",
 
+      "faq.q9": "Chương trình học có phải chuẩn Cambridge không?",
+      "faq.a9": "Đúng. Little Lingua dạy theo chương trình Anh Quốc (British curriculum) đúng chuẩn Cambridge: giáo trình của Cambridge University Press, lộ trình theo khung CEFR (Pre-A1 → A2) và luyện theo bộ đề Cambridge English Qualifications. Con có thể dự kỳ thi quốc tế Pre-A1 Starters, A1 Movers, A2 Flyers để nhận chứng chỉ do Cambridge cấp.",
+      "faq.q10": "Con học bằng sách gì?",
+      "faq.a10": "Bộ giáo trình chính hãng của Cambridge University Press: Kid's Box (chính khóa), Fun for Starters/Movers/Flyers và Storyfun (luyện thi, đọc hiểu), Super Minds (phát triển tư duy) và Prepare cho bé 11–12 tuổi. Các buổi thi thử dùng bộ đề Official Practice Tests của Cambridge English. Bố mẹ không cần mua sách — chúng tôi gửi file học liệu và hướng dẫn tiếng Việt.",
+      "faq.q11": "Xếp lớp theo CEFR như thế nào?",
+      "faq.a11": "Con làm bài kiểm tra miễn phí 25 phút: Nghe + Đọc & Viết (20 phút, làm online tại nhà) và Nói 5 phút với giáo viên bản ngữ. Sau đó bố mẹ nhận kết quả cấp độ CEFR và lớp phù hợp trong 24 giờ qua Zalo. Cứ mỗi 8 buổi, chúng tôi đánh giá lại để điều chỉnh lộ trình.",
+      "faq.q12": "Giáo viên được đào tạo thế nào để dạy trẻ và luyện thi Cambridge?",
+      "faq.a12": "Giáo viên đều là người bản ngữ có bằng đại học, được đào tạo bài bản về dạy trẻ: chứng chỉ TKT: Young Learners của Cambridge, CELTA/Delta kèm chuyên đề Teaching Young Learners, khóa đào tạo nội bộ 40 giờ về phương pháp dạy trẻ, đào tạo đúng định dạng đề thi Starters – Movers – Flyers và cách chấm bài thi nói. Mỗi học kỳ đều có dự giờ và kèm cặp.",
+      "faq.q13": "Con có được thi chứng chỉ Cambridge chính thức không?",
+      "faq.a13": "Có. Trước khi thi chính thức, con được luyện qua các buổi thi thử đúng định dạng đề thật và được chấm theo tiêu chí của Cambridge. Little Lingua hướng dẫn và hỗ trợ đăng ký cho con dự kỳ thi Pre-A1 Starters, A1 Movers hoặc A2 Flyers tại trung tâm khảo thí được Cambridge uỷ quyền.",
       "cta.title": "Sẵn sàng cho tiếng “Hello” đầu tiên?",
       "cta.copy": "Đăng ký một buổi học thử miễn phí — không áp lực, chỉ có niềm vui!",
       "cta.btn": "Đăng ký học thử miễn phí",
@@ -1220,14 +1599,14 @@
       "foot.desc": "Giúp các bạn nhỏ Việt Nam tìm thấy tiếng nói tự tin của mình bằng tiếng Anh.",
       "foot.h1": "Khám phá",
       "foot.l1": "Các lớp học",
-      "foot.l2": "Lộ trình Cambridge",
-      "foot.l3": "Học phí",
+      "foot.l2": "Lộ trình CEFR &amp; kỳ thi Cambridge",
+      "foot.l3": "Giáo trình Cambridge",
       "foot.l4": "Câu hỏi thường gặp",
       "foot.h2": "Dành cho gia đình",
-      "foot.l5": "Học thử miễn phí",
+      "foot.l5": "Test xếp lớp CEFR miễn phí",
       "foot.l6": "Đội ngũ giáo viên",
       "foot.l7": "Báo cáo tiến độ",
-      "foot.l8": "Chính sách hoàn tiền",
+      "foot.l8": "Câu hỏi thường gặp",
       "foot.h3": "Liên hệ",
       "foot.zalo": "Zalo",
       "foot.hotline": "Hotline",
@@ -1338,14 +1717,10 @@
 
       "nav.home": "Home",
       "nav.programs": "Classes",
-      "nav.roadmap": "Roadmap",
       "nav.pricing": "Pricing",
-      "nav.faq": "FAQ",
       "nav.cta": "Free trial class",
 
-      "hero.eyebrow": "Live online English for kids 4–12",
       "hero.title": "Big English fun for <span class=\"color-teal\">little</span> <span class=\"color-coral\">bright</span> minds!",
-      "hero.copy": "Your child plays, sings and speaks English in every lesson. Small live classes designed for ages 4–12, from their very first word to confident conversation.",
       "hero.cta1": "Book a free trial class",
       "hero.cta2": "Explore classes",
       "hero.point1t": "Kid-safe & caring",
@@ -1371,19 +1746,19 @@
       "prog.intro": "The right level makes all the difference. Every live class is designed around your child's age, confidence, and interests.",
       "prog.c1.age": "AGES 4–5",
       "prog.c1.title": "Little Starters",
-      "prog.c1.desc": "First words, songs, stories and playful sounds for tiny beginners.",
+      "prog.c1.desc": "Pre-A1 Starters: first words, songs and stories with a native teacher (Kid's Box Starter &amp; Fun for Starters).",
       "prog.c1.alt": "Young child exploring a colorful learning activity",
       "prog.c2.age": "AGES 6–8",
       "prog.c2.title": "Word Explorers",
-      "prog.c2.desc": "Build vocabulary and start speaking in sentences with games and friends.",
+      "prog.c2.desc": "A1 Movers: build vocabulary and speak in sentences with games and projects (Kid's Box 3 &amp; Fun for Movers).",
       "prog.c2.alt": "Child learning and exploring in a bright setting",
       "prog.c3.age": "AGES 9–10",
       "prog.c3.title": "Confident Speakers",
-      "prog.c3.desc": "Grow speaking, reading and grammar while following the Vietnamese school curriculum.",
+      "prog.c3.desc": "A1–A2: speaking, reading and grammar that follow the Vietnamese school curriculum plus Movers practice papers.",
       "prog.c3.alt": "Children participating together in a classroom",
       "prog.c4.age": "AGES 11–12",
       "prog.c4.title": "Flyers Champions",
-      "prog.c4.desc": "Polish speaking and writing, practise Cambridge Flyers and get ready for secondary school.",
+      "prog.c4.desc": "A2 Flyers: polish speaking and writing, practise Flyers papers and get ready for secondary school (Prepare 3).",
       "prog.c4.alt": "Students enjoying a collaborative learning activity",
       "prog.link": "Find their class",
       "prog.statsLabel": "Little Lingua at a glance",
@@ -1391,30 +1766,6 @@
       "prog.stat2": "Curious young learners",
       "prog.stat3": "Native teachers with degrees",
       "prog.stat4": "Small-group online classes",
-
-      "road.kicker": "Cambridge roadmap",
-      "road.title": "From first words to an <span class=\"color-coral\">international certificate</span>",
-      "road.intro": "Children follow the Cambridge Pre-A1 → A2 framework while also keeping up with Vietnam's national English curriculum. Every 8 lessons, parents receive an assessment and a suggestion for the next level.",
-      "road.l1.badge": "Pre-A1 · Starters",
-      "road.l1.age": "Ages 4–7 · First steps",
-      "road.l1.title": "Listen and say your first sentences",
-      "road.l1.p1": "Understand and recognise 300+ familiar words",
-      "road.l1.p2": "Greet people, say their name, age and likes",
-      "road.l1.p3": "Sing along and answer simple questions",
-      "road.l2.badge": "A1 · Movers",
-      "road.l2.age": "Ages 8–10 · Building skills",
-      "road.l2.title": "Speak in full sentences, read short texts",
-      "road.l2.p1": "700+ words on school, family and hobby topics",
-      "road.l2.p2": "Ask and answer questions in pairs with classmates",
-      "road.l2.p3": "Write simple short messages and emails",
-      "road.l3.badge": "A2 · Flyers",
-      "road.l3.age": "Ages 11–12 · Going further",
-      "road.l3.title": "Present confidently and write paragraphs",
-      "road.l3.p1": "Give a 2–3 minute presentation to the class",
-      "road.l3.p2": "Read short stories, write 80–100 word texts",
-      "road.l3.p3": "Practise Flyers exam tasks and prepare for secondary school",
-      "road.note": "Not sure which level your child is at? <strong>A free 15-minute online placement test — from home.</strong>",
-      "road.cta": "Book a free placement test",
 
       "how.kicker": "Easy as 1, 2, 3",
       "how.title": "Learning English is a <span class=\"color-coral\">happy adventure</span>",
@@ -1482,6 +1833,146 @@
       "teach.tag4a": "Ages 4–7",
       "teach.tag4b": "Phonics & reading",
 
+      "trust.5": "British curriculum, exactly Cambridge, aligned to the CEFR framework",
+      "nav.roadmap": "CEFR path",
+      "nav.curriculum": "Curriculum",
+      "nav.faq": "FAQ",
+      "hero.eyebrow": "British curriculum (Cambridge) for kids 4–12",
+      "hero.copy": "Your child plays, sings and speaks English in every lesson. Live classes following the British curriculum (Cambridge), placed by CEFR level, taught by university-educated native teachers — for ages 4–12.",
+      "road.kicker": "CEFR framework & Cambridge exams",
+      "road.title": "The exact <span class=\"color-teal\">Cambridge (British) curriculum</span>, progressing through CEFR levels",
+      "road.intro": "A British curriculum, exactly Cambridge: children learn along the Common European Framework (CEFR), practise with Cambridge English materials and can sit the international Pre-A1 Starters → A1 Movers → A2 Flyers exams for a certificate issued by Cambridge.",
+      "road.scaleLabel": "CEFR level framework",
+      "road.nc1": "Pre-A1", "road.nt1": "Starters", "road.ns1": "Ages 4–7",
+      "road.nc2": "A1", "road.nt2": "Movers", "road.ns2": "Ages 8–10",
+      "road.nc3": "A2", "road.nt3": "Flyers", "road.ns3": "Ages 11–12",
+      "road.nc4": "A2", "road.nt4": "Key (KET)", "road.ns4": "Next step",
+      "road.nc5": "B1", "road.nt5": "Preliminary (PET)", "road.ns5": "Next step",
+      "road.l1.badge": "Pre-A1 · Starters",
+      "road.l1.age": "Ages 4–7 · First steps",
+      "road.l1.title": "Listen and say your first sentences",
+      "road.l1.p1": "Understand and recognise 300+ familiar words",
+      "road.l1.p2": "Greet people, say their name, age and likes",
+      "road.l1.p3": "Sing along and answer simple questions",
+      "road.l1.p4": "Get familiar with the Starters exam format from the very first lessons",
+      "road.l1.exam": "Cambridge Pre-A1 Starters exam (Listening – Reading & Writing – Speaking)",
+      "road.l1.books": "Kid's Box Starter & 1 · Fun for Starters · Storyfun for Starters",
+      "road.l2.badge": "A1 · Movers",
+      "road.l2.age": "Ages 8–10 · Building skills",
+      "road.l2.title": "Speak in full sentences, read short texts",
+      "road.l2.p1": "700+ words on school, family and hobby topics",
+      "road.l2.p2": "Ask and answer questions in pairs with classmates",
+      "road.l2.p3": "Write simple short messages and emails",
+      "road.l2.p4": "Practise the real Movers format: Listening – Reading & Writing – Speaking",
+      "road.l2.exam": "Cambridge A1 Movers exam (Listening – Reading & Writing – Speaking)",
+      "road.l2.books": "Kid's Box 3 · Super Minds 3 · Fun for Movers · Storyfun for Movers",
+      "road.l3.badge": "A2 · Flyers",
+      "road.l3.age": "Ages 11–12 · Going further",
+      "road.l3.title": "Present confidently and write paragraphs",
+      "road.l3.p1": "Give a 2–3 minute presentation to the class",
+      "road.l3.p2": "Read short stories, write 80–100 word texts",
+      "road.l3.p3": "Master A2 grammar and exam technique",
+      "road.l3.p4": "Sit full-format Flyers mock exams and get ready for secondary school",
+      "road.l3.exam": "Cambridge A2 Flyers exam (Listening – Reading & Writing – Speaking)",
+      "road.l3.books": "Kid's Box 5 · Prepare 3 · Fun for Flyers · Storyfun for Flyers",
+      "road.note": "After Flyers, children can continue to <strong>A2 Key (KET)</strong> and <strong>B1 Preliminary (PET)</strong> — we advise each family on a long-term plan.",
+      "road.cta": "Take the free CEFR placement check",
+      "cur.kicker": "Genuine Cambridge materials",
+      "cur.title": "British curriculum — <span class=\"color-coral\">real Cambridge books</span>",
+      "cur.intro": "Little Lingua teaches the British curriculum, exactly Cambridge: Cambridge University Press course books, a CEFR-based pathway and practice with Cambridge English Qualifications papers. Children learn exactly what Cambridge assesses — nothing random.",
+      "cur.badge1": "🇬🇧 British curriculum",
+      "cur.badge2": "📘 Cambridge University Press",
+      "cur.badge3": "🎓 Cambridge English Qualifications",
+      "cur.badge4": "📐 CEFR framework (Pre-A1 → A2)",
+      "cur.b1.badge": "Main course",
+      "cur.b1.d": "The seven-level main course: songs, comic stories, games and interactive activities for children aged 4–12.",
+      "cur.b2.badge": "Official exam prep",
+      "cur.b2.d": "Closely follows the real Cambridge test format, covering all three skills — Listening, Reading & Writing, Speaking — level by level.",
+      "cur.b3.badge": "Reading & stories",
+      "cur.b3.d": "Short stories with comprehension tasks that build a love of reading and familiarity with exam topics.",
+      "cur.b4.badge": "Thinking skills",
+      "cur.b4.d": "Builds vocabulary, critical thinking and speaking through small group projects.",
+      "cur.b5.badge": "Next step",
+      "cur.b5.d": "For children aged 11–12 preparing for A2 Key and the transition to secondary school.",
+      "cur.b6.badge": "Official practice papers",
+      "cur.b6.d": "Genuine Cambridge practice papers, used in our regular mock exam sessions.",
+      "train.kicker": "Teacher training",
+      "train.title": "Teachers trained to teach children and prepare Cambridge exams",
+      "train.intro": "Native speakers, yes — but also properly trained: every teacher completes child psychology, young-learner methodology and Cambridge exam-format training before entering our classrooms.",
+      "train.i1": "TKT: Young Learners (Cambridge) — the teaching English to children qualification",
+      "train.i2": "CELTA / Delta (Cambridge) with the Teaching Young Learners specialism",
+      "train.i3": "40-hour in-house training in Cambridge-aligned young learner methodology",
+      "train.i4": "Training in the exact Starters – Movers – Flyers formats and speaking-test marking",
+      "train.i5": "Annual teacher assessment benchmarked to the CEFR",
+      "train.i6": "Lesson observations, feedback and mentoring every term",
+      "feat.f1t": "Regular Cambridge mock exams",
+      "feat.f1d": "Every term, children sit a full-format mock exam with marking and detailed feedback.",
+      "feat.f2t": "Official exam registration support",
+      "feat.f2d": "We guide and register your child for the official Cambridge Starters / Movers / Flyers exams.",
+      "feat.f3t": "CEFR progress reports",
+      "feat.f3d": "Every 8 lessons, parents get a \"can-do\" report mapped to the CEFR descriptors.",
+      "feat.f4t": "Level completion certificate",
+      "feat.f4d": "At the end of each level your child receives a Little Lingua certificate and a learning portfolio.",
+      "feat.f5t": "Homework from Cambridge books",
+      "feat.f5d": "Homework comes straight from the Cambridge course books, with Vietnamese guidance for parents.",
+      "feat.f6t": "Parent workshops",
+      "feat.f6d": "Vietnamese-language sessions on supporting your child when you don't speak English yourself.",
+      "place.kicker": "CEFR placement",
+      "place.title": "Which level is your child at? <span class=\"color-teal\">Free placement check</span>",
+      "place.intro": "Before joining, every child is assessed against the CEFR so they learn at exactly the right level — never too easy (boring) or too hard (demoralising).",
+      "place.s1": "Listening + Reading & Writing (20 minutes, taken online at home, with picture support for little ones).",
+      "place.s2": "5 minutes of speaking with a native teacher on video — a friendly chat that measures real responses.",
+      "place.s3": "Results within 24 hours on Zalo: CEFR level (Pre-A1 / A1 / A2), the right class and a learning plan for your child.",
+      "place.cta": "Book the test & a free trial class",
+      "place.note": "Completely free, no payment details needed. Your child only needs a laptop or tablet and headphones.",
+      "quiz.title": "Quick 8-question check (2 minutes)",
+      "quiz.hint": "Answer together with your child. This is only a quick estimate — the full test with a teacher is more accurate.",
+      "quiz.step": "Question",
+      "quiz.next": "Next",
+      "quiz.back": "Back",
+      "quiz.resultTitle": "Estimated result",
+      "quiz.scoreLabel": "Score:",
+      "quiz.rLow": "Pre-A1 · Starters",
+      "quiz.rLowD": "Your child is at the first-steps stage. Recommended class: Little Starters — songs, pictures and first sentences with a native teacher.",
+      "quiz.rMid": "A1 · Movers",
+      "quiz.rMidD": "Your child has a good foundation. Recommended class: Word Explorers or Confident Speakers (Movers) — more vocabulary, full sentences and Movers exam practice.",
+      "quiz.rHigh": "A2 · Flyers",
+      "quiz.rHighD": "Your child is doing well. Recommended class: Flyers Champions (A2) — Flyers exam practice, presentations and preparation for secondary school.",
+      "quiz.book": "Book the full test",
+      "quiz.retake": "Try again",
+      "quiz.notePrefix": "My child took the quick web check — estimated result: ",
+      "quiz.q1": "Point at a cat and ask “What’s this?” — your child:",
+      "quiz.q1a": "Can't answer yet, or answers in Vietnamese",
+      "quiz.q1b": "Says “cat” or “a cat”",
+      "quiz.q1c": "Says the full sentence “It’s a cat”",
+      "quiz.q2": "Counting from 1 to 10 in English:",
+      "quiz.q2a": "Not yet",
+      "quiz.q2b": "Can count, but hesitates",
+      "quiz.q2c": "Counts quickly and correctly",
+      "quiz.q3": "Hearing “Stand up, please!”, your child:",
+      "quiz.q3a": "Doesn't understand yet",
+      "quiz.q3b": "Understands when gestures are used",
+      "quiz.q3c": "Understands straight away and does it",
+      "quiz.q4": "Introducing themselves — “My name is…”, “I am … years old”:",
+      "quiz.q4a": "Not yet",
+      "quiz.q4b": "Can say one of the two",
+      "quiz.q4c": "Says both clearly",
+      "quiz.q5": "Colours and numbers — asking “What colour is this?”:",
+      "quiz.q5a": "Doesn't know colours yet",
+      "quiz.q5b": "Knows 3–5 colours",
+      "quiz.q5c": "Knows most colours and answers in a sentence",
+      "quiz.q6": "Reading a short word such as “cat”, “dog”, “big”:",
+      "quiz.q6a": "Doesn't know letters yet",
+      "quiz.q6b": "Recognises some letters",
+      "quiz.q6c": "Reads short words fluently",
+      "quiz.q7": "Listening to a short 3–4 line dialogue and answering a question:",
+      "quiz.q7a": "Can't follow it yet",
+      "quiz.q7b": "Catches familiar words",
+      "quiz.q7c": "Gets the main idea and answers",
+      "quiz.q8": "Writing a simple sentence such as “I like dogs.”:",
+      "quiz.q8a": "Not yet",
+      "quiz.q8b": "Can copy it",
+      "quiz.q8c": "Writes simple sentences independently",
       "price.kicker": "Clear, honest pricing",
       "price.title": "Choose the plan that fits <span class=\"color-teal\">your family</span>",
       "price.p1.badge": "100% free",
@@ -1543,6 +2034,16 @@
       "faq.q8": "How do payment and refunds work?",
       "faq.a8": "Pay by bank transfer, Momo or ZaloPay and receive confirmation via Zalo/email. If you're not happy after the first 2 lessons within 7 days, we refund 100% of the remaining first-month fee.",
 
+      "faq.q9": "Is the programme really Cambridge?",
+      "faq.a9": "Yes. Little Lingua teaches the British curriculum, exactly Cambridge: Cambridge University Press course books, a CEFR-based pathway (Pre-A1 → A2) and practice with Cambridge English Qualifications papers. Children can sit the international Pre-A1 Starters, A1 Movers and A2 Flyers exams to earn a certificate issued by Cambridge.",
+      "faq.q10": "Which books do you use?",
+      "faq.a10": "Genuine Cambridge University Press materials: Kid's Box (main course), Fun for Starters/Movers/Flyers and Storyfun (exam practice and reading), Super Minds (thinking skills) and Prepare for ages 11–12. Mock exams use the official Cambridge English practice papers. Parents don't need to buy any books — we send the materials and Vietnamese guidance.",
+      "faq.q11": "How does CEFR placement work?",
+      "faq.a11": "Your child takes a free 25-minute assessment: Listening + Reading & Writing (20 minutes, online at home) and 5 minutes of speaking with a native teacher. You then receive the CEFR level and the recommended class on Zalo within 24 hours. Every 8 lessons we re-assess to adjust the plan.",
+      "faq.q12": "How are teachers trained to teach children and prepare Cambridge exams?",
+      "faq.a12": "Every teacher is a university-educated native speaker, trained specifically for young learners: Cambridge TKT: Young Learners, CELTA/Delta with the Teaching Young Learners specialism, a 40-hour in-house young-learner methodology course, and training in the exact Starters – Movers – Flyers formats and speaking-test marking. Lesson observations and mentoring run every term.",
+      "faq.q13": "Can my child sit the official Cambridge exams?",
+      "faq.a13": "Yes. Before the real exam, children practise with full-format mock exams marked against Cambridge criteria. Little Lingua guides and registers children for the Pre-A1 Starters, A1 Movers or A2 Flyers exams at an authorised Cambridge exam centre.",
       "cta.title": "Ready for their first “hello”?",
       "cta.copy": "Try a joyful English class for free. No pressure, just play!",
       "cta.btn": "Book a free trial class",
@@ -1550,14 +2051,14 @@
       "foot.desc": "Helping young learners across Vietnam find their voice in English.",
       "foot.h1": "Explore",
       "foot.l1": "Our classes",
-      "foot.l2": "Cambridge roadmap",
-      "foot.l3": "Pricing",
+      "foot.l2": "CEFR path &amp; Cambridge exams",
+      "foot.l3": "Cambridge books",
       "foot.l4": "FAQs",
       "foot.h2": "For families",
-      "foot.l5": "Free trial class",
+      "foot.l5": "Free CEFR placement test",
       "foot.l6": "Our teachers",
       "foot.l7": "Progress reports",
-      "foot.l8": "Refund policy",
+      "foot.l8": "FAQs",
       "foot.h3": "Say hello",
       "foot.zalo": "Zalo",
       "foot.hotline": "Hotline",
@@ -1745,6 +2246,7 @@
         window.history.replaceState({}, '', url);
       }
       applyContactLinks();
+      if (typeof renderQuiz === 'function') renderQuiz();
     }
 
     /* ---------- Link liên hệ / contact links ---------- */
@@ -1900,6 +2402,7 @@
         email: doc.getElementById('email').value.trim(),
         note: doc.getElementById('note').value.trim(),
         language: currentLang,
+        placementLevel: quizPlacedLevel || null,
         page: window.location.href,
         submittedAt: new Date().toISOString()
       };
@@ -1953,6 +2456,108 @@
       }, { rootMargin: '-25% 0px -65% 0px' });
       sections.forEach(function (section) { observer.observe(section); });
     }
+
+
+    /* ---------- Test nhanh xếp lớp CEFR / quick CEFR placement quiz ---------- */
+    var quizTotal = 8;               /* số câu hỏi */
+    var quizAnswers = [];            /* đáp án đã chọn (0,1,2) */
+    var quizIndex = 0;
+    var quizPlacedLevel = '';        /* cấp độ ước lượng, gửi kèm form */
+
+    function quizScore() {
+      return quizAnswers.reduce(function (sum, v) { return sum + (typeof v === 'number' ? v : 0); }, 0);
+    }
+    function quizLevelKey() {
+      var score = quizScore();
+      if (score <= 4) return 'Low';
+      if (score <= 10) return 'Mid';
+      return 'High';
+    }
+    function quizLevelShort() {
+      return t('quiz.r' + quizLevelKey());
+    }
+    function renderQuiz() {
+      var card = doc.getElementById('quizCard');
+      if (!card) return;
+      var body = doc.getElementById('quizBody');
+      var result = doc.getElementById('quizResult');
+      var bar = doc.getElementById('quizBar');
+
+      if (quizIndex >= quizTotal) {
+        body.style.display = 'none';
+        result.classList.add('show');
+        bar.style.width = '100%';
+        var key = quizLevelKey();
+        doc.getElementById('quizLevel').textContent = t('quiz.r' + key);
+        doc.getElementById('quizScore').textContent = t('quiz.scoreLabel') + ' ' + quizScore() + '/' + (quizTotal * 2);
+        doc.getElementById('quizLevelDesc').textContent = t('quiz.r' + key + 'D');
+        doc.getElementById('quizBook').textContent = t('quiz.book');
+        doc.getElementById('quizRetake').textContent = t('quiz.retake');
+        return;
+      }
+
+      body.style.display = '';
+      result.classList.remove('show');
+      bar.style.width = ((quizIndex / quizTotal) * 100) + '%';
+      doc.getElementById('quizStep').textContent = t('quiz.step') + ' ' + (quizIndex + 1) + '/' + quizTotal;
+      doc.getElementById('quizQuestion').textContent = t('quiz.q' + (quizIndex + 1));
+
+      var options = doc.getElementById('quizOptions');
+      options.innerHTML = '';
+      ['a', 'b', 'c'].forEach(function (letter, value) {
+        var id = 'quizOpt' + quizIndex + letter;
+        var label = doc.createElement('label');
+        label.className = 'quiz-option' + (quizAnswers[quizIndex] === value ? ' selected' : '');
+        label.setAttribute('for', id);
+        var input = doc.createElement('input');
+        input.type = 'radio';
+        input.name = 'quizQ' + quizIndex;
+        input.id = id;
+        input.value = String(value);
+        if (quizAnswers[quizIndex] === value) input.checked = true;
+        input.addEventListener('change', function () {
+          quizAnswers[quizIndex] = value;
+          var group = options.querySelectorAll('.quiz-option');
+          Array.prototype.forEach.call(group, function (el) { el.classList.remove('selected'); });
+          label.classList.add('selected');
+        });
+        var span = doc.createElement('span');
+        span.textContent = t('quiz.q' + (quizIndex + 1) + letter);
+        label.appendChild(input);
+        label.appendChild(span);
+        options.appendChild(label);
+      });
+
+      var next = doc.getElementById('quizNext');
+      next.textContent = (quizIndex === quizTotal - 1) ? t('quiz.resultTitle') : t('quiz.next');
+      next.disabled = (quizAnswers[quizIndex] === undefined);
+      next.style.opacity = next.disabled ? '.55' : '1';
+      var back = doc.getElementById('quizBack');
+      back.textContent = t('quiz.back');
+      back.style.display = quizIndex === 0 ? 'none' : '';
+    }
+
+    (function wireQuiz() {
+      var card = doc.getElementById('quizCard');
+      if (!card) return;
+      doc.getElementById('quizNext').addEventListener('click', function () {
+        if (quizAnswers[quizIndex] === undefined) return;
+        quizIndex += 1;
+        if (quizIndex >= quizTotal) quizPlacedLevel = quizLevelShort();
+        renderQuiz();
+      });
+      doc.getElementById('quizBack').addEventListener('click', function () {
+        if (quizIndex > 0) { quizIndex -= 1; quizIndex = Math.min(quizIndex, quizTotal - 1); renderQuiz(); }
+      });
+      doc.getElementById('quizRetake').addEventListener('click', function () {
+        quizIndex = 0; quizAnswers = []; quizPlacedLevel = ''; renderQuiz();
+      });
+      doc.getElementById('quizBook').addEventListener('click', function () {
+        var note = doc.getElementById('note');
+        if (note && !note.value) note.value = t('quiz.notePrefix') + quizLevelShort();
+      });
+      renderQuiz();
+    })();
 
     /* ---------- Khởi động ---------- */
     applyLang(currentLang, { updateUrl: params.get('lang') !== null });

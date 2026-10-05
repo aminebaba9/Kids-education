@@ -14,9 +14,14 @@ Toàn bộ website nằm trong **một file `index.html`** — không cần cài
 |---|---|
 | Ngôn ngữ | **Tiếng Việt mặc định + tiếng Anh** (`VI` / `EN`), nhớ lựa chọn của khách, có link `?lang=en` |
 | Thị trường | **Chỉ Việt Nam**: giờ GMT+7, Zalo, VNĐ, 34 tỉnh/thành, hotline Việt Nam |
-| Nội dung | Dải cam kết, **lộ trình Cambridge (Starters – Movers – Flyers)**, khối "Bố mẹ không biết tiếng Anh vẫn theo dõi được con", **hồ sơ 4 giáo viên nước ngoài** (ảnh, bằng cấp, chứng chỉ, thành tích), bảng học phí, 3 đánh giá phụ huynh, **8 câu hỏi thường gặp** |
+| Chương trình | Khẳng định **chương trình Anh Quốc (British curriculum) đúng chuẩn Cambridge**, lộ trình theo **khung CEFR**: Pre-A1 Starters → A1 Movers → A2 Flyers → A2 Key → B1 Preliminary |
+| Giáo trình | **6 bộ giáo trình chính hãng Cambridge University Press** (Kid's Box, Fun for…, Storyfun, Super Minds, Prepare, Official Practice Tests) + dải huy hiệu "British curriculum / Cambridge English" |
+| Đào tạo GV | Panel **đào tạo giáo viên**: TKT: Young Learners (Cambridge), CELTA/Delta + Teaching Young Learners, khóa nội bộ 40 giờ, đào tạo định dạng đề Starters–Movers–Flyers, dự giờ mỗi học kỳ |
+| Xếp lớp CEFR | Mục **#placement**: quy trình test 25 phút (Nghe + Đọc & Viết 20′, Nói 5′ với giáo viên) **và test nhanh 8 câu tương tác** trên web — tự tính điểm, trả về cấp độ Pre-A1/A1/A2, tự điền ghi chú vào form đăng ký |
+| Tính năng khác | Thi thử Cambridge định kỳ · hỗ trợ đăng ký thi chính thức · báo cáo tiến độ theo CEFR · chứng nhận hoàn thành cấp độ · bài tập trên giáo trình Cambridge · workshop cho phụ huynh |
+| Nội dung | Dải cam kết, khối "Bố mẹ không biết tiếng Anh vẫn theo dõi được con", **hồ sơ 4 giáo viên nước ngoài** (ảnh, bằng cấp, chứng chỉ, thành tích), bảng học phí, 3 đánh giá phụ huynh, **13 câu hỏi thường gặp** |
 | Chuyển đổi | Nút **Zalo** nổi, thanh gọi/Zalo dính đáy trên điện thoại, form đăng ký (tên, SĐT/Zalo, tuổi, tỉnh/thành, khung giờ) |
-| SEO | `lang="vi"`, `hreflang` vi/en, mô tả, Open Graph cho Zalo/Facebook, dữ liệu có cấu trúc FAQ + EducationalOrganization |
+| SEO | `lang="vi"`, `hreflang` vi/en, Open Graph cho Zalo/Facebook, dữ liệu có cấu trúc: **3 khoá học (Course)**, FAQ 8 câu, EducationalOrganization |
 | Trải nghiệm | Nút bỏ qua tới nội dung, `aria-*` đầy đủ, khoá tiêu điểm trong hộp thoại, tôn trọng `prefers-reduced-motion` |
 
 ---
@@ -56,6 +61,20 @@ Mở `index.html` và tìm các vị trí sau (dùng `Ctrl/Cmd + F`):
 6. **Đánh giá của phụ huynh cũng là mẫu** — hiện dùng avatar chữ cái (MT, NA, TH). Thay bằng đánh giá thật (xin phép phụ huynh bằng văn bản); có thể dán ảnh thật bằng cách thay `<span class="quote-initials">` bằng `<img src="…">` như cũ.
 7. **Số liệu xã hội** trong phần thống kê (`10+`, `2.500+`, `25+`, `4.9/5`) — thay bằng số thật để tránh quảng cáo sai sự thật.
 8. **Tên miền** trong thẻ `canonical` / `hreflang` / `og:image` (đầu file) — đổi thành tên miền thật.
+
+9. **Chương trình & giáo trình (mục #curriculum)** — sửa trong `window.I18N`:
+   * `cur.*`: tiêu đề, mô tả và huy hiệu của 6 bộ giáo trình. Tên sách (Kid's Box, Fun for…, Storyfun, Super Minds, Prepare, Official Practice Tests) giữ nguyên tiếng Anh, chỉ dịch phần mô tả.
+   * `train.*`: 6 dòng đào tạo giáo viên và phần giới thiệu.
+   * `feat.*`: 6 tính năng (thi thử, đăng ký thi, báo cáo CEFR, chứng nhận, bài tập, workshop).
+   * `road.*`: khung CEFR, 3 cấp độ và thông tin kỳ thi/giáo trình từng cấp.
+   > Chỉ giữ những dòng **đúng với thực tế của bạn**. Nếu chưa có chứng chỉ/khóa đào tạo nào, hãy xoá dòng đó hoặc sửa lại cho đúng — đây là nội dung phụ huynh sẽ kiểm tra khi hỏi trực tiếp.
+
+10. **Test nhanh CEFR (mục #placement)** — câu hỏi và đáp án nằm ở các khoá `quiz.*`. Đáp án đúng được tính theo thứ tự a = 0 điểm, b = 1 điểm, c = 2 điểm; tổng điểm 0–16 chia 3 mức (≤4: Pre-A1, 5–10: A1, ≥11: A2). Muốn đổi ngưỡng, sửa hàm `quizLevelKey()` trong file. Muốn thêm/bớt câu hỏi: sửa biến `quizTotal`, thêm khoá `quiz.qN/a/b/c` và mở rộng mảng điểm tương ứng.
+
+11. **Đăng ký thi Cambridge** — nếu bạn là trung tâm được Cambridge uỷ quyền hoặc có đối tác khảo thí, hãy ghi rõ tên đơn vị vào khoá `faq.a13`; nếu chưa, nên sửa lại câu trả lời cho phù hợp.
+
+12. **Số liệu xã hội** trong phần thống kê (`10+`, `2.500+`, `25+`, `4.9/5`) — thay bằng số thật để tránh quảng cáo sai sự thật.
+13. **Tên miền** trong thẻ `canonical` / `hreflang` / `og:image` và trong dữ liệu có cấu trúc Course (đầu file) — đổi thành tên miền thật.
 
 > ⚠️ Lưu ý pháp lý: website thu thập số điện thoại của phụ huynh. Nên có **trang chính sách bảo mật** và **sự đồng ý của phụ huynh** (Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân). Nếu dùng hình ảnh/giọng nói của trẻ (video buổi học), cần sự đồng ý bằng văn bản của phụ huynh.
 

@@ -4,6 +4,8 @@ Tài liệu này trả lời câu hỏi *"nên thêm gì tiếp theo?"*, xếp t
 Website hiện tại đã có: song ngữ VI/EN, dải cam kết, lộ trình Cambridge, khối "bố mẹ không biết tiếng Anh", đội ngũ giáo viên, học phí VNĐ, 8 FAQ, form đăng ký với 34 tỉnh/thành, kênh Zalo.
 
 > **Định hướng:** chỉ tập trung thị trường Việt Nam. Không mở rộng sang Algeria / tiếng Ả Rập / tiếng Pháp.
+>
+> **Đã có trên website (không cần làm lại):** khung CEFR + lộ trình Starters → Movers → Flyers → Key → Preliminary · mục giáo trình Cambridge chính hãng · panel đào tạo giáo viên (TKT: YL, CELTA/Delta, khóa nội bộ) · quy trình test xếp lớp CEFR 25 phút · **test nhanh 8 câu tương tác trên web** (tự trả về cấp độ và điền vào form) · thi thử định kỳ · hỗ trợ đăng ký thi · báo cáo tiến độ theo CEFR · chứng nhận cấp độ · workshop phụ huynh.
 
 ---
 
@@ -26,7 +28,7 @@ Website hiện tại đã có: song ngữ VI/EN, dải cam kết, lộ trình Ca
 ## 🚀 Tháng 1–2: chuyển đổi & vận hành
 
 10. **Đặt lịch học thử trực tuyến (lịch trống thật)** — thay form "chờ gọi lại" bằng lịch chọn giờ × giáo viên, giống Calendly. Giảm thời gian chốt từ 2 ngày xuống 5 phút.
-11. **Bài test đầu vào tự động 15 phút** (nghe + chọn hình + nói theo) → gửi kết quả trình độ cho phụ huynh qua Zalo/email. Vừa là sản phẩm miễn phí hấp dẫn, vừa là phễu thu khách hàng.
+11. **Nâng test nhanh 8 câu thành bài test đầu vào đầy đủ trên web** — đã có bản nhanh (8 câu, tự tính điểm, tự điền form). Bước tiếp theo: bản đầy đủ 25 phút có phần **nghe (audio)**, chọn hình cho bé nhỏ, ghi âm phần nói và **tự động gửi kết quả CEFR qua Zalo/email**. Vừa là sản phẩm miễn phí hấp dẫn, vừa là phễu thu khách hàng.
 12. **Khu vực phụ huynh (đăng nhập bằng SĐT/Zalo)**: xem báo cáo tiến độ tuần, video buổi học, hoá đơn, lịch học của con. Đây là "hào" giữ chân mạnh nhất.
 13. **Thanh toán Việt Nam**: chuyển khoản **VietQR** (ảnh QR động kèm mã học viên), **Momo / ZaloPay / VNPay**; tự động ghi nhận đã thanh toán. Giảm công đối soát thủ công.
 14. **Nhắc lịch & điểm danh**: tự nhắc trước buổi học 1 giờ, quy định rõ việc nghỉ/đổi lịch (ví dụ: đổi lịch trước 12 giờ).
