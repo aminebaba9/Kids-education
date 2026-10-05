@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fffaf2">
+  <title>Little Lingua — English Adventures for Kids</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #202343;
+      --muted: #62677d;
+      --teal: #179d9b;
+      --teal-dark: #118886;
+      --coral: #ff766b;
+      --yellow: #ffc94a;
+      --purple: #8370df;
+      --green: #67bb82;
+      --cream: #fffaf2;
+      --white: #fff;
+      --line: #eee9e1;
+      --shadow: 0 18px 45px rgba(44, 59, 91, .10);
+      --round: 24px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      background: #fffdf9;
+      color: var(--ink);
+      font-family: "Nunito", sans-serif;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    button, input, select { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+    .announcement {
+      min-height: 36px;
+      padding: 7px 24px;
+      background: #f4f3fa;
+      color: #555a70;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .announcement .container { display: flex; justify-content: space-between; align-items: center; }
+    .announce-note { display: flex; align-items: center; gap: 8px; }
+    .announce-note svg { color: var(--coral); }
+    .announce-link { color: var(--teal-dark); display: inline-flex; align-items: center; gap: 7px; }
+    header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(255,253,249,.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(238,233,225,.8);
+    }
+    .nav-wrap { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 9px; flex-shrink: 0; }
+    .brand-mark { width: 39px; height: 42px; position: relative; display: grid; place-items: center; }
+    .brand-mark .petal { position: absolute; width: 11px; height: 19px; border-radius: 100% 100% 45% 45%; transform-origin: bottom center; }
+    .petal.p1 { background: var(--coral); top: 1px; left: 14px; transform: rotate(-35deg); }
+    .petal.p2 { background: var(--yellow); top: 0; left: 21px; transform: rotate(22deg); }
+    .petal.p3 { background: var(--teal); top: 8px; left: 5px; transform: rotate(-54deg); }
+    .petal.p4 { background: var(--purple); top: 8px; left: 25px; transform: rotate(48deg); }
+    .brand-mark:after { content:""; position:absolute; width: 9px; height: 21px; background: var(--green); border-radius: 10px 2px 10px 2px; left: 14px; top: 17px; transform: rotate(-21deg); }
+    .brand-word { font-family: "Baloo 2", cursive; font-size: 22px; font-weight: 800; line-height: .9; letter-spacing: -.4px; }
+    .brand-word span { color: var(--coral); }
+    .brand-sub { display:block; font-size: 8px; letter-spacing: 2.7px; font-weight: 900; margin-top: 3px; color: var(--muted); }
+    .nav-links { display:flex; align-items:center; gap: 29px; margin-left:auto; font-size: 13px; font-weight: 800; }
+    .nav-links a { padding: 8px 0; position:relative; transition:color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--teal-dark); }
+    .nav-links a.active:after { content:""; height:2px; width:100%; position:absolute; bottom:0; left:0; background:var(--teal); border-radius:3px; }
+    .nav-actions { display:flex; align-items:center; gap:12px; }
+    .region-select {
+      border: 0; background: transparent; color: var(--ink); font-weight: 800; font-size: 12px;
+      padding: 8px 4px; cursor: pointer; outline-color: var(--teal);
+    }
+    .phone-link { display:flex; align-items:center; gap:7px; font-size:12px; font-weight:900; white-space:nowrap; }
+    .phone-link svg { color: var(--teal); }
+    .btn {
+      border: 0; cursor:pointer; border-radius: 12px; padding: 12px 19px;
+      display:inline-flex; justify-content:center; align-items:center; gap:9px;
+      font-weight:900; font-size:13px; line-height:1.2; transition:transform .2s, box-shadow .2s, background .2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 9px 20px rgba(24, 137, 136, .2); }
+    .btn-primary { background: var(--teal); color:#fff; box-shadow:0 6px 14px rgba(23,157,155,.16); }
+    .btn-primary:hover { background:var(--teal-dark); }
+    .btn-coral { background:var(--coral); color:#fff; }
+    .btn-outline { background:transparent; border:1.5px solid var(--teal); color:var(--teal-dark); }
+    .menu-toggle { display:none; border:0; background:#f2f8f6; color:var(--teal-dark); width:43px; height:43px; border-radius:12px; cursor:pointer; }
+    .hero { padding: 44px 0 50px; position:relative; overflow:hidden; background:linear-gradient(180deg,#fffdf9 0%,#fffaf1 100%); }
+    .hero:before { content:""; position:absolute; width:360px;height:360px; right:-150px;top:-90px;border-radius:50%;background:#fff0bd; opacity:.7; }
+    .hero-grid { display:grid; grid-template-columns: 1fr 1.04fr; align-items:center; gap:38px; position:relative; z-index:1; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; padding:7px 12px; background:#e8f7f3; color:#168d88; border-radius:30px; text-transform:uppercase; letter-spacing:1.3px; font-size:10px; font-weight:900; }
+    .eyebrow .dot { width:7px;height:7px;border-radius:50%;background:var(--coral); }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { font-family:"Baloo 2",cursive; font-size:clamp(43px,5.2vw,66px); line-height:.99; letter-spacing:-1.6px; margin:17px 0 16px; max-width:590px; }
+    .color-teal { color:var(--teal); }
+    .color-coral { color:var(--coral); }
+    .hero-copy { color:var(--muted); max-width:445px; font-size:16px; margin-bottom:23px; }
+    .hero-buttons { display:flex; flex-wrap:wrap; gap:12px; }
+    .hero-points { display:flex; gap:24px; margin-top:31px; }
+    .mini-point { display:flex; gap:9px; align-items:center; font-size:11px; font-weight:800; line-height:1.2; }
+    .mini-point span:first-child { width:34px;height:34px; flex-shrink:0;border-radius:11px; display:grid;place-items:center; }
+    .mini-point:nth-child(1) span:first-child { background:#e6f5ef;color:#38a17d; }
+    .mini-point:nth-child(2) span:first-child { background:#fff0ec;color:var(--coral); }
+    .mini-point:nth-child(3) span:first-child { background:#fff6d9;color:#e3aa2b; }
+    .mini-point small { display:block; font-weight:600; color:var(--muted); margin-top:3px; }
+    .hero-visual { position:relative; min-height:425px; display:flex; align-items:center; justify-content:center; }
+    .hero-image-wrap { width:min(100%,470px); height:420px; border-radius:46% 54% 48% 52% / 43% 44% 56% 57%; overflow:hidden; position:relative; background:#f9d15a; box-shadow:0 18px 45px rgba(52,73,99,.13); }
+    .hero-image-wrap:after { content:""; position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(24,35,54,.26)); pointer-events:none; }
+    .hero-image-wrap img { width:100%;height:100%;object-fit:cover; }
+    .floating-card { position:absolute; z-index:2; background:#fff; border-radius:20px; padding:14px 17px; box-shadow:var(--shadow); }
+    .floating-card.rating { left:-4px; top:44px; display:flex;align-items:center;gap:10px; }
+    .floating-card.rating .emoji { font-size:24px; }
+    .floating-card strong { display:block; font-size:14px; }
+    .floating-card small { color:var(--muted);font-size:11px; }
+    .stars { color:#ffb82f;letter-spacing:2px;font-size:12px; }
+    .floating-card.lesson { right:-10px; bottom:34px; text-align:center; width:154px; }
+    .floating-card.lesson .big-emoji { font-size:28px; }
+    .floating-card.lesson strong { font-size:13px; }
+    .floating-card.lesson small { display:block;line-height:1.35; }
+    .spark { position:absolute;color:var(--yellow);font-size:30px;z-index:2; }
+    .spark.one { right:4px;top:15px; transform:rotate(17deg); }
+    .spark.two { left:10px;bottom:28px;color:var(--coral);font-size:22px; }
+    .hero-sticker { position:absolute;right:2%;top:52%;z-index:2;width:67px;height:67px;border-radius:50%;background:var(--coral);color:white;display:grid;place-items:center;font-family:"Baloo 2";font-weight:800;text-align:center;line-height:1.05;transform:rotate(12deg);border:4px solid #fff;box-shadow:0 7px 14px #d65a5040; }
+    .section { padding:70px 0; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:28px; margin-bottom:26px; }
+    .section-kicker { color:var(--teal-dark); text-transform:uppercase; letter-spacing:1.5px; font-size:10px; font-weight:900; margin-bottom:6px; }
+    h2 { font-family:"Baloo 2",cursive; font-size:clamp(31px,3.8vw,43px); line-height:1.05; margin-bottom:0; letter-spacing:-.5px; }
+    .section-intro { max-width:380px; color:var(--muted); font-size:13px; margin:0 0 2px; }
+    .programs { background:#f7faf7; }
+    .program-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:16px; }
+    .program-card { background:#fff; border:1px solid #eee; border-radius:18px; overflow:hidden; transition:transform .25s,box-shadow .25s; }
+    .program-card:hover { transform:translateY(-5px);box-shadow:var(--shadow); }
+    .program-photo { height:160px; position:relative; overflow:hidden; }
+    .program-photo img { width:100%;height:100%;object-fit:cover;transition:transform .4s; }
+    .program-card:hover .program-photo img { transform:scale(1.05); }
+    .age-chip { position:absolute;bottom:10px;left:12px;background:#fff;border-radius:20px;padding:5px 10px;font-size:10px;font-weight:900;color:var(--ink);box-shadow:0 3px 12px #0002; }
+    .program-content { padding:15px 16px 17px; }
+    .program-icon { width:36px;height:36px;border-radius:12px;display:grid;place-items:center;color:#fff;margin-top:-33px;position:relative;border:3px solid #fff;margin-bottom:9px; }
+    .program-card:nth-child(1) .program-icon{background:var(--teal)}
+    .program-card:nth-child(2) .program-icon{background:#f49a5d}
+    .program-card:nth-child(3) .program-icon{background:var(--purple)}
+    .program-card:nth-child(4) .program-icon{background:var(--coral)}
+    .program-card h3 { font-family:"Baloo 2";font-size:20px;line-height:1.1;margin:0 0 5px; }
+    .program-card p { font-size:12px;color:var(--muted);margin:0 0 11px;min-height:53px; }
+    .text-link { color:var(--teal-dark);font-size:11px;font-weight:900;display:inline-flex;gap:6px;align-items:center; }
+    .text-link:hover { gap:10px; }
+    .stats-band { margin-top:22px; background:linear-gradient(105deg,#169d9a,#2ea6a0); border-radius:22px; color:#fff; padding:22px 16px; display:grid;grid-template-columns:repeat(4,1fr); overflow:hidden; }
+    .stat { text-align:center; border-right:1px solid rgba(255,255,255,.22); }
+    .stat:last-child {border:0}
+    .stat svg { opacity:.86;margin:0 auto 3px; }
+    .stat strong {display:block;font-family:"Baloo 2";font-size:29px;line-height:1.1}
+    .stat span {font-size:11px;font-weight:700;opacity:.92}
+    .steps-section { background:#fffdf9; }
+    .steps-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px; }
+    .step-card { padding:25px 22px; background:#fff; border:1px solid var(--line); border-radius:20px; }
+    .step-number { width:43px;height:43px;border-radius:15px;background:#fff1dc;color:#dd9e24;display:grid;place-items:center;font-family:"Baloo 2";font-weight:800;font-size:21px;margin-bottom:14px; }
+    .step-card:nth-child(2) .step-number{background:#e8f6f1;color:var(--teal)}
+    .step-card:nth-child(3) .step-number{background:#fff0ed;color:var(--coral)}
+    .step-card h3 {font-family:"Baloo 2";font-size:21px;margin:0 0 7px}
+    .step-card p {color:var(--muted);font-size:13px;margin:0}
+    .testimonials { background:#fff6e8; }
+    .quote-grid {display:grid;grid-template-columns:.95fr 1.05fr;gap:25px;align-items:center}
+    .quote-main {background:#fff;border-radius:22px;padding:30px;position:relative;box-shadow:0 9px 25px rgba(69,63,42,.05)}
+    .quote-mark {color:var(--teal);font-family:Georgia;font-size:58px;line-height:.7}
+    .quote-main blockquote {font-family:"Baloo 2";font-size:23px;line-height:1.3;margin:11px 0 18px}
+    .quote-person {display:flex;align-items:center;gap:11px}
+    .quote-person img {width:42px;height:42px;border-radius:50%;object-fit:cover}
+    .quote-person strong {display:block;font-size:12px}
+    .quote-person small {font-size:10px;color:var(--muted)}
+    .quote-photo-grid {display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .quote-photo-grid img {height:155px;width:100%;object-fit:cover;border-radius:13px}
+    .quote-photo-grid img:nth-child(2){transform:translateY(16px)}
+    .cta-band { margin:0 auto 64px; background:linear-gradient(105deg,#fff6dc,#fff0e6); border-radius:24px;padding:24px 34px;display:flex;align-items:center;justify-content:space-between;gap:20px; }
+    .cta-band h2 {font-size:27px;margin-bottom:3px}
+    .cta-band p {font-size:12px;color:var(--muted);margin:0}
+    .cta-left {display:flex;align-items:center;gap:16px}
+    .cta-emoji {font-size:36px}
+    footer {background:#fff;padding:38px 0 18px;border-top:1px solid #f2eee8}
+    .footer-grid {display:grid;grid-template-columns:1.35fr .8fr .9fr 1fr;gap:30px;padding-bottom:27px}
+    .footer-brand p {max-width:240px;color:var(--muted);font-size:11px;margin:12px 0}
+    .footer-grid h4 {font-size:12px;margin:4px 0 11px}
+    .footer-grid a,.footer-grid .foot-detail {display:block;font-size:11px;color:#666b7d;margin:7px 0}
+    .footer-grid a:hover {color:var(--teal)}
+    .socials {display:flex;gap:8px}
+    .socials a {width:27px;height:27px;border:1px solid #dcdde2;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:900;margin:0}
+    .copyright {text-align:center;color:#777b89;font-size:10px;border-top:1px solid #f0ede8;padding-top:15px}
+    .modal-backdrop {position:fixed;inset:0;background:rgba(25,31,54,.55);display:none;align-items:center;justify-content:center;padding:18px;z-index:60}
+    .modal-backdrop.open {display:flex}
+    .modal {background:#fffdf9;border-radius:24px;width:min(480px,100%);padding:29px;position:relative;box-shadow:0 25px 80px #1114;animation:pop .22s ease-out}
+    @keyframes pop {from{transform:translateY(12px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+    .modal-close {position:absolute;right:16px;top:15px;width:35px;height:35px;border:0;border-radius:50%;background:#f2f3f5;cursor:pointer;font-size:19px}
+    .modal h2 {font-size:30px;padding-right:25px;margin-bottom:7px}
+    .modal > p {font-size:13px;color:var(--muted);margin-bottom:19px}
+    .form-row {display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .form-field {margin-bottom:13px}
+    .form-field label {display:block;font-size:11px;font-weight:900;margin-bottom:5px}
+    .form-field input,.form-field select {width:100%;border:1px solid #e3e5e9;border-radius:11px;padding:11px 12px;background:white;color:var(--ink);outline:none}
+    .form-field input:focus,.form-field select:focus {border-color:var(--teal);box-shadow:0 0 0 3px #179d9b20}
+    .modal .btn {width:100%;margin-top:4px}
+    .form-note {font-size:10px;color:#818596;text-align:center;margin:10px 0 0}
+    .success-state {display:none;text-align:center;padding:13px 2px 4px}
+    .success-state .success-icon {width:62px;height:62px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;background:#e7f7ef;color:#20a475;font-size:29px}
+    .success-state p {color:var(--muted);font-size:14px}
+    .toast {position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;background:#202343;color:#fff;padding:12px 18px;border-radius:12px;font-size:13px;z-index:80;transition:.25s;pointer-events:none}
+    .toast.show {opacity:1;transform:translate(-50%,0)}
+    .faq-list {max-width:800px;margin:28px auto 0}
+    .faq-item {border-bottom:1px solid var(--line)}
+    .faq-question {width:100%;text-align:left;padding:18px 3px;border:0;background:transparent;display:flex;align-items:center;justify-content:space-between;gap:14px;font-weight:900;color:var(--ink);cursor:pointer}
+    .faq-question span:last-child {font-size:20px;color:var(--teal);transition:transform .2s}
+    .faq-answer {display:none;color:var(--muted);font-size:13px;padding:0 34px 17px 3px}
+    .faq-item.open .faq-answer {display:block}
+    .faq-item.open .faq-question span:last-child {transform:rotate(45deg)}
+    @media(max-width:1000px) {
+      .nav-links{gap:17px}.phone-link{display:none}
+      .hero-grid{gap:20px}.hero-visual{min-height:380px}.hero-image-wrap{height:370px}
+      .program-photo{height:135px}
+    }
+    @media(max-width:760px) {
+      .container{width:min(100% - 34px,560px)}
+      .announcement{padding-inline:17px}
+      .announce-link{font-size:0;gap:0}.announce-link svg{width:18px;height:18px}
+      .nav-wrap{height:66px}
+      .menu-toggle{display:grid;place-items:center}
+      .nav-actions .btn{display:none}
+      .region-select{font-size:11px}
+      .nav-links{display:none;position:absolute;top:66px;left:0;right:0;background:#fffdf9;padding:12px 22px 20px;box-shadow:0 14px 20px #20234318;flex-direction:column;align-items:stretch;gap:3px;border-top:1px solid var(--line)}
+      .nav-links.open{display:flex}
+      .nav-links a{padding:11px 3px}
+      .nav-links a.active:after{width:28px}
+      .hero{padding:31px 0 40px}
+      .hero-grid{grid-template-columns:1fr;gap:10px}
+      h1{font-size:clamp(43px,11vw,59px);max-width:550px}
+      .hero-copy{font-size:14px}
+      .hero-points{gap:11px;justify-content:space-between;margin-top:23px}
+      .mini-point{gap:6px;font-size:10px}
+      .mini-point span:first-child{width:30px;height:30px}
+      .hero-visual{min-height:340px;margin-top:8px}
+      .hero-image-wrap{height:330px;width:min(90%,410px)}
+      .floating-card.rating{left:0;top:22px}
+      .floating-card.lesson{right:0;bottom:18px}
+      .hero-sticker{right:0;top:45%}
+      .section{padding:54px 0}
+      .section-head{display:block}
+      .section-intro{margin-top:12px}
+      .program-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+      .program-photo{height:140px}
+      .program-content{padding:13px}
+      .program-card p{min-height:65px}
+      .stats-band{grid-template-columns:repeat(2,1fr);gap:17px;padding:20px 10px}
+      .stat:nth-child(2){border:0}
+      .stat strong{font-size:26px}
+      .steps-grid{grid-template-columns:1fr;gap:11px}
+      .step-card{padding:20px}
+      .quote-grid{grid-template-columns:1fr}
+      .quote-photo-grid img{height:125px}
+      .cta-band{width:calc(100% - 34px);padding:20px;margin-bottom:45px;flex-wrap:wrap}
+      .cta-band>.btn{width:100%}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:23px}
+      .footer-brand{grid-column:1/-1}
+    }
+    @media(max-width:390px) {
+      .hero-points{gap:7px}
+      .mini-point{font-size:9px}
+      .program-photo{height:117px}
+      .program-card h3{font-size:18px}
+      .program-card p{font-size:11px}
+      .form-row{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">
+    <div class="container">
+      <span class="announce-note">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-8.2-4.9-8.2-11A4.8 4.8 0 0 1 12 7.2 4.8 4.8 0 0 1 20.2 10C20.2 16.1 12 21 12 21Z"/></svg>
+        New little learners welcome — book a free first class!
+      </span>
+      <a class="announce-link" href="#start">Find your class time <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Little Lingua home">
+        <span class="brand-mark"><i class="petal p1"></i><i class="petal p2"></i><i class="petal p3"></i><i class="petal p4"></i></span>
+        <span><span class="brand-word">Little<span>Lingua</span></span><span class="brand-sub">ENGLISH ADVENTURES</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a class="active" href="#home">Home</a>
+        <a href="#programs">Our Classes</a>
+        <a href="#how">How It Works</a>
+        <a href="#parents">For Parents</a>
+        <a href="#faq">FAQs</a>
+      </nav>
+      <div class="nav-actions">
+        <select class="region-select" id="regionSelect" aria-label="Choose your region">
+          <option value="Algeria">🇩🇿 Algeria</option>
+          <option value="Vietnam">🇻🇳 Vietnam</option>
+        </select>
+        <a class="phone-link" href="mailto:hello@littlelingua.com"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 11.2 18a19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 3.2 2 2 0 0 1 4.1 1h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.9L7.7 8.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 1.9-.6l3 .5a2 2 0 0 1 2.1 2.4z"/></svg> Hello, learners!</a>
+        <button class="btn btn-coral open-booking" type="button">Try a Free Class</button>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> Online English made magical</span>
+          <h1>Big English fun for <span class="color-teal">little</span> <span class="color-coral">bright</span> minds!</h1>
+          <p class="hero-copy">Play, sing, and speak your way to confident English. Joyful live lessons made just for curious kids ages 4–12.</p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary open-booking" type="button">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 15l2 2 4-4"/></svg>
+              Book a Free Class
+            </button>
+            <a class="btn btn-outline" href="#programs">Explore Classes <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="hero-points">
+            <div class="mini-point"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 9 4v5c0 5-3.8 8-9 10-5.2-2-9-5-9-10V7z"/><path d="m8 12 3 3 5-6"/></svg></span><span>Kid-safe & caring<small>Small, happy groups</small></span></div>
+            <div class="mini-point"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-8-4.5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.5-8 11-8 11z"/></svg></span><span>Lovely teachers<small>Patient, trained pros</small></span></div>
+            <div class="mini-point"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3l-5.6 2.9 1.1-6.2L3 9.6l6.2-.9z"/></svg></span><span>Learning through play<small>Progress you can see</small></span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <span class="spark one">✳</span><span class="spark two">✦</span>
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=1000&q=85" alt="Happy young child smiling during a fun learning activity">
+          </div>
+          <div class="floating-card rating"><span class="emoji">🌟</span><span><strong>Little stars love us!</strong><small><span class="stars">★★★★★</span> 4.9 parent rating</small></span></div>
+          <div class="floating-card lesson"><span class="big-emoji">🦄</span><strong>Learn. Laugh. Speak!</strong><small>Every class is a new adventure.</small></div>
+          <div class="hero-sticker">Learn<br>with joy!</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section programs" id="programs">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="section-kicker">Our English adventures</div><h2>A class for every <span class="color-teal">growing</span> learner</h2></div>
+          <p class="section-intro">The right level makes all the difference. Every live, interactive class is designed around your child’s age, confidence, and interests.</p>
+        </div>
+        <div class="program-grid">
+          <article class="program-card">
+            <div class="program-photo"><img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=700&q=80" alt="Young child exploring a colorful learning activity"><span class="age-chip">AGES 4–5</span></div>
+            <div class="program-content"><span class="program-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></span><h3>Little Starters</h3><p>First words, songs, stories, and playful sounds for tiny beginners.</p><a class="text-link" href="#start">Find their class <span>→</span></a></div>
+          </article>
+          <article class="program-card">
+            <div class="program-photo"><img src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&w=700&q=80" alt="Child learning and exploring in a bright setting"><span class="age-chip">AGES 6–8</span></div>
+            <div class="program-content"><span class="program-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4 7v10l8 4 8-4V7z"/><path d="m4 7 8 4 8-4M12 11v10"/></svg></span><h3>Word Explorers</h3><p>Build vocabulary and start speaking with games, projects, and friends.</p><a class="text-link" href="#start">Find their class <span>→</span></a></div>
+          </article>
+          <article class="program-card">
+            <div class="program-photo"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=700&q=80" alt="Children participating together in a classroom"><span class="age-chip">AGES 9–10</span></div>
+            <div class="program-content"><span class="program-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h6"/></svg></span><h3>Confident Speakers</h3><p>Grow fluency, reading, and grammar while sharing ideas out loud.</p><a class="text-link" href="#start">Find their class <span>→</span></a></div>
+          </article>
+          <article class="program-card">
+            <div class="program-photo"><img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=700&q=80" alt="Students enjoying a collaborative learning activity"><span class="age-chip">AGES 11–12</span></div>
+            <div class="program-content"><span class="program-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 2.4 6.5L21 12l-6.6 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/><path d="m19 3 .8 2.2L22 6l-2.2.8L19 9l-.8-2.2L16 6l2.2-.8z"/></svg></span><h3>English Trailblazers</h3><p>Polish speaking and writing skills and get ready for the next big step.</p><a class="text-link" href="#start">Find their class <span>→</span></a></div>
+          </article>
+        </div>
+        <div class="stats-band" aria-label="Little Lingua at a glance">
+          <div class="stat"><svg width="29" height="29" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg><strong>10+</strong><span>Years of happy learning</span></div>
+          <div class="stat"><svg width="29" height="29" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg><strong>2,500+</strong><span>Curious young learners</span></div>
+          <div class="stat"><svg width="29" height="29" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8z"/></svg><strong>25+</strong><span>Wonderful teachers</span></div>
+          <div class="stat"><svg width="29" height="29" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4m8-4v4M3 10h18M8 14h3m-3 3h6"/></svg><strong>Live</strong><span>Small-group online classes</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section steps-section" id="how">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="section-kicker">Easy as 1, 2, 3</div><h2>Learning English is a <span class="color-coral">happy adventure</span></h2></div>
+          <p class="section-intro">From your first hello to speaking with confidence, we make every step simple for your family.</p>
+        </div>
+        <div class="steps-grid">
+          <article class="step-card"><div class="step-number">1</div><h3>Meet your teacher</h3><p>Tell us a little about your child and we’ll match them with the right level and a lovely teacher.</p></article>
+          <article class="step-card"><div class="step-number">2</div><h3>Try a free class</h3><p>Join a no-pressure online lesson full of songs, games, and smiles. No experience needed!</p></article>
+          <article class="step-card"><div class="step-number">3</div><h3>Watch them shine</h3><p>Get a simple progress update and celebrate each new word, brave sentence, and big milestone.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testimonials" id="parents">
+      <div class="container">
+        <div class="quote-grid">
+          <div class="quote-main">
+            <div class="quote-mark">“</div>
+            <blockquote>My daughter used to be shy about English. Now she sings along, asks for her lessons, and surprises us with new words every day!</blockquote>
+            <div class="quote-person">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80" alt="Parent testimonial portrait">
+              <span><strong>Amira B.</strong><small>Parent of a Little Star · Algeria</small></span>
+              <span class="stars" style="margin-left:auto">★★★★★</span>
+            </div>
+          </div>
+          <div class="quote-photo-grid">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80" alt="Children learning together">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Teacher guiding young students">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head" style="justify-content:center;text-align:center">
+          <div><div class="section-kicker">Good to know</div><h2>Little questions, <span class="color-teal">big answers</span></h2></div>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Does my child need to know English already?</span><span>+</span></button><div class="faq-answer">Not at all! We welcome complete beginners and match every child to a level where they can feel comfortable, included, and ready to join in.</div></div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>What time are classes in Algeria and Vietnam?</span><span>+</span></button><div class="faq-answer">We offer a range of live class times to suit families in both regions. Choose Algeria or Vietnam in the menu above and tell us your preferred time when you book—we’ll find a great fit.</div></div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>What do we need for an online class?</span><span>+</span></button><div class="faq-answer">A laptop or tablet, a stable internet connection, and a quiet spot are all you need. We’ll send easy joining instructions before your child’s first class.</div></div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>How big are the classes?</span><span>+</span></button><div class="faq-answer">Our group classes are kept small so every child gets to speak, play, and connect with their teacher. We’ll recommend the best group after your free introductory lesson.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band container" id="start">
+      <div class="cta-left"><span class="cta-emoji">☀️</span><div><h2>Ready for their first “hello”?</h2><p>Try a joyful English class for free. No pressure, just play!</p></div></div>
+      <button class="btn btn-primary open-booking" type="button">Book a Free Class <span>→</span></button>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#home"><span class="brand-mark"><i class="petal p1"></i><i class="petal p2"></i><i class="petal p3"></i><i class="petal p4"></i></span><span><span class="brand-word">Little<span>Lingua</span></span><span class="brand-sub">ENGLISH ADVENTURES</span></span></a>
+          <p>Helping young learners in Algeria, Vietnam, and everywhere find their voice in English.</p>
+          <div class="socials"><a href="#parents" aria-label="Instagram">ig</a><a href="#parents" aria-label="Facebook">f</a><a href="#parents" aria-label="YouTube">▶</a></div>
+        </div>
+        <div><h4>Explore</h4><a href="#programs">Our classes</a><a href="#how">How it works</a><a href="#parents">Parent stories</a><a href="#faq">FAQs</a></div>
+        <div><h4>For families</h4><a href="#start">Free trial class</a><a href="#programs">Age groups</a><a href="#parents">Our approach</a><a href="mailto:hello@littlelingua.com">Get in touch</a></div>
+        <div><h4>Say hello</h4><span class="foot-detail">✉ hello@littlelingua.com</span><span class="foot-detail">🌍 Classes for Algeria & Vietnam</span><span class="foot-detail">🕒 Flexible family-friendly times</span></div>
+      </div>
+      <div class="copyright">© 2024 Little Lingua. Made with ♥ for little learners everywhere.</div>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="modal-close" type="button" aria-label="Close dialog">×</button>
+      <div id="bookingContent">
+        <span class="eyebrow"><span class="dot"></span> Your first class is on us</span>
+        <h2 id="modalTitle" style="margin-top:13px">Let’s find their <span class="color-teal">happy place!</span></h2>
+        <p>Share a few details and our friendly team will help find the right class and time for your family.</p>
+        <form id="bookingForm">
+          <div class="form-row">
+            <div class="form-field"><label for="parentName">Parent’s name</label><input id="parentName" name="parentName" placeholder="Your name" required></div>
+            <div class="form-field"><label for="childAge">Child’s age</label><select id="childAge" name="childAge" required><option value="">Choose age</option><option>4–5 years</option><option>6–8 years</option><option>9–10 years</option><option>11–12 years</option></select></div>
+          </div>
+          <div class="form-field"><label for="email">Email address</label><input id="email" type="email" name="email" placeholder="you@example.com" required></div>
+          <div class="form-row">
+            <div class="form-field"><label for="country">Where are you?</label><select id="country" name="country" required><option value="Algeria">🇩🇿 Algeria</option><option value="Vietnam">🇻🇳 Vietnam</option></select></div>
+            <div class="form-field"><label for="timePreference">Best time to learn</label><select id="timePreference" name="timePreference" required><option value="">Choose a time</option><option>Weekday mornings</option><option>Weekday afternoons</option><option>Weekday evenings</option><option>Weekends</option></select></div>
+          </div>
+          <button class="btn btn-primary" type="submit">Request a Free Class <span>→</span></button>
+          <p class="form-note">No payment details needed. We’ll be in touch soon!</p>
+        </form>
+      </div>
+      <div class="success-state" id="successState">
+        <div class="success-icon">✓</div><h2>You’re on your way!</h2>
+        <p>Thanks for reaching out. A Little Lingua guide will email you soon with a free class time that works for your family.</p>
+        <button class="btn btn-primary modal-close-success" type="button">Sounds great!</button>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', open);
+      menuToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }));
+
+    const modal = document.getElementById('bookingModal');
+    const closeModal = () => {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+    document.querySelectorAll('.open-booking').forEach(btn => btn.addEventListener('click', () => {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => document.getElementById('parentName').focus(), 80);
+    }));
+    modal.querySelector('.modal-close').addEventListener('click', closeModal);
+    document.querySelector('.modal-close-success').addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+
+    const regionSelect = document.getElementById('regionSelect');
+    const countrySelect = document.getElementById('country');
+    regionSelect.addEventListener('change', () => {
+      countrySelect.value = regionSelect.value;
+      const toast = document.getElementById('toast');
+      toast.textContent = regionSelect.value === 'Vietnam'
+        ? 'Showing class options for families in Vietnam 🇻🇳'
+        : 'Showing class options for families in Algeria 🇩🇿';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2600);
+    });
+
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(row => {
+          row.classList.remove('open');
+          row.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          button.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    document.getElementById('bookingForm').addEventListener('submit', e => {
+      e.preventDefault();
+      if (!e.currentTarget.reportValidity()) return;
+      document.getElementById('bookingContent').style.display = 'none';
+      document.getElementById('successState').style.display = 'block';
+    });
+
+    const sections = document.querySelectorAll('main section[id]');
+    const navItems = navLinks.querySelectorAll('a');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navItems.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
+        }
+      });
+    }, { rootMargin: '-25% 0px -65% 0px' });
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
