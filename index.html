@@ -36,9 +36,9 @@
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
     "name": "Little Lingua",
-    "description": "Lớp học tiếng Anh trực tuyến cho trẻ 4–12 tuổi tại Việt Nam và Algeria.",
+    "description": "Lớp học tiếng Anh trực tuyến cho trẻ 4–12 tuổi tại Việt Nam.",
     "url": "https://littlelingua.vn/",
-    "areaServed": ["VN", "DZ"],
+    "areaServed": "VN",
     "sameAs": [],
     "offers": {
       "@type": "Offer",
@@ -83,7 +83,6 @@
   </script>
 
   <style>
-
 
     :root {
       --ink: #202343;
@@ -150,10 +149,6 @@
     .nav-links a:hover, .nav-links a.active { color: var(--teal-dark); }
     .nav-links a.active:after { content:""; height:2px; width:100%; position:absolute; bottom:0; left:0; background:var(--teal); border-radius:3px; }
     .nav-actions { display:flex; align-items:center; gap:12px; }
-    .region-select {
-      border: 0; background: transparent; color: var(--ink); font-weight: 800; font-size: 12px;
-      padding: 8px 4px; cursor: pointer; outline-color: var(--teal);
-    }
     .phone-link { display:flex; align-items:center; gap:7px; font-size:12px; font-weight:900; white-space:nowrap; }
     .phone-link svg { color: var(--teal); }
     .btn {
@@ -304,7 +299,6 @@
       .nav-wrap{height:66px}
       .menu-toggle{display:grid;place-items:center}
       .nav-actions .btn{display:none}
-      .region-select{font-size:11px}
       .nav-links{display:none;position:absolute;top:66px;left:0;right:0;background:#fffdf9;padding:12px 22px 20px;box-shadow:0 14px 20px #20234318;flex-direction:column;align-items:stretch;gap:3px;border-top:1px solid var(--line)}
       .nav-links.open{display:flex}
       .nav-links a{padding:11px 3px}
@@ -349,125 +343,7 @@
       .form-row{grid-template-columns:1fr}
     }
 
-    /* ============================================================
-       BỔ SUNG: song ngữ VI/EN + các phần dành riêng cho Việt Nam
-       (Extra styles: VI/EN bilingual features + Vietnam sections)
-       ============================================================ */
-    .skip-link { position:absolute; left:-9999px; top:0; background:var(--teal); color:#fff; padding:10px 16px; border-radius:0 0 12px 0; font-weight:900; font-size:12px; z-index:99; }
-    .skip-link:focus { left:0; }
-
-    /* Chuyển ngôn ngữ / language switch */
-    .lang-switch { display:inline-flex; background:#f1f4f3; border-radius:11px; padding:3px; gap:2px; flex-shrink:0; }
-    .lang-switch button { border:0; background:transparent; cursor:pointer; border-radius:9px; padding:7px 10px; font-size:11px; font-weight:900; color:#6b7180; letter-spacing:.4px; transition:background .2s, color .2s; }
-    .lang-switch button.active { background:#fff; color:var(--teal-dark); box-shadow:0 2px 8px rgba(0,0,0,.07); }
-    .lang-switch button:hover { color:var(--teal-dark); }
-
-    /* Dải cam kết / trust strip */
-    .trust-strip { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:34px; position:relative; z-index:1; }
-    .trust-item { display:flex; gap:10px; align-items:center; background:#fff; border:1px solid var(--line); border-radius:15px; padding:12px 15px; font-size:11.5px; font-weight:800; line-height:1.3; }
-    .trust-item svg { flex-shrink:0; color:var(--teal); }
-
-    /* Lộ trình Cambridge / roadmap */
-    .roadmap { background:#f7faf7; }
-    .roadmap-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; margin-top:28px; }
-    .roadmap-card { background:#fff; border:1px solid var(--line); border-radius:20px; padding:22px 20px; position:relative; transition:transform .25s, box-shadow .25s; }
-    .roadmap-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); }
-    .roadmap-card:before { content:""; position:absolute; inset:0 0 auto 0; height:5px; border-radius:20px 20px 0 0; background:var(--teal); }
-    .roadmap-card:nth-child(2):before { background:#f49a5d; }
-    .roadmap-card:nth-child(3):before { background:var(--purple); }
-    .level-badge { display:inline-flex; align-items:center; gap:6px; background:#e8f7f3; color:#168d88; border-radius:20px; padding:5px 11px; font-size:10px; font-weight:900; letter-spacing:.6px; text-transform:uppercase; }
-    .roadmap-card:nth-child(2) .level-badge { background:#fff2e6; color:#c87a33; }
-    .roadmap-card:nth-child(3) .level-badge { background:#f1eefc; color:#6a55cf; }
-    .roadmap-age { display:block; font-size:11px; font-weight:800; color:var(--muted); margin-top:11px; }
-    .roadmap-card h3 { font-family:"Baloo 2"; font-size:20px; line-height:1.15; margin:5px 0 10px; }
-    .roadmap-card ul { list-style:none; padding:0; margin:0; }
-    .roadmap-card li { display:flex; gap:9px; font-size:12px; color:var(--muted); margin-bottom:9px; line-height:1.45; }
-    .roadmap-card li:before { content:"✓"; color:var(--green); font-weight:900; flex-shrink:0; }
-    .roadmap-foot { margin-top:24px; background:#fff; border:1px dashed #d9e3dd; border-radius:18px; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; }
-    .roadmap-foot p { margin:0; font-size:13px; font-weight:700; }
-
-    /* Bảng dành cho bố mẹ / parents panel */
-    .parents-panel { display:grid; grid-template-columns:1fr 1fr; gap:34px; align-items:center; background:#fff; border:1px solid var(--line); border-radius:24px; padding:30px; box-shadow:0 9px 25px rgba(69,63,42,.05); }
-    .parents-panel img { width:100%; height:100%; min-height:300px; max-height:390px; object-fit:cover; border-radius:18px; }
-    .parents-list { display:grid; gap:14px; margin-top:20px; }
-    .parents-item { display:flex; gap:12px; }
-    .parents-item span:first-child { width:34px; height:34px; flex-shrink:0; border-radius:11px; display:grid; place-items:center; background:#e6f5ef; color:#38a17d; }
-    .parents-item:nth-child(2) span:first-child { background:#fff0ec; color:var(--coral); }
-    .parents-item:nth-child(3) span:first-child { background:#fff6d9; color:#e3aa2b; }
-    .parents-item:nth-child(4) span:first-child { background:#f1eefc; color:#6a55cf; }
-    .parents-item strong { display:block; font-size:13px; }
-    .parents-item small { display:block; color:var(--muted); font-size:11.5px; line-height:1.45; }
-    .zalo-chip { display:inline-flex; align-items:center; gap:8px; background:#eaf1ff; color:#0052cc; border-radius:20px; padding:6px 13px; font-size:11px; font-weight:900; margin-top:16px; }
-
-    /* Giáo viên / teachers */
-    .teacher-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-top:28px; }
-    .teacher-card { background:#fff; border:1px solid var(--line); border-radius:20px; padding:22px; text-align:center; transition:transform .25s, box-shadow .25s; }
-    .teacher-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); }
-    .teacher-card img { width:82px; height:82px; border-radius:50%; object-fit:cover; margin:0 auto 13px; border:3px solid #eef7f4; }
-    .teacher-card h3 { font-family:"Baloo 2"; font-size:20px; margin:0 0 4px; }
-    .teacher-role { display:block; font-size:10.5px; font-weight:900; color:var(--teal-dark); text-transform:uppercase; letter-spacing:.5px; line-height:1.5; }
-    .teacher-card p { font-size:12px; color:var(--muted); margin:11px 0 0; }
-    .teacher-tags { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-top:12px; }
-    .teacher-tags span { font-size:10px; font-weight:800; background:#f4f6f5; color:#5c6376; border-radius:20px; padding:4px 9px; }
-
-    /* Học phí / pricing */
-    .pricing { background:#fffdf9; }
-    .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(265px,1fr)); gap:16px; margin-top:32px; align-items:start; }
-    .price-card { background:#fff; border:1px solid var(--line); border-radius:22px; padding:26px 22px; position:relative; }
-    .price-card.featured { border:2px solid var(--teal); box-shadow:0 18px 42px rgba(23,157,155,.13); }
-    .price-badge { position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--teal); color:#fff; font-size:10px; font-weight:900; padding:6px 14px; border-radius:20px; white-space:nowrap; letter-spacing:.3px; }
-    .price-badge.free { background:var(--coral); }
-    .price-badge.fast { background:var(--purple); }
-    .price-name { font-size:13px; font-weight:900; text-transform:uppercase; letter-spacing:.8px; color:var(--muted); }
-    .price-amount { font-family:"Baloo 2"; font-size:37px; line-height:1.05; margin:9px 0 2px; }
-    .price-unit { display:block; font-size:11.5px; color:var(--muted); font-weight:700; }
-    .price-save { display:inline-block; font-size:10px; font-weight:900; color:#c87a33; background:#fff4e6; border-radius:20px; padding:4px 10px; margin-top:9px; }
-    .price-list { list-style:none; padding:0; margin:16px 0 20px; border-top:1px solid var(--line); padding-top:16px; }
-    .price-list li { display:flex; gap:9px; font-size:12px; color:#565c70; margin-bottom:10px; line-height:1.45; }
-    .price-list li:before { content:"✓"; color:var(--teal); font-weight:900; flex-shrink:0; }
-    .price-card .btn { width:100%; }
-    .price-footnote { margin:20px auto 0; max-width:760px; text-align:center; font-size:11.5px; color:var(--muted); line-height:1.6; }
-
-    /* Phụ huynh nói gì / testimonials */
-    .quote-cards { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px; }
-    .quote-card { background:#fff; border-radius:18px; padding:20px; border:1px solid #f3e6d2; }
-    .quote-card blockquote { margin:0 0 14px; font-size:13.5px; line-height:1.6; color:#4c5367; }
-    .quote-card .quote-person img { width:38px; height:38px; }
-    .quote-card .quote-person strong { font-size:12px; }
-    .quote-person .stars { margin-left:auto; }
-
-    /* Nút Zalo nổi + thanh CTA trên điện thoại */
-    .zalo-float { position:fixed; right:18px; bottom:20px; z-index:50; display:inline-flex; align-items:center; gap:8px; background:#0068ff; color:#fff; padding:12px 18px; border-radius:30px; font-size:13px; font-weight:900; box-shadow:0 12px 26px rgba(0,104,255,.34); transition:transform .2s; }
-    .zalo-float:hover { transform:translateY(-2px); }
-    .mobile-cta { display:none; }
-    .mobile-cta .btn { flex:1; }
-    .mobile-cta .btn-zalo { background:#0068ff; color:#fff; box-shadow:0 6px 14px rgba(0,104,255,.22); }
-
-    @media(max-width:1000px) {
-      .parents-panel { grid-template-columns:1fr; gap:22px; padding:24px; }
-      .parents-panel img { min-height:220px; max-height:280px; }
-      .trust-strip { grid-template-columns:repeat(2,1fr); }
-    }
-    @media(max-width:760px) {
-      .region-select { display:none; }
-      .lang-switch button { padding:7px 9px; }
-      .trust-strip { grid-template-columns:1fr; margin-top:26px; }
-      .quote-cards { grid-template-columns:1fr; }
-      .zalo-float { bottom:78px; padding:12px 15px; font-size:12px; }
-      .zalo-float span { display:none; }
-      .zalo-float svg { margin:0; }
-      body { padding-bottom:70px; }
-      .mobile-cta { display:flex; position:fixed; bottom:0; left:0; right:0; z-index:55; gap:9px; padding:9px 14px; background:rgba(255,253,249,.95); backdrop-filter:blur(12px); border-top:1px solid var(--line); }
-      .roadmap-foot { padding:16px 18px; }
-      .roadmap-foot .btn { width:100%; }
-      .price-card.featured { margin-top:10px; }
-      .cta-band { margin-bottom:26px; }
-    }
-    @media(prefers-reduced-motion:reduce) {
-      *, *:before, *:after { animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
-    }
-
-    /* ============================================================
+/* ============================================================
        BỔ SUNG: song ngữ VI/EN + các phần dành riêng cho Việt Nam
        (Extra styles: VI/EN bilingual features + Vietnam sections)
        ============================================================ */
@@ -572,7 +448,6 @@
       .trust-strip { grid-template-columns:repeat(2,1fr); }
     }
     @media(max-width:760px) {
-      .region-select { display:none; }
       .lang-switch button { padding:7px 9px; }
       .trust-strip { grid-template-columns:1fr; margin-top:26px; }
       .quote-cards { grid-template-columns:1fr; }
@@ -593,7 +468,6 @@
     @media(prefers-reduced-motion:reduce) {
       *, *:before, *:after { animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
     }
-
   </style>
 </head>
 <body>
@@ -627,11 +501,6 @@
           <button type="button" data-lang-btn="vi" class="active" aria-pressed="true" title="Tiếng Việt">VI</button>
           <button type="button" data-lang-btn="en" aria-pressed="false" title="English">EN</button>
         </div>
-        <select class="region-select" id="regionSelect" aria-label="Chọn khu vực" data-i18n-attr="aria-label:ui.regionLabel">
-          <option value="Vietnam" selected data-i18n="region.vn">🇻🇳 Việt Nam</option>
-          <option value="Algeria" data-i18n="region.dz">🇩🇿 Algeria</option>
-          <option value="Other" data-i18n="region.other">🌍 Nơi khác</option>
-        </select>
         <button class="btn btn-coral open-booking" type="button" data-i18n="nav.cta">Học thử miễn phí</button>
       </div>
       <button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false" data-i18n-attr="aria-label:ui.menuOpen">
@@ -951,7 +820,7 @@
           <a href="#" data-contact="phone"><span data-i18n="foot.hotline">Hotline</span>: <span data-contact-text="phone">1900 0000</span></a>
           <a href="#" data-contact="email">hello@littlelingua.vn</a>
           <span class="foot-detail" data-i18n="foot.hours">🕒 Hỗ trợ 8:00–21:00 (giờ Việt Nam, GMT+7)</span>
-          <span class="foot-detail" data-i18n="foot.regions">🌏 Lớp học cho Việt Nam &amp; Algeria</span>
+          <span class="foot-detail" data-i18n="foot.local">🌏 Lớp học online cho bé trên mọi miền Việt Nam</span>
         </div>
       </div>
       <div class="copyright" data-i18n="foot.copy">© 2026 Little Lingua. Làm bằng cả trái tim cho các bạn nhỏ.</div>
@@ -994,12 +863,41 @@
             <div class="form-field"><label for="city" data-i18n="modal.city">Tỉnh / thành phố</label>
               <select id="city" name="city" required>
                 <option value="" data-i18n="modal.chooseCity">Chọn tỉnh/thành</option>
-                <option data-i18n="modal.city1">TP. Hồ Chí Minh</option>
-                <option data-i18n="modal.city2">Hà Nội</option>
-                <option data-i18n="modal.city3">Đà Nẵng</option>
-                <option data-i18n="modal.city4">Cần Thơ</option>
-                <option data-i18n="modal.city5">Tỉnh/thành khác</option>
-                <option data-i18n="modal.city6">Đang ở nước ngoài</option>
+                <option data-i18n="modal.city1">Hà Nội</option>
+                <option data-i18n="modal.city2">TP. Hồ Chí Minh</option>
+                <option data-i18n="modal.city3">TP. Hải Phòng</option>
+                <option data-i18n="modal.city4">TP. Đà Nẵng</option>
+                <option data-i18n="modal.city5">TP. Cần Thơ</option>
+                <option data-i18n="modal.city6">TP. Huế</option>
+                <option data-i18n="modal.city7">An Giang</option>
+                <option data-i18n="modal.city8">Bắc Ninh</option>
+                <option data-i18n="modal.city9">Cà Mau</option>
+                <option data-i18n="modal.city10">Cao Bằng</option>
+                <option data-i18n="modal.city11">Đắk Lắk</option>
+                <option data-i18n="modal.city12">Điện Biên</option>
+                <option data-i18n="modal.city13">Đồng Nai</option>
+                <option data-i18n="modal.city14">Đồng Tháp</option>
+                <option data-i18n="modal.city15">Gia Lai</option>
+                <option data-i18n="modal.city16">Hà Tĩnh</option>
+                <option data-i18n="modal.city17">Hưng Yên</option>
+                <option data-i18n="modal.city18">Khánh Hòa</option>
+                <option data-i18n="modal.city19">Lai Châu</option>
+                <option data-i18n="modal.city20">Lâm Đồng</option>
+                <option data-i18n="modal.city21">Lạng Sơn</option>
+                <option data-i18n="modal.city22">Lào Cai</option>
+                <option data-i18n="modal.city23">Nghệ An</option>
+                <option data-i18n="modal.city24">Ninh Bình</option>
+                <option data-i18n="modal.city25">Phú Thọ</option>
+                <option data-i18n="modal.city26">Quảng Ngãi</option>
+                <option data-i18n="modal.city27">Quảng Ninh</option>
+                <option data-i18n="modal.city28">Quảng Trị</option>
+                <option data-i18n="modal.city29">Sơn La</option>
+                <option data-i18n="modal.city30">Tây Ninh</option>
+                <option data-i18n="modal.city31">Thái Nguyên</option>
+                <option data-i18n="modal.city32">Thanh Hóa</option>
+                <option data-i18n="modal.city33">Tuyên Quang</option>
+                <option data-i18n="modal.city34">Vĩnh Long</option>
+                <option data-i18n="modal.cityO">Tỉnh/thành khác</option>
               </select></div>
           </div>
           <div class="form-row">
@@ -1039,10 +937,9 @@
      CÁCH SỬA NỘI DUNG: chỉ cần sửa chữ trong khối "vi" (tiếng Việt)
      và khối "en" (tiếng Anh) dưới đây. Không cần sửa phần HTML ở trên.
 
-     CÁCH THÊM NGÔN NGỮ MỚI (ví dụ tiếng Ả Rập "ar" cho Algeria):
-       1. Sao chép khối "en" thành khối "ar" và dịch nội dung.
-       2. Trong phần HTML, thêm nút: <button type="button" data-lang-btn="ar">AR</button>
-       3. Trong window.CONTACT bên dưới, giữ nguyên các link liên hệ.
+     Hai khối "vi" và "en" phải có đủ các khoá giống nhau.
+     Cần thêm câu chữ mới? Thêm khoá vào CẢ HAI khối rồi dùng
+     data-i18n="khoá" trong HTML (hoặc data-i18n-html nếu có thẻ HTML).
      ============================================================ */
   window.I18N = {
     vi: {
@@ -1054,7 +951,6 @@
       "ui.brandLabel": "Trang chủ Little Lingua",
       "ui.navLabel": "Điều hướng chính",
       "ui.langLabel": "Chọn ngôn ngữ",
-      "ui.regionLabel": "Chọn khu vực",
       "ui.menuOpen": "Mở menu",
       "ui.menuClose": "Đóng menu",
       "ui.close": "Đóng",
@@ -1073,10 +969,6 @@
       "nav.pricing": "Học phí",
       "nav.faq": "Câu hỏi",
       "nav.cta": "Học thử miễn phí",
-
-      "region.vn": "🇻🇳 Việt Nam",
-      "region.dz": "🇩🇿 Algeria",
-      "region.other": "🌍 Nơi khác",
 
       "hero.eyebrow": "Lớp tiếng Anh trực tuyến cho bé 4–12 tuổi",
       "hero.title": "Tiếng Anh thật vui cho những <span class=\"color-teal\">em nhỏ</span> <span class=\"color-coral\">tỏa sáng</span>!",
@@ -1263,7 +1155,7 @@
       "cta.copy": "Đăng ký một buổi học thử miễn phí — không áp lực, chỉ có niềm vui!",
       "cta.btn": "Đăng ký học thử miễn phí",
 
-      "foot.desc": "Giúp các bạn nhỏ Việt Nam và trên toàn thế giới tìm thấy tiếng nói tự tin của mình bằng tiếng Anh.",
+      "foot.desc": "Giúp các bạn nhỏ Việt Nam tìm thấy tiếng nói tự tin của mình bằng tiếng Anh.",
       "foot.h1": "Khám phá",
       "foot.l1": "Các lớp học",
       "foot.l2": "Lộ trình Cambridge",
@@ -1277,8 +1169,8 @@
       "foot.h3": "Liên hệ",
       "foot.zalo": "Zalo",
       "foot.hotline": "Hotline",
+      "foot.local": "🌏 Lớp học online cho bé trên mọi miền Việt Nam",
       "foot.hours": "🕒 Hỗ trợ 8:00–21:00 (giờ Việt Nam, GMT+7)",
-      "foot.regions": "🌏 Lớp học cho Việt Nam & Algeria",
       "foot.copy": "© 2026 Little Lingua. Làm bằng cả trái tim cho các bạn nhỏ.",
 
       "modal.eyebrow": "Buổi học đầu tiên miễn phí",
@@ -1296,12 +1188,41 @@
       "modal.age4": "11–12 tuổi",
       "modal.city": "Tỉnh / thành phố",
       "modal.chooseCity": "Chọn tỉnh/thành",
-      "modal.city1": "TP. Hồ Chí Minh",
-      "modal.city2": "Hà Nội",
-      "modal.city3": "Đà Nẵng",
-      "modal.city4": "Cần Thơ",
-      "modal.city5": "Tỉnh/thành khác",
-      "modal.city6": "Đang ở nước ngoài",
+      "modal.city1": "Hà Nội",
+      "modal.city2": "TP. Hồ Chí Minh",
+      "modal.city3": "TP. Hải Phòng",
+      "modal.city4": "TP. Đà Nẵng",
+      "modal.city5": "TP. Cần Thơ",
+      "modal.city6": "TP. Huế",
+      "modal.city7": "An Giang",
+      "modal.city8": "Bắc Ninh",
+      "modal.city9": "Cà Mau",
+      "modal.city10": "Cao Bằng",
+      "modal.city11": "Đắk Lắk",
+      "modal.city12": "Điện Biên",
+      "modal.city13": "Đồng Nai",
+      "modal.city14": "Đồng Tháp",
+      "modal.city15": "Gia Lai",
+      "modal.city16": "Hà Tĩnh",
+      "modal.city17": "Hưng Yên",
+      "modal.city18": "Khánh Hòa",
+      "modal.city19": "Lai Châu",
+      "modal.city20": "Lâm Đồng",
+      "modal.city21": "Lạng Sơn",
+      "modal.city22": "Lào Cai",
+      "modal.city23": "Nghệ An",
+      "modal.city24": "Ninh Bình",
+      "modal.city25": "Phú Thọ",
+      "modal.city26": "Quảng Ngãi",
+      "modal.city27": "Quảng Ninh",
+      "modal.city28": "Quảng Trị",
+      "modal.city29": "Sơn La",
+      "modal.city30": "Tây Ninh",
+      "modal.city31": "Thái Nguyên",
+      "modal.city32": "Thanh Hóa",
+      "modal.city33": "Tuyên Quang",
+      "modal.city34": "Vĩnh Long",
+      "modal.cityO": "Tỉnh/thành khác",
       "modal.time": "Khung giờ con học được",
       "modal.chooseTime": "Chọn khung giờ",
       "modal.time1": "17:00 – 18:30 (giờ VN)",
@@ -1328,9 +1249,6 @@
       "js.needCity": "Bố mẹ chọn tỉnh/thành giúp nhé.",
       "js.needTime": "Bố mẹ chọn khung giờ con có thể học.",
       "js.success": "Cảm ơn bố mẹ! Chúng tôi sẽ liên hệ trong 24 giờ. Nếu cần gấp, bố mẹ nhắn Zalo nhé!",
-      "js.regionVN": "Đang hiển thị lớp học cho gia đình tại Việt Nam 🇻🇳",
-      "js.regionDZ": "Đang hiển thị lớp học cho gia đình tại Algeria 🇩🇿",
-      "js.regionOther": "Đang hiển thị lớp học quốc tế 🌍",
       "js.langChanged": "Đã chuyển sang tiếng Việt 🇻🇳",
       "js.demoContact": "Đây là bản demo — bố mẹ hãy thay link Zalo/Facebook thật trong file index.html (tìm dòng có data-contact)."
     },
@@ -1344,7 +1262,6 @@
       "ui.brandLabel": "Little Lingua home",
       "ui.navLabel": "Main navigation",
       "ui.langLabel": "Choose language",
-      "ui.regionLabel": "Choose your region",
       "ui.menuOpen": "Open navigation",
       "ui.menuClose": "Close navigation",
       "ui.close": "Close",
@@ -1363,10 +1280,6 @@
       "nav.pricing": "Pricing",
       "nav.faq": "FAQ",
       "nav.cta": "Free trial class",
-
-      "region.vn": "🇻🇳 Vietnam",
-      "region.dz": "🇩🇿 Algeria",
-      "region.other": "🌍 Somewhere else",
 
       "hero.eyebrow": "Live online English for kids 4–12",
       "hero.title": "Big English fun for <span class=\"color-teal\">little</span> <span class=\"color-coral\">bright</span> minds!",
@@ -1553,7 +1466,7 @@
       "cta.copy": "Try a joyful English class for free. No pressure, just play!",
       "cta.btn": "Book a free trial class",
 
-      "foot.desc": "Helping young learners in Vietnam, Algeria and everywhere find their voice in English.",
+      "foot.desc": "Helping young learners across Vietnam find their voice in English.",
       "foot.h1": "Explore",
       "foot.l1": "Our classes",
       "foot.l2": "Cambridge roadmap",
@@ -1567,8 +1480,8 @@
       "foot.h3": "Say hello",
       "foot.zalo": "Zalo",
       "foot.hotline": "Hotline",
+      "foot.local": "🌏 Online classes for kids all over Vietnam",
       "foot.hours": "🕒 Support 8:00–21:00 (Vietnam time, GMT+7)",
-      "foot.regions": "🌏 Classes for Vietnam & Algeria",
       "foot.copy": "© 2026 Little Lingua. Made with ♥ for little learners.",
 
       "modal.eyebrow": "Your first class is on us",
@@ -1586,12 +1499,41 @@
       "modal.age4": "11–12 years",
       "modal.city": "City / province",
       "modal.chooseCity": "Choose city",
-      "modal.city1": "Ho Chi Minh City",
-      "modal.city2": "Hanoi",
-      "modal.city3": "Da Nang",
-      "modal.city4": "Can Tho",
-      "modal.city5": "Other province",
-      "modal.city6": "Living abroad",
+      "modal.city1": "Hanoi",
+      "modal.city2": "Ho Chi Minh City",
+      "modal.city3": "Hai Phong",
+      "modal.city4": "Da Nang",
+      "modal.city5": "Can Tho",
+      "modal.city6": "Hue",
+      "modal.city7": "An Giang",
+      "modal.city8": "Bac Ninh",
+      "modal.city9": "Ca Mau",
+      "modal.city10": "Cao Bang",
+      "modal.city11": "Dak Lak",
+      "modal.city12": "Dien Bien",
+      "modal.city13": "Dong Nai",
+      "modal.city14": "Dong Thap",
+      "modal.city15": "Gia Lai",
+      "modal.city16": "Ha Tinh",
+      "modal.city17": "Hung Yen",
+      "modal.city18": "Khanh Hoa",
+      "modal.city19": "Lai Chau",
+      "modal.city20": "Lam Dong",
+      "modal.city21": "Lang Son",
+      "modal.city22": "Lao Cai",
+      "modal.city23": "Nghe An",
+      "modal.city24": "Ninh Binh",
+      "modal.city25": "Phu Tho",
+      "modal.city26": "Quang Ngai",
+      "modal.city27": "Quang Ninh",
+      "modal.city28": "Quang Tri",
+      "modal.city29": "Son La",
+      "modal.city30": "Tay Ninh",
+      "modal.city31": "Thai Nguyen",
+      "modal.city32": "Thanh Hoa",
+      "modal.city33": "Tuyen Quang",
+      "modal.city34": "Vinh Long",
+      "modal.cityO": "Other province",
       "modal.time": "Best time to learn",
       "modal.chooseTime": "Choose a time",
       "modal.time1": "17:00 – 18:30 (VN time)",
@@ -1618,9 +1560,6 @@
       "js.needCity": "Please choose your city or province.",
       "js.needTime": "Please choose a time slot that works for your child.",
       "js.success": "Thank you! We'll be in touch within 24 hours. Need an answer sooner? Message us on Zalo!",
-      "js.regionVN": "Showing class options for families in Vietnam 🇻🇳",
-      "js.regionDZ": "Showing class options for families in Algeria 🇩🇿",
-      "js.regionOther": "Showing international class options 🌍",
       "js.langChanged": "Switched to English 🇬🇧",
       "js.demoContact": "This is a demo — please replace the real Zalo/Facebook links in index.html (search for data-contact)."
     }
@@ -1647,7 +1586,6 @@
     'use strict';
 
     var STORAGE_KEY = 'littlelingua.lang';
-    var REGION_KEY = 'littlelingua.region';
 
     /* Gửi form về đâu?
        Để trống ("") => chạy chế độ demo, hiện thông báo cảm ơn.
@@ -1778,19 +1716,6 @@
       });
     });
 
-    /* ---------- Khu vực / region ---------- */
-    var regionSelect = doc.getElementById('regionSelect');
-    try {
-      var savedRegion = window.localStorage.getItem(REGION_KEY);
-      if (savedRegion && regionSelect.querySelector('option[value="' + savedRegion + '"]')) regionSelect.value = savedRegion;
-    } catch (e) {}
-    regionSelect.addEventListener('change', function () {
-      var value = regionSelect.value;
-      try { window.localStorage.setItem(REGION_KEY, value); } catch (e) {}
-      var key = value === 'Algeria' ? 'js.regionDZ' : (value === 'Vietnam' ? 'js.regionVN' : 'js.regionOther');
-      toast(t(key));
-    });
-
     /* ---------- Cửa sổ đăng ký / booking modal ---------- */
     var modal = doc.getElementById('bookingModal');
     var firstField = doc.getElementById('parentName');
@@ -1893,7 +1818,6 @@
         timePreference: timePreference.value,
         email: doc.getElementById('email').value.trim(),
         note: doc.getElementById('note').value.trim(),
-        region: regionSelect.value,
         language: currentLang,
         page: window.location.href,
         submittedAt: new Date().toISOString()
